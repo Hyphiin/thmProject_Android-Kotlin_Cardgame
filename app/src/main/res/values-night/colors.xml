@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="textColor">#E4E9ED</color>
+    <color name="textColor2">#E4E9ED</color>
     <color name="mainBackgroundColor">#022342</color>
     <color name="menuBarColor">#003f7d</color>
     <color name="buttonColor">#00a6ac</color>
