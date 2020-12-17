@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mainBackgroundColor"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/nameApp"
@@ -62,12 +64,13 @@
                 android:layout_height="30dp" />
 
             <Button
-                android:id="@+id/play"
+                android:id="@+id/play_button"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
+                android:onClick="onClickPlayButton"
                 android:text="SPIELEN"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -83,6 +86,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
+                android:onClick="onClickSpecialModeButton"
                 android:text="SPEZIALMODUS"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -98,6 +102,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
+                android:onClick="onClickProfileButton"
                 android:text="PROFILE"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -113,6 +118,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
+                android:onClick="onClickManualButton"
                 android:text="ANLEITUNG"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -128,6 +134,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
+                android:onClick="onClickSettingsButton"
                 android:text="EINSTELLUNGEN"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
