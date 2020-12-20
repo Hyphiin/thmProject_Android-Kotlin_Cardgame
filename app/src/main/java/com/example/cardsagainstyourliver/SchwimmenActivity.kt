@@ -9,9 +9,14 @@ class SchwimmenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_spielerauswahl)
+
+
+    }
+
+
+    fun onClickStartGame(view: View) {
         setContentView(R.layout.activity_schwimmen)
-
-
     }
 
     fun onClickPauseMenuButton(view: View) {

@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/mainBackgroundColor"
-    android:orientation="vertical"
-    tools:context=".ProfileActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,13 +16,14 @@
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
+            android:layout_gravity="center"
             android:background="#00FFFFFF"
             android:onClick="onClickBackToMenuButton"
             app:srcCompat="@drawable/back_button" />
 
+
         <Space
-            android:layout_width="match_parent"
+            android:layout_width="278dp"
             android:layout_height="40dp"
             android:layout_weight="0" />
 
@@ -35,7 +34,7 @@
         android:layout_height="40dp" />
 
     <TextView
-        android:id="@+id/profil_text"
+        android:id="@+id/settings_text"
         android:layout_width="280dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
@@ -43,8 +42,9 @@
         android:fontFamily="@font/roboto_slab_bold"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="PROFIL"
-        android:textColor="@color/textColor2"
+        android:text="Spieler"
+        android:textAllCaps="true"
+        android:textColor="#E4E9ED"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -69,17 +69,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Du bist . . ."
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
             <Button
-                android:id="@+id/profil01"
-                android:layout_width="250dp"
+                android:id="@+id/newPlayer_button"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/backgroundColor2"
-                android:fontFamily="@font/roboto_slab_bold"
-                android:onClick="onClickProfileEditButton"
-                android:text="PROFIL_a"
-                android:textAllCaps="false"
-                android:textColor="@color/textColor2"
+                android:background="@drawable/text_background_round"
+                android:gravity="center"
+                android:text="Spieler 1"
+                android:textColor="@color/buttonColor"
                 android:textSize="24sp" />
 
             <Space
@@ -87,7 +100,52 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/newProfil_button"
+                android:id="@+id/sound_setting3"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_corners"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:text="Platzhalter"
+                android:textColor="@color/buttonText"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/newPlayer_button2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/text_background_round"
+                android:gravity="center"
+                android:text="Spieler 1"
+                android:textColor="@color/buttonColor"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/sound_setting5"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_corners"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:text="Platzhalter"
+                android:textColor="@color/buttonText"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <Button
+                android:id="@+id/newProfil_button2"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
@@ -100,27 +158,15 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="30dp" />
 
             <ImageButton
-                android:id="@+id/correct_button"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#00FFFFFF"
+                android:onClick="onClickStartGame"
                 app:srcCompat="@drawable/correct" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
 
         </LinearLayout>
 

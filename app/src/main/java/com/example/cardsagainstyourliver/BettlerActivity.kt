@@ -9,6 +9,10 @@ class BettlerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_spielerauswahl)
+    }
+
+    fun onClickStartGame(view: View) {
         setContentView(R.layout.activity_bettler)
     }
 
