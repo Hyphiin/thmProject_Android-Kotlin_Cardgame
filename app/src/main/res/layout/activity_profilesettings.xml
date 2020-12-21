@@ -99,7 +99,9 @@
                         android:layout_gravity="center"
                         android:background="@drawable/rounded_corners"
                         android:ems="10"
+                        android:foregroundGravity="center"
                         android:gravity="center"
+                        android:hint="test"
                         android:inputType="number" />
 
                     <Space
@@ -132,6 +134,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/rounded_corners"
                         android:ems="10"
+                        android:foregroundGravity="center"
                         android:gravity="center"
                         android:inputType="number" />
 
@@ -165,6 +168,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/rounded_corners"
                         android:ems="10"
+                        android:foregroundGravity="center"
                         android:gravity="center"
                         android:inputType="number" />
 
@@ -370,8 +374,8 @@
                         android:layout_height="10dp" />
 
                     <ImageButton
-                        android:id="@+id/correct_button2"
-                        android:layout_width="match_parent"
+                        android:id="@+id/correct_button"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="#00FFFFFF"

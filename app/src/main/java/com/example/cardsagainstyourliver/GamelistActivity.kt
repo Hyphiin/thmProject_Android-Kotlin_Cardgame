@@ -19,13 +19,20 @@ class GamelistActivity : AppCompatActivity() {
         startActivity(BackToMenuButton)
     }
 
-    fun onClickSchwimmenButton(view: View) {
+
+    fun onClickSchwimmenButton(v: View) {
         val SchwimmenButton = Intent(this, SchwimmenActivity::class.java)
         startActivity(SchwimmenButton)
     }
 
-    fun onClickBettlerGameButton(view: View) {
-        val BettlerGameButton = Intent(this, BettlerActivity::class.java)
-        startActivity(BettlerGameButton)
+    fun onClickBettlerButton(view: View) {
+        val BettlerButton = Intent(this, BettlerActivity::class.java)
+        startActivity(BettlerButton)
+    }
+
+
+    fun onClickNewGameButton(view: View) {
+        val BettlerNewGameButton = Intent(this, NewGameActivity::class.java)
+        startActivity(BettlerNewGameButton)
     }
 }

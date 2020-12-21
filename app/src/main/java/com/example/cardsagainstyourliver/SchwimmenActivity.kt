@@ -24,4 +24,5 @@ class SchwimmenActivity : AppCompatActivity() {
         startActivity(BackToPauseButton)
     }
 
+
 }

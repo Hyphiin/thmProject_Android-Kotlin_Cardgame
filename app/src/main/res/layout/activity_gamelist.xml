@@ -101,7 +101,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:onClick="onClickBettlerGameButton"
+                android:onClick="onClickBettlerButton"
                 android:text="BETTLER"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -117,6 +117,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
+                android:onClick="onClickNewGameButton"
                 android:text=". . ."
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />

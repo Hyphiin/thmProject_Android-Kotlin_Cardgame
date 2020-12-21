@@ -70,6 +70,24 @@
                 android:layout_height="30dp" />
 
             <Button
+                android:id="@+id/profil"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/backgroundColor2"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:hint="Profilnamen eingeben"
+                android:inputType="text"
+                android:onClick="onClickProfileEditButton"
+                android:textAllCaps="false"
+                android:textColor="@color/textColor2"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
                 android:id="@+id/profil01"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -86,37 +104,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-            <Button
-                android:id="@+id/newProfil_button"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:background="@drawable/text_background_round"
-                android:gravity="center"
-                android:onClick="onClickNewProfil"
-                android:text="+"
-                android:textColor="@color/textColor2"
-                android:textStyle="bold" />
-
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <ImageButton
-                android:id="@+id/correct_button"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:background="#00FFFFFF"
-                app:srcCompat="@drawable/correct" />
 
             <Space
                 android:layout_width="match_parent"
