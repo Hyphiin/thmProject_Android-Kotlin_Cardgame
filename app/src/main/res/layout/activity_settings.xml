@@ -12,6 +12,10 @@
         android:background="@color/menuBarColor"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+
         <ImageButton
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
@@ -24,8 +28,7 @@
 
         <Space
             android:layout_width="278dp"
-            android:layout_height="40dp"
-            android:layout_weight="0" />
+            android:layout_height="40dp" />
 
     </LinearLayout>
 
@@ -42,7 +45,7 @@
         android:fontFamily="@font/roboto_slab_bold"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="Einstellungen"
+        android:text="@string/settings_text"
         android:textAllCaps="true"
         android:textColor="#E4E9ED"
         android:textSize="24sp"
@@ -76,7 +79,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:text="Ton Aus"
+                android:text="@string/sound_off_text"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
 
@@ -91,7 +94,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/text_background_round"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:text="Ton An"
+                android:text="@string/sound_on_text"
                 android:textColor="#E4E9ED"
                 android:textSize="24sp" />
 
@@ -100,13 +103,13 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/sound_setting3"
+                android:id="@+id/placeholder"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:text="Platzhalter"
+                android:text="@string/placeholder_text"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
 
@@ -115,13 +118,13 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/sound_setting4"
+                android:id="@+id/placeholder"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:text="Platzhalter"
+                android:text="@string/placeholder_text"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
 
@@ -130,13 +133,13 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/sound_setting5"
+                android:id="@+id/placeholder"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:text="Platzhalter"
+                android:text="@string/placeholder_text"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
 
@@ -156,8 +159,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_weight="1" />
+        android:layout_height="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

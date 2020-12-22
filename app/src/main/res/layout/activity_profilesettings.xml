@@ -12,10 +12,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/menuBarColor"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+
         <ImageButton
-            android:id="@+id/back_button2"
+            android:id="@+id/backToMenu_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -30,7 +35,7 @@
             android:background="@color/menuBarColor"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:text="Profile anlegen"
+            android:text="@string/create_profile_text"
             android:textAllCaps="true"
             android:textColor="@color/textColor"
             android:textSize="24sp"
@@ -69,20 +74,16 @@
                     android:orientation="vertical"
                     android:scrollbars="horizontal">
 
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp" />
-
                     <TextView
                         android:id="@+id/age_text"
-                        android:layout_width="250dp"
+                        android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:background="#007D7C"
                         android:fontFamily="@font/roboto_slab_bold"
                         android:foregroundGravity="center"
                         android:gravity="center"
-                        android:text="Alter"
+                        android:text="@string/age_text"
                         android:textAllCaps="true"
                         android:textColor="#E4E9ED"
                         android:textSize="24sp"
@@ -101,7 +102,7 @@
                         android:ems="10"
                         android:foregroundGravity="center"
                         android:gravity="center"
-                        android:hint="test"
+                        android:hint="@string/age_hint"
                         android:inputType="number" />
 
                     <Space
@@ -117,7 +118,7 @@
                         android:fontFamily="@font/roboto_slab_bold"
                         android:foregroundGravity="center"
                         android:gravity="center"
-                        android:text="Göße"
+                        android:text="@string/size_text"
                         android:textAllCaps="true"
                         android:textColor="#E4E9ED"
                         android:textSize="24sp"
@@ -136,6 +137,7 @@
                         android:ems="10"
                         android:foregroundGravity="center"
                         android:gravity="center"
+                        android:hint="@string/size_hint"
                         android:inputType="number" />
 
                     <Space
@@ -151,7 +153,7 @@
                         android:fontFamily="@font/roboto_slab_bold"
                         android:foregroundGravity="center"
                         android:gravity="center"
-                        android:text="Gewicht"
+                        android:text="@string/bodyweight_text"
                         android:textAllCaps="true"
                         android:textColor="#E4E9ED"
                         android:textSize="24sp"
@@ -170,6 +172,7 @@
                         android:ems="10"
                         android:foregroundGravity="center"
                         android:gravity="center"
+                        android:hint="@string/bodyweight_hint"
                         android:inputType="number" />
 
                     <Space
@@ -185,7 +188,7 @@
                         android:fontFamily="@font/roboto_slab_bold"
                         android:foregroundGravity="center"
                         android:gravity="center"
-                        android:text="Geschlecht"
+                        android:text="@string/gender_text"
                         android:textAllCaps="true"
                         android:textColor="#E4E9ED"
                         android:textSize="24sp"
@@ -206,14 +209,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:checked="false"
-                            android:text="Männlich" />
+                            android:text="@string/male_text" />
 
                         <RadioButton
                             android:id="@+id/radioButton2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Weiblich" />
+                            android:text="@string/female_text" />
                     </LinearLayout>
 
                     <Space
@@ -229,7 +232,7 @@
                         android:fontFamily="@font/roboto_slab_bold"
                         android:foregroundGravity="center"
                         android:gravity="center"
-                        android:text="Getränk"
+                        android:text="@string/drink_text"
                         android:textAllCaps="true"
                         android:textColor="#E4E9ED"
                         android:textSize="24sp"
@@ -254,14 +257,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Bier" />
+                                android:text="@string/drink_01" />
 
                             <RadioButton
                                 android:id="@+id/drink_2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Wein" />
+                                android:text="@string/drink_02" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -274,14 +277,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Coktail" />
+                                android:text="@string/drink_03" />
 
                             <RadioButton
                                 android:id="@+id/drink_4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Whiskey" />
+                                android:text="@string/drink_04" />
 
                         </LinearLayout>
 
@@ -296,14 +299,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Vodka" />
+                                android:text="@string/drink_05" />
 
                             <RadioButton
                                 android:id="@+id/drink_6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Gin" />
+                                android:text="@string/drink_06" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -316,14 +319,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Tequila" />
+                                android:text="@string/drink_07" />
 
                             <RadioButton
                                 android:id="@+id/drink_8"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Rum" />
+                                android:text="@string/drink_08" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -337,14 +340,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Sekt" />
+                                android:text="@string/drink_09" />
 
                             <RadioButton
                                 android:id="@+id/drink_10"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Cidre" />
+                                android:text="@string/drink_10" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -357,14 +360,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Hugo" />
+                                android:text="@string/drink_11" />
 
                             <RadioButton
                                 android:id="@+id/drink_12"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Hefeweizen" />
+                                android:text="@string/drink_12" />
                         </LinearLayout>
 
                     </RadioGroup>
@@ -398,12 +401,5 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_weight="1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/menuBarColor">
-
-    </LinearLayout>
 
 </LinearLayout>

@@ -15,7 +15,7 @@
         android:background="@color/menuBarColor"
         android:fontFamily="@font/roboto_slab_bold"
         android:gravity="center"
-        android:text="CardsAgainstYourLiver"
+        android:text="@string/app_name"
         android:textAllCaps="false"
         android:textColor="@color/textColor"
         android:textSize="24sp"
@@ -64,7 +64,7 @@
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
                 android:onClick="onClickResumeButton"
-                android:text="resume"
+                android:text="@string/resume_text"
                 android:textAllCaps="true"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -81,7 +81,7 @@
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
                 android:onClick="onClickGiveUpButton"
-                android:text="Aufgeben"
+                android:text="@string/giveUp_text"
                 android:textAllCaps="true"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -91,14 +91,14 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/manual"
+                android:id="@+id/manual_button"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
                 android:onClick="onClickManualButton"
-                android:text="Anleitung"
+                android:text="@string/manual_text"
                 android:textAllCaps="true"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />
@@ -108,14 +108,14 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/settings"
+                android:id="@+id/settings_button"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_corners"
                 android:fontFamily="@font/roboto_slab_bold"
                 android:onClick="onClickSettingsButton"
-                android:text="Einstellungen"
+                android:text="@string/settings_text"
                 android:textAllCaps="true"
                 android:textColor="@color/buttonText"
                 android:textSize="24sp" />

@@ -14,10 +14,16 @@
         android:background="@color/menuBarColor"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
         <ImageButton
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="0"
             android:background="#00FFFFFF"
             android:onClick="onClickBackToMenuButton"
@@ -43,7 +49,7 @@
         android:fontFamily="@font/roboto_slab_bold"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="PROFIL"
+        android:text="@string/profile_text"
         android:textColor="@color/textColor2"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -70,13 +76,13 @@
                 android:layout_height="30dp" />
 
             <Button
-                android:id="@+id/profil"
+                android:id="@+id/profilName_textEdit"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/backgroundColor2"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:hint="Profilnamen eingeben"
+                android:hint="@string/profilName_hint"
                 android:inputType="text"
                 android:onClick="onClickProfileEditButton"
                 android:textAllCaps="false"
@@ -88,14 +94,14 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/profil01"
+                android:id="@+id/profil01_button"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/backgroundColor2"
                 android:fontFamily="@font/roboto_slab_bold"
                 android:onClick="onClickProfileEditButton"
-                android:text="PROFIL_a"
+                android:text="@string/profileName_01_text"
                 android:textAllCaps="false"
                 android:textColor="@color/textColor2"
                 android:textSize="24sp" />

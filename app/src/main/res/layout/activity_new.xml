@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackgroundColor"
     android:orientation="vertical"
     tools:context=".SchwimmenActivity">>
 
@@ -13,13 +14,17 @@
         android:background="@color/menuBarColor"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+
         <ImageButton
-            android:id="@+id/pause_button"
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#00FFFFFF"
-            android:onClick="onClickBackToGamelistButton"
+            android:onClick="onClickBackToMenuButton"
             app:srcCompat="@drawable/back_button" />
 
 
@@ -31,10 +36,11 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/schwimmen_text"
+        android:id="@+id/newGame_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="new game comming soon..."
+        android:textColor="@color/buttonText"
         android:textSize="36sp" />
 </LinearLayout>

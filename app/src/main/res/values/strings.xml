@@ -1,3 +1,64 @@
 <resources>
     <string name="app_name">cardsagainstyourliver</string>
+
+    <string name="create_profile_text">Profil anlegen</string>
+    <string name="player_choice_text">Spielerauswahl</string>
+
+
+    <string name="manual_text">Anleitung</string>
+    <string name="play_text">Spiele</string>
+    <string name="bettler_text">Bettler</string>
+    <string name="schwimmen_text">Schwimmen</string>
+    <string name="more_games_text">. . .</string>
+    <string name="specialMode_text">Spezialmodus</string>
+    <string name="profiles_text">Profile</string>
+    <string name="profile_text">Profil</string>
+    <string name="settings_text">Einstellungen</string>
+    <string name="menu_text">Menü</string>
+    <string name="startGame_text">Spielen</string>
+    <string name="resume_text">Resume</string>
+    <string name="giveUp_text">Aufgeben</string>
+    <string name="players_text">Spieler</string>
+    <string name="player_01_text">Spieler 1</string>
+    <string name="player_02_text">Spieler 2 +</string>
+    <string name="youAre...">Du bist . . .</string>
+    <string name="test_text">Spielen</string>
+
+    <string name="age_text">Alter</string>
+    <string name="size_text">Größe</string>
+    <string name="bodyweight_text">Gewicht</string>
+    <string name="gender_text">Geschlecht</string>
+    <string name="drink_text">Getränk</string>
+
+    <string name="age_hint">Jahre</string>
+    <string name="size_hint">cm</string>
+    <string name="bodyweight_hint">kg</string>
+
+    <string name="male_text">Weiblich</string>
+    <string name="female_text">Männlich</string>
+
+    <string name="drink_01">Bier</string>
+    <string name="drink_02">Wein</string>
+    <string name="drink_03">Coktail</string>
+    <string name="drink_04">Whiskey</string>
+    <string name="drink_05">Vodka</string>
+    <string name="drink_06">Gin</string>
+    <string name="drink_07">Tequila</string>
+    <string name="drink_08">Rum</string>
+    <string name="drink_09">Sekt</string>
+    <string name="drink_10">Cidre</string>
+    <string name="drink_11">Hefeweizen</string>
+    <string name="drink_12">Hugo</string>
+
+
+    <string name="sound_off_text">Ton aus</string>
+    <string name="sound_on_text">Ton an</string>
+    <string name="placeholder_text">Platzhalter</string>
+
+
+    <string name="profilName_hint">Profilename eingeben</string>
+    <string name="profileName_01_text">Profil_a</string>
+
+
+    <string name="gameManual_text">DummyText : Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </string>
 </resources>

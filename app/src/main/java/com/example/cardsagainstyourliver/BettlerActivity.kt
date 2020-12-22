@@ -20,4 +20,9 @@ class BettlerActivity : AppCompatActivity() {
         val BackToPauseButton = Intent(this, PauseMenuActivity::class.java)
         startActivity(BackToPauseButton)
     }
+
+    fun onClickBackToMenuButton(view: View) {
+        val BackToMenuButton = Intent(this, MainActivity::class.java)
+        startActivity(BackToMenuButton)
+    }
 }

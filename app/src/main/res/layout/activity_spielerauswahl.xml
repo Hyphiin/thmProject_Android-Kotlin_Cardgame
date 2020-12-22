@@ -12,6 +12,10 @@
         android:background="@color/menuBarColor"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+
         <ImageButton
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
@@ -22,10 +26,17 @@
             app:srcCompat="@drawable/back_button" />
 
 
-        <Space
-            android:layout_width="278dp"
-            android:layout_height="40dp"
-            android:layout_weight="0" />
+        <TextView
+            android:id="@+id/player_choice_text"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/player_choice_text"
+            android:textAllCaps="true"
+            android:textColor="@color/buttonText"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -34,7 +45,7 @@
         android:layout_height="40dp" />
 
     <TextView
-        android:id="@+id/settings_text"
+        android:id="@+id/spieler_text"
         android:layout_width="280dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
@@ -42,7 +53,7 @@
         android:fontFamily="@font/roboto_slab_bold"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="Spieler"
+        android:text="@string/players_text"
         android:textAllCaps="true"
         android:textColor="#E4E9ED"
         android:textSize="24sp"
@@ -79,11 +90,11 @@
                         android:layout_height="30dp" />
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/yourAre_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Du bist . . ."
+                        android:text="@string/youAre..."
                         android:textAllCaps="true"
                         android:textColor="@color/textColor"
                         android:textSize="24sp"
@@ -116,7 +127,7 @@
                                 android:layout_gravity="center"
                                 android:background="@color/backgroundColor2"
                                 android:gravity="center"
-                                android:text="Spieler 1"
+                                android:text="@string/player_01_text"
                                 android:textColor="@color/textColor2"
                                 android:textSize="24sp" />
 
@@ -125,13 +136,13 @@
                                 android:layout_height="10dp" />
 
                             <Button
-                                android:id="@+id/button"
+                                android:id="@+id/playerName_text"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:background="#F8F8F8"
                                 android:fontFamily="@font/roboto_slab_bold"
-                                android:text="PROFIL_a"
+                                android:text="@string/profileName_01_text"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />
 
@@ -167,7 +178,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/text_background_round"
                         android:gravity="center"
-                        android:text="Spieler 2     +"
+                        android:text="@string/player_02_text"
                         android:textColor="@color/buttonColor"
                         android:textSize="24sp" />
 

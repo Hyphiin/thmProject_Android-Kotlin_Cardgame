@@ -25,5 +25,10 @@ class SchwimmenActivity : AppCompatActivity() {
         startActivity(PauseMenuButton)
     }
 
+    fun onClickBackToMenuButton(view: View) {
+        val BackToMenuButton = Intent(this, MainActivity::class.java)
+        startActivity(BackToMenuButton)
+    }
+
 
 }
