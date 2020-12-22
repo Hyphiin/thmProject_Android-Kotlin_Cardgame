@@ -1,6 +1,6 @@
 package com.example.cardsagainstyourliver
 
-class SpielerStatsClass {
+class SpielerStatsClass {//sinnvoll?
 
     var total: Int
     var anzahlGewonnen: Int
