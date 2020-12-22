@@ -80,7 +80,7 @@
                 android:layout_height="20dp" />
 
             <Button
-                android:id="@+id/specialmode"
+                android:id="@+id/specialmode_button"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

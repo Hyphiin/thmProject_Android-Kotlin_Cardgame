@@ -12,6 +12,7 @@ class SchwimmenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_spielerauswahl)
 
 
+
     }
 
 
@@ -20,8 +21,8 @@ class SchwimmenActivity : AppCompatActivity() {
     }
 
     fun onClickPauseMenuButton(view: View) {
-        val BackToPauseButton = Intent(this, PauseMenuActivity::class.java)
-        startActivity(BackToPauseButton)
+        val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
+        startActivity(PauseMenuButton)
     }
 
 
