@@ -1,16 +1,16 @@
 package com.example.cardsagainstyourliver
 
-class HandClass(var handKarten: MutableList<KarteClass>) {
+class HandClass(var hand: MutableList<CardClass>) {
 
     /* fun nimm(karte: Int) {
 
     } */
 
     fun clear() {
-        handKarten.clear()
+        hand.clear()
     }
 
-    fun contains(karte: KarteClass) = handKarten.contains(karte)
+    fun contains(karte: CardClass) = hand.contains(karte)
 
-    override fun toString() = handKarten.joinToString()
+    override fun toString() = hand.joinToString()
 }

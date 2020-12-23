@@ -10,7 +10,6 @@ fun main(){
 
 }
 
-class SchwimmenClass (): SpielClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false) {
-    override fun toString():String{return "$id, $name, $spielerAnzahlMin, $spielerAnzahlMax, $regeln, $promilleModus"}
-
+class SchwimmenClass (): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false) {
+    override fun toString():String{return "$id, $name, $playerMin, $playerMax, $rules, $promilleModus"}
 }

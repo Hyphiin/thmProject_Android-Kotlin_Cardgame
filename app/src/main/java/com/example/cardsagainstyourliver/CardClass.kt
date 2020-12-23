@@ -3,12 +3,12 @@ package com.example.cardsagainstyourliver
 import java.io.OutputStream
 
 
-class KarteClass(private val zeichen: Zeichen,
-                 private val wert: Werte) : Null() {
+class CardClass(private val sign: Sign,
+                 private val value: Value) : Null() {
 
 
     override fun toString(): String {
-        return "Card: $wert of $zeichen"
+        return "Card: $sign of $value"
     }
 
 
@@ -18,12 +18,12 @@ class KarteClass(private val zeichen: Zeichen,
 }
 
 
-enum class Zeichen {
+enum class Sign {
     HERZ, KARO, PIK, KREUZ
 }
 
 
-enum class Werte {
+enum class Value {
     ZWEI, DREI, VIER, FUENF, SECHS, SIEBEN, ACHT,
     NEUN, ZEHN, BUBE, DAME, KOENIG, ASS
 }
