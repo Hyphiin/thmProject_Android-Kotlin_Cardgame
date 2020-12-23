@@ -11,7 +11,6 @@ class GamelistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gamelist)
 
-
     }
 
     fun onClickBackToMenuButton(view: View) {
