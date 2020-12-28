@@ -6,25 +6,23 @@ import java.io.OutputStream
 
 class DeckClass(val deckSize:Int = 1) {
 
-   // if (deckSize == 1){
+
         var deck: MutableList<CardClass> = mutableListOf()
 
         init {
+            if (deckSize == 1){
             for (sign in Sign.values())
                 for (value in Value.values())
                     deck.add(CardClass(sign, value))
+            }else {
+                for (sign in Sign.values())
+                    for (value in Value.values())
+                        if (value != Value.ZWEI && value != Value.DREI && value != Value.VIER && value != Value.FUENF && value != Value.SECHS){
+                            deck.add(CardClass(sign, value))
+                        }
+            }
         }
-   /* }else {
-        var deck: MutableList<KarteClass> = mutableListOf()
 
-        init {
-            for (zeichen in Zeichen.values())
-                for (wert in Werte.values())
-                    if (wert != ZWEI ||wert != DREI ||wert != VIER ||wert != FÜNF || wert != SECHS){
-                        cards.add(Card(zeichen, wert))
-                    }
-        }
-    } */
 
 
     fun shuffle() = deck.shuffle()
