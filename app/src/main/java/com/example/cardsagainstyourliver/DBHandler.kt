@@ -42,18 +42,18 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
     }
 
-    fun insertData(spieler: SpielerClass){
+    fun insertData(player: PlayerClass){
         val db =this.writableDatabase
         var cv = ContentValues()
-        cv.put(COL_NAME,spieler.spielerName)
-        cv.put(COL_ALTER,spieler.alter)
-        cv.put(COL_GROESSE,spieler.groesse)
-        cv.put(COL_GEWICHT,spieler.gewicht)
-        cv.put(COL_GESCHLECHT,spieler.geschlecht)
-        cv.put(COL_GETRAENK,spieler.getraenk)
-        cv.put(COL_VERLORENESPIELE,spieler.verloreneSpiele)
-        cv.put(COL_GEWONNENESPIELE,spieler.gewonneneSpiele)
-        cv.put(COL_ALKOHOLLEVEL,spieler.alkoholLevel)
+        cv.put(COL_NAME,player.playerName)
+        cv.put(COL_ALTER,player.age)
+        cv.put(COL_GROESSE,player.size)
+        cv.put(COL_GEWICHT,player.weight)
+        cv.put(COL_GESCHLECHT,player.gender)
+        cv.put(COL_GETRAENK,player.drink)
+        cv.put(COL_VERLORENESPIELE,player.GamesLost)
+        cv.put(COL_GEWONNENESPIELE,player.gamesWon)
+        cv.put(COL_ALKOHOLLEVEL,player.alkoholLevel)
         var result = db.insert(TABLE_NAME,null,cv)
         if(result== -1.toLong())
             Log.d("failes","failed")
