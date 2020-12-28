@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">cardsagainstyourliver</string>
+    <string name="create_profile_text">Créer un profil</string>
+    <string name="player_choice_text">Sélection des joueurs</string>
+    <string name="manual_text">Manuel</string>
+    <string name="play_text">Jeux</string>
+    <string name="more_games_text">Plus de Jeux</string>
+    <string name="specialMode_text">Mode spécial</string>
+    <string name="profiles_text">Profils</string>
+    <string name="profile_text">Profil</string>
+    <string name="settings_text">Réglages</string>
+    <string name="menu_text">Menu</string>
+    <string name="startGame_text">Jouer</string>
+    <string name="giveUp_text">Abandonner</string>
+    <string name="players_text">Joueur</string>
+    <string name="player_01_text">Joueur 1</string>
+    <string name="player_02_text">Joueur 2 +</string>
+    <string name="youAre...">Tu es...</string>
+    <string name="test_text">Jouer</string>
+    <string name="age_text">Âge</string>
+    <string name="size_text">Taille</string>
+    <string name="bodyweight_text">Poids</string>
+    <string name="gender_text">Sexe</string>
+    <string name="drink_text">Boisson</string>
+    <string name="age_hint">Ans</string>
+    <string name="male_text">Femme</string>
+    <string name="female_text">Homme</string>
+    <string name="drink_01">Bière</string>
+    <string name="drink_02">Vin</string>
+    <string name="drink_09">Vin pétillant</string>
+    <string name="drink_11">Levure de blé</string>
+    <string name="sound_off_text">Muet</string>
+    <string name="sound_on_text">Son sur</string>
+    <string name="placeholder_text">Espace réservé</string>
+    <string name="profilName_hint">Entrez le nom du profil</string>
+    <string name="profileName_01_text">Profil_a</string>
+</resources>
