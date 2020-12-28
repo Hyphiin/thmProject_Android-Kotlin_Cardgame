@@ -82,12 +82,13 @@
                 android:layout_gravity="center"
                 android:background="@color/backgroundColor2"
                 android:fontFamily="@font/roboto_slab_bold"
-                android:hint="@string/profilName_hint"
                 android:inputType="text"
                 android:onClick="onClickProfileEditButton"
+                android:text="@string/newProfil_text"
                 android:textAllCaps="false"
                 android:textColor="@color/textColor2"
-                android:textSize="18sp" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <Space
                 android:layout_width="match_parent"
