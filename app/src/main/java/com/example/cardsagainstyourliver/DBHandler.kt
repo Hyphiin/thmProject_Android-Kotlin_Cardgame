@@ -51,9 +51,9 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         cv.put(COL_WEIGHT,player.weight)
         cv.put(COL_GENDER,player.gender)
         cv.put(COl_DRINK,player.drink)
-        cv.put(COL_LOSTGAMES,player.GamesLost)
+        cv.put(COL_LOSTGAMES,player.gamesLost)
         cv.put(COL_WONGAMES,player.gamesWon)
-        cv.put(COL_ALCOHOLLEVEL,player.alkoholLevel)
+        cv.put(COL_ALCOHOLLEVEL,player.alcoholLevel)
         var result = db.insert(TABLE_NAME,null,cv)
         if(result== -1.toLong())
             Log.d("failes","failed")
@@ -61,7 +61,30 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         else
             Log.d("success","success")
             Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show()
-
     }
-
+    fun readData() : MutableList<PlayerClass>{
+        var list: MutableList<PlayerClass> = ArrayList()
+        val db= this.readableDatabase
+        val query= "Select * from " + TABLE_NAME
+        val result = db.rawQuery(query, null)
+        if(result.moveToFirst()){
+            do {
+                var player=PlayerClass()
+                player.id = result.getString(0).toInt()
+                player.playerName = result.getString(1)
+                player.age = result.getString(2).toInt()
+                player.size = result.getString(3).toInt()
+                player.weight = result.getString(4).toInt()
+                player.gender = result.getString(5).toInt()
+                player.drink = result.getString(6).toInt()
+                player.gamesLost = result.getString(7).toInt()
+                player.gamesWon = result.getString(8).toInt()
+                player.alcoholLevel = result.getString(9).toInt()
+                list.add(player)
+            }while(result.moveToNext())
+        }
+        result.close()
+        db.close()
+        return list
+    }
 }

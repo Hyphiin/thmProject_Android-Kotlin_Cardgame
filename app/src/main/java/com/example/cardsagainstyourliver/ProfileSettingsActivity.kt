@@ -15,9 +15,6 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
         val context= this
 
-        var spieler1 =PlayerClass("tester", 2, 2, 23,1,2,3,4,45  )
-        var db= DBHandler(context)
-        db.insertData(spieler1)
 
     }
 
