@@ -84,6 +84,7 @@
                 android:layout_height="75dp" />
 
             <LinearLayout
+                android:id="@+id/llTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -116,6 +117,7 @@
                 android:layout_height="75dp" />
 
             <LinearLayout
+                android:id="@+id/llBottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

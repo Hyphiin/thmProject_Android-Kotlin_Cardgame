@@ -196,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="#00FFFFFF"
-                        android:onClick="onClickStartGame"
+                        android:onClick="onClickGameStartButton"
                         app:srcCompat="@drawable/correct" />
 
                     <Space
