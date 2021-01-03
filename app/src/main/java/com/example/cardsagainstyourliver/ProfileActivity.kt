@@ -25,7 +25,10 @@ class ProfileActivity : AppCompatActivity() {
             names.add(data.get(i).playerName)
             Log.d("dbAusgabe", data.get(i).playerName+data.get(i).gender.toString()+data.get(i).drink.toString())
         }
-
+        delete_btn.setOnClickListener{
+            Log.d("db","lösche")
+            db.deleteData(1)
+        }
         val adapter = ArrayAdapter(this,
             R.layout.name_list_item, names) //name_list_item für design einzelner einträge
 
@@ -43,9 +46,7 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        delete_btn.setOnClickListener{
-            db.deleteData(0)
-        }
+
     }
 
 
