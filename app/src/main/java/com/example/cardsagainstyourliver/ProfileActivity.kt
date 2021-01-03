@@ -42,6 +42,10 @@ class ProfileActivity : AppCompatActivity() {
                 goToProfile(position)
             }
         }
+
+        delete_btn.setOnClickListener{
+            db.deleteData(0)
+        }
     }
 
 
