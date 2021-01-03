@@ -23,10 +23,11 @@ class ProfileActivity : AppCompatActivity() {
         var data=db.readData()
         for(i in 0..(data.size-1)){
             names.add(data.get(i).playerName)
+            Log.d("dbAusgabe", data.get(i).playerName+data.get(i).gender.toString()+data.get(i).drink.toString())
         }
 
         val adapter = ArrayAdapter(this,
-            R.layout.name_list_item, names) //namelistitem für design einzelner einträge
+            R.layout.name_list_item, names) //name_list_item für design einzelner einträge
 
         val nameList: ListView = findViewById(R.id.name_list)
         nameList.setAdapter(adapter)
@@ -37,16 +38,19 @@ class ProfileActivity : AppCompatActivity() {
                                      position: Int, id: Long) {
 
 
-                val itemValue = nameList.getItemAtPosition(position) as String
-
-                // Toast the values
-                Toast.makeText(applicationContext,
-                    "Position :$position\nItem Value : $itemValue", Toast.LENGTH_LONG)
-                    .show()
+                val itemValue = nameList.getItemAtPosition(position)
+                goToProfile(position)
             }
         }
     }
 
+
+    fun goToProfile(playerId:Int){
+        val intent = Intent(this, ProfileSettingsActivity::class.java)
+        intent.putExtra("playerId",playerId)
+        intent.putExtra("mode", "edit")
+        startActivity(intent)
+    }
 
     fun onClickBackToMenuButton(view: View) {
         val BackToMenuButton = Intent(this, MainActivity::class.java)
@@ -54,8 +58,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun onClickNewProfil(view: View) {
-        val newProfil = Intent(this, ProfileSettingsActivity::class.java)
-        startActivity(newProfil)
+        val intent = Intent(this, ProfileSettingsActivity::class.java)
+        intent.putExtra("mode", "add")
+        startActivity(intent)
     }
 
     fun onClickResumeButton(view: View) {
