@@ -53,7 +53,10 @@ class ProfileSettingsActivity : AppCompatActivity() {
                 db.insertData(newPlayer)
                 onClickSubmitButton()
             }
-            if
+            if(mode=="edit"){
+                db.updateData(playerId+1,edit_name.getText().toString(),edit_age2.getText().toString().toInt(),edit_size.getText().toString().toInt(),edit_weight.getText().toString().toInt(),1,1)
+                onClickSubmitButton()
+            }
         }
     }
 
