@@ -411,13 +411,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="10dp" />
 
-                    <ImageButton
-                        android:id="@+id/correct_button"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="#00FFFFFF"
-                        app:srcCompat="@drawable/correct" />
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/correct_button"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            android:background="#00FFFFFF"
+                            app:srcCompat="@drawable/correct" />
+
+                        <ImageView
+                            android:id="@+id/delete_button"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/delete_button" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
