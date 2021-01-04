@@ -105,14 +105,72 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/gameManual_text"
+                            android:id="@+id/gameRules_text_schwimmen"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_slab_bold"
                             android:gravity="center|start"
                             android:justificationMode="inter_word"
-                            android:text="@string/gameManual_text"
-                            android:textAllCaps="true" />
+                            android:text="@string/gameRules_text_Schwimmen"
+                            android:textAllCaps="true"
+                            android:textColor="#03DAC5" />
+
+                        <TextView
+                            android:id="@+id/rules_Schwimmen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_slab_bold"
+                            android:gravity="center|start"
+                            android:justificationMode="inter_word"
+                            android:text="@string/rules_Schwimmen"
+                            />
+
+                        <TextView
+                            android:id="@+id/gameManual_text_schwimmen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_slab_bold"
+                            android:gravity="center|start"
+                            android:justificationMode="inter_word"
+                            android:text="@string/gameManual_text_Schwimmen"
+                            android:textAllCaps="true"
+                            android:textColor="#03DAC5" />
+
+                        <TextView
+                            android:id="@+id/manual_Schwimmen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_slab_bold"
+                            android:gravity="center|start"
+                            android:justificationMode="inter_word"
+                            android:text="@string/manual_Schwimmen"
+                            />
+
+                        <Space
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/Rules_text_bettler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_slab_bold"
+                            android:gravity="center|start"
+                            android:justificationMode="inter_word"
+                            android:text="@string/gameRules_text_Bettler"
+                            android:textAllCaps="true"
+                            android:textColor="#03DAC5" />
+
+                        <TextView
+                            android:id="@+id/rules_Bettler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_slab_bold"
+                            android:gravity="center|start"
+                            android:justificationMode="inter_word"
+                            android:text="@string/rules_Bettler"
+                            />
 
                     </LinearLayout>
                 </ScrollView>
