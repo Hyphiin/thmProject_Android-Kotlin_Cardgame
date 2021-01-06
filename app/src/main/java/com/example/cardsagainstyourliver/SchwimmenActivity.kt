@@ -23,11 +23,11 @@ class SchwimmenActivity : AppCompatActivity() {
         val dragView: View = findViewById(R.id.player_card_01)!!
         val dragView2: View = findViewById(R.id.player_card_02)!!
         val dragView3: View = findViewById(R.id.player_card_03)!!
-        val llTopView: View = findViewById(R.id.llTop)!!
-        val llBottomView: View = findViewById(R.id.llBottom)!!
+      // val llTopView: View = findViewById(R.id.llTop)!!
+      //  val llBottomView: View = findViewById(R.id.llBottom)!!
 
-        llTopView.setOnDragListener(dragListener)
-        llBottomView.setOnDragListener(dragListener)
+      //  llTopView.setOnDragListener(dragListener)
+     //   llBottomView.setOnDragListener(dragListener)
 
         // first drag and drop card
         dragView.setOnLongClickListener {

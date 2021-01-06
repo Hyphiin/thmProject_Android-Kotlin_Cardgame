@@ -18,9 +18,11 @@ class ProfileActivity : AppCompatActivity() {
         val context = this//hier werden die namen aus der DB geholt und angezeigt kann auch auf beliebige andere View elemente angewendet werden...
         var db =DBHandler(context)
         var names: MutableList<String> = ArrayList()
+        var ids: MutableList<Int> = ArrayList()
         var data=db.readData()
         for(i in 0..(data.size-1)){
             names.add(data.get(i).playerName)
+            ids.add(data.get(i).id)
             Log.d("dbAusgabe", data.get(i).playerName+data.get(i).gender.toString()+data.get(i).drink.toString())
         }
 
@@ -34,10 +36,8 @@ class ProfileActivity : AppCompatActivity() {
 
             override fun onItemClick(parent: AdapterView<*>, view: View,
                                      position: Int, id: Long) {
-
-
-                val itemValue = nameList.getItemAtPosition(position)
-                goToProfile(position)
+                val id= ids[position]
+                goToProfile(position, id)
             }
         }
 
@@ -45,9 +45,11 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 
-    fun goToProfile(playerId:Int){
+    fun goToProfile(playerPosition:Int, playerId:Int){
         val intent = Intent(this, ProfileSettingsActivity::class.java)
         intent.putExtra("playerId",playerId)
+        intent.putExtra("playerPosition",playerPosition)
+
         intent.putExtra("mode", "edit")
         startActivity(intent)
     }

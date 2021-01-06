@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profilesettings.*
 
@@ -14,55 +15,81 @@ class ProfileSettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilesettings)
 
-        radioGroup1.setOnCheckedChangeListener { _, _ ->
-            radioGroup2.clearCheck()
-        }
-
-
         val mIntent = intent
         val playerId = mIntent.getIntExtra("playerId", -1)
+        val playerPosition = mIntent.getIntExtra("playerPosition", -1)
         val mode = mIntent.getStringExtra("mode")
-        Log.d("intExtra", "id:" + playerId.toString() + " mode: " + mode)
+        Log.d("intExtra", "id:" + playerId.toString() + " mode: " + mode + " position: "+ playerPosition.toString())
 
         val context = this
         var db = DBHandler(context)
         var data = db.readData()
 
+        if (mode=="add"){
+
+            delete_button.setVisibility(View.GONE)
+            Log.d("layout", "invisible")
+        }
+
         if (mode == "edit") {//setzt die Werte der DB ein
-            edit_name.setText(data.get(playerId).playerName)
-            edit_age2.setText(data.get(playerId).age.toString())
-            edit_size.setText(data.get(playerId).size.toString())
-            edit_weight.setText(data.get(playerId).weight.toString())
-            when (data.get(playerId).gender) {
-                1 -> female_rbtn.setChecked(true)
-                2 -> male_rbtn.setChecked(true)
+            edit_name.setText(data.get(playerPosition).playerName)
+            edit_age2.setText(data.get(playerPosition).age.toString())
+            edit_size.setText(data.get(playerPosition).size.toString())
+            edit_weight.setText(data.get(playerPosition).weight.toString())
+            val drink=radioGroup1.getChildAt(data.get(playerPosition).drink)
+            val gender=gender_rbtn_group.getChildAt(data.get(playerPosition).gender)
+            radioGroup1.check(drink.getId())
+            gender_rbtn_group.check(gender.getId())
+
+
+        }
+
+        correct_button.setOnClickListener{//schreibt änderung oder neuen player in DB
+
+            if(edit_name.getText().toString().isEmpty()||edit_size.getText().toString().isEmpty()||edit_weight.getText().toString().isEmpty()||edit_age2.getText().toString().isEmpty()||gender_rbtn_group.getCheckedRadioButtonId()==-1||radioGroup1.getCheckedRadioButtonId()==-1){
+                Toast.makeText(this, "Bitte alles ausfüllen", Toast.LENGTH_SHORT).show()
             }
-            when (data.get(playerId).drink) {
-                1 -> drink_1.setChecked(true)
-                2 -> drink_2.setChecked(true)
-                3 -> drink_3.setChecked(true)
-                4 -> drink_4.setChecked(true)
-                5 -> drink_5.setChecked(true)
-                6 -> drink_6.setChecked(true)
-                7 -> drink_7.setChecked(true)
-                8 -> drink_8.setChecked(true)
-                9 -> drink_9.setChecked(true)
-                10 -> drink_10.setChecked(true)
-                11 -> drink_11.setChecked(true)
-                12 -> drink_12.setChecked(true)
+            else {
+                val radioGenderID: Int = gender_rbtn_group.getCheckedRadioButtonId()
+                val radioGender: View = gender_rbtn_group.findViewById(radioGenderID)
+                Log.d("test","auswahl gender id "+radioGenderID)
+                val idGender: Int = gender_rbtn_group.indexOfChild(radioGender)
+                val radioDrinkID: Int = radioGroup1.getCheckedRadioButtonId()
+                val radioDrink: View = radioGroup1.findViewById(radioDrinkID)
+                val idDrink: Int = radioGroup1.indexOfChild(radioDrink)
+                if (mode == "add") {
+                    val newPlayer = PlayerClass(
+                        edit_name.getText().toString(),
+                        edit_size.getText().toString().toInt(),
+                        edit_weight.getText().toString().toInt(),
+                        edit_age2.getText().toString().toInt(),
+                        idGender,
+                        idDrink,
+                        0,
+                        0,
+                        0
+                    )
+                    db.insertData(newPlayer)
+                    onClickSubmitButton()
+                }
+                if (mode == "edit") {
+                    db.updateData(
+                        playerId,
+                        edit_name.getText().toString(),
+                        edit_age2.getText().toString().toInt(),
+                        edit_size.getText().toString().toInt(),
+                        edit_weight.getText().toString().toInt(),
+                        idGender,
+                        idDrink
+                    )
+                    onClickSubmitButton()
+                }
             }
         }
 
-        correct_button.setOnClickListener{
-            if(mode=="add"){
-                val newPlayer=PlayerClass(edit_name.getText().toString(),edit_size.getText().toString().toInt(),edit_weight.getText().toString().toInt(),edit_age2.getText().toString().toInt(),1,1,0,0,0)
-                db.insertData(newPlayer)
-                onClickSubmitButton()
-            }
-            if(mode=="edit"){
-                db.updateData(playerId+1,edit_name.getText().toString(),edit_age2.getText().toString().toInt(),edit_size.getText().toString().toInt(),edit_weight.getText().toString().toInt(),1,1)
-                onClickSubmitButton()
-            }
+        delete_button.setOnClickListener{//Löscht eintrag
+            db.deleteData(playerId)
+            onClickSubmitButton()
         }
     }
 
@@ -79,3 +106,5 @@ class ProfileSettingsActivity : AppCompatActivity() {
         startActivity(BackToMenuButton)
     }
 }
+
+

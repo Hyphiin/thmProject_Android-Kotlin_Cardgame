@@ -299,6 +299,13 @@
                             android:layout_weight="1">
 
                             <RadioButton
+                                android:id="@+id/drink_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/drink_01" />
+
+                            <RadioButton
                                 android:id="@+id/drink_2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -306,18 +313,11 @@
                                 android:text="@string/drink_02" />
 
                             <RadioButton
-                                android:id="@+id/drink_7"
+                                android:id="@+id/drink_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/drink_07" />
-
-                            <RadioButton
-                                android:id="@+id/drink_5"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/drink_05" />
+                                android:text="@string/drink_03" />
 
                             <RadioButton
                                 android:id="@+id/drink_4"
@@ -327,6 +327,13 @@
                                 android:text="@string/drink_04" />
 
                             <RadioButton
+                                android:id="@+id/drink_5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/drink_05" />
+
+                            <RadioButton
                                 android:id="@+id/drink_6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -334,26 +341,11 @@
                                 android:text="@string/drink_06" />
 
                             <RadioButton
-                                android:id="@+id/drink_3"
+                                android:id="@+id/drink_7"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/drink_03" />
-
-                        </RadioGroup>
-
-                        <RadioGroup
-                            android:id="@+id/radioGroup2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <RadioButton
-                                android:id="@+id/drink_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/drink_01" />
+                                android:text="@string/drink_07" />
 
                             <RadioButton
                                 android:id="@+id/drink_8"
@@ -377,18 +369,18 @@
                                 android:text="@string/drink_10" />
 
                             <RadioButton
-                                android:id="@+id/drink_12"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/drink_12" />
-
-                            <RadioButton
                                 android:id="@+id/drink_11"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/drink_11" />
+
+                            <RadioButton
+                                android:id="@+id/drink_12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/drink_12" />
 
                         </RadioGroup>
 
