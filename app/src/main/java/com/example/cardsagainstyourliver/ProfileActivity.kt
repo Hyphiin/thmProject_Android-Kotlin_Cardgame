@@ -7,9 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.profile_acivity_new.*
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -25,10 +23,7 @@ class ProfileActivity : AppCompatActivity() {
             names.add(data.get(i).playerName)
             Log.d("dbAusgabe", data.get(i).playerName+data.get(i).gender.toString()+data.get(i).drink.toString())
         }
-        delete_btn.setOnClickListener{
-            Log.d("db","lösche")
-            db.deleteData(1)
-        }
+
         val adapter = ArrayAdapter(this,
             R.layout.name_list_item, names) //name_list_item für design einzelner einträge
 

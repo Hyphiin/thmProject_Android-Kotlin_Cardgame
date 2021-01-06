@@ -9,9 +9,15 @@ import kotlinx.android.synthetic.main.activity_profilesettings.*
 
 class ProfileSettingsActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilesettings)
+
+        radioGroup1.setOnCheckedChangeListener { _, _ ->
+            radioGroup2.clearCheck()
+        }
+
 
         val mIntent = intent
         val playerId = mIntent.getIntExtra("playerId", -1)
@@ -28,8 +34,8 @@ class ProfileSettingsActivity : AppCompatActivity() {
             edit_size.setText(data.get(playerId).size.toString())
             edit_weight.setText(data.get(playerId).weight.toString())
             when (data.get(playerId).gender) {
-                1 -> radioButton.setChecked(true)
-                2 -> radioButton2.setChecked(true)
+                1 -> female_rbtn.setChecked(true)
+                2 -> male_rbtn.setChecked(true)
             }
             when (data.get(playerId).drink) {
                 1 -> drink_1.setChecked(true)
@@ -59,6 +65,7 @@ class ProfileSettingsActivity : AppCompatActivity() {
             }
         }
     }
+
 
     fun onClickSubmitButton() {
         val intent = Intent(this, ProfileActivity::class.java)
