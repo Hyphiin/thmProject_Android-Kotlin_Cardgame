@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_schwimmen.*
 
+
 class SchwimmenActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -34,14 +35,12 @@ class SchwimmenActivity : AppCompatActivity() {
 
 
 
-        table_left.setOnDragListener(dragListener)
-        table_middle.setOnDragListener(dragListener)
-        table_right.setOnDragListener(dragListener)
+        table.setOnDragListener(dragListener)
+
         //tableCard3.setOnDragListener(dragListener)
 
-        player_left.setOnDragListener(dragListener)
-        player_middle.setOnDragListener(dragListener)
-        player_right.setOnDragListener(dragListener)
+        player.setOnDragListener(dragListener)
+
 
         // first drag and drop card
         dragView1.setOnLongClickListener {
@@ -133,14 +132,15 @@ class SchwimmenActivity : AppCompatActivity() {
 
 
     fun onClickPauseMenuButton(view: View) {
-        val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
-        startActivity(PauseMenuButton)
+        val pauseMenuButton = Intent(this, PauseMenuActivity::class.java)
+        startActivity(pauseMenuButton)
     }
 
     fun onClickBackToMenuButton(view: View) {
-        val BackToMenuButton = Intent(this, MainActivity::class.java)
-        startActivity(BackToMenuButton)
+        val backToMenuButton = Intent(this, MainActivity::class.java)
+        startActivity(backToMenuButton)
     }
+
 
     val dragListener = View.OnDragListener { view, event ->
         when (event.action) {
