@@ -142,6 +142,21 @@ class SchwimmenActivity : AppCompatActivity() {
         startActivity(BackToMenuButton)
     }
 
+    fun onClickSwapCards(view: View) {
+        val toast = Toast.makeText(applicationContext, "Tauschen", Toast.LENGTH_LONG)
+        toast.show()
+    }
+
+    fun onClickKnockCards(view: View) {
+        val toast = Toast.makeText(applicationContext, "Klopfen", Toast.LENGTH_LONG)
+        toast.show()
+    }
+
+    fun onClickShoveCards(view: View) {
+        val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
+        toast.show()
+    }
+
     val dragListener = View.OnDragListener { view, event ->
         when (event.action) {
             DragEvent.ACTION_DRAG_STARTED -> {

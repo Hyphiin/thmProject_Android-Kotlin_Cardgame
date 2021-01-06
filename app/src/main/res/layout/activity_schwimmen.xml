@@ -94,7 +94,7 @@
                     android:id="@+id/table_left"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/table_card_01"
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/table_card_02"
@@ -124,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/table_card_03"
@@ -220,7 +220,8 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:background="@drawable/text_background_round"
-            android:foreground="@drawable/tauschen_button" />
+            android:foreground="@drawable/tauschen_button"
+            android:onClick="onClickSwapCards" />
 
         <Space
             android:layout_width="60dp"
@@ -234,7 +235,8 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:background="@drawable/text_background_round"
-            android:foreground="@drawable/schieben_button" />
+            android:foreground="@drawable/schieben_button"
+            android:onClick="onClickShoveCards" />
 
         <Space
             android:layout_width="50dp"
@@ -248,7 +250,8 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:background="@drawable/text_background_round"
-            android:foreground="@drawable/klopfen_button" />
+            android:foreground="@drawable/klopfen_button"
+            android:onClick="onClickKnockCards" />
 
         <Space
             android:layout_width="50dp"

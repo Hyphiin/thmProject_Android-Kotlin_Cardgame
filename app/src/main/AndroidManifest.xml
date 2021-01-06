@@ -26,6 +26,7 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".NewGameActivity" />
         <activity android:name=".SpielerauswahlActivity" />
+        <activity android:name=".Spielerauswahl2Activity" />
 
 
     </application>

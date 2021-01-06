@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#00FFFFFF"
-            android:onClick="onClickBackToMenuButton"
+            android:onClick="onClickBackToGameListButton"
             app:srcCompat="@drawable/back_button" />
 
 
@@ -178,6 +178,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/text_background_round"
                         android:gravity="center"
+                        android:onClick="onClickGame2StartButton"
                         android:text="@string/player_02_text"
                         android:textColor="@color/buttonColor"
                         android:textSize="24sp" />
