@@ -103,7 +103,7 @@
                         android:foregroundGravity="center"
                         android:gravity="center"
                         android:hint="@string/name_hint"
-                        android:inputType="number" />
+                        android:inputType="textPersonName" />
 
                     <Space
                         android:layout_width="match_parent"
