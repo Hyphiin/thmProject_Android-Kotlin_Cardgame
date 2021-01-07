@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_schwimmen.*
 
@@ -31,6 +32,8 @@ class SchwimmenActivity : AppCompatActivity() {
         val dragView02: ImageView = findViewById(R.id.table_card_02)!!
         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
 
+        // first drag and drop card
+        dragView.setOnLongClickListener {
 
 
 

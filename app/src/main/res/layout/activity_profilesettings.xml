@@ -7,7 +7,7 @@
     android:background="@color/mainBackgroundColor"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ProfileSettingsActivity">>
+    tools:context=".ProfileSettingsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,7 +103,7 @@
                         android:foregroundGravity="center"
                         android:gravity="center"
                         android:hint="@string/name_hint"
-                        android:inputType="number" />
+                        android:inputType="textPersonName" />
 
                     <Space
                         android:layout_width="match_parent"
@@ -130,7 +130,7 @@
 
                     <EditText
                         android:id="@+id/edit_age2"
-                        android:layout_width="match_parent"
+                        android:layout_width="250dp"
                         android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:background="@drawable/rounded_corners"
@@ -238,20 +238,29 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/radioButton"
+                        <RadioGroup
+                            android:id="@+id/gender_rbtn_group"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:checked="false"
-                            android:text="@string/male_text" />
+                            android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/female_text" />
+                            <RadioButton
+                                android:id="@+id/female_rbtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="false"
+                                android:text="@string/male_text" />
+
+                            <RadioButton
+                                android:id="@+id/male_rbtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/female_text" />
+
+                        </RadioGroup>
                     </LinearLayout>
 
                     <Space
@@ -277,15 +286,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="5dp" />
 
-                    <RadioGroup
+                    <LinearLayout
+                        android:id="@+id/llrg"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
+                        <RadioGroup
+                            android:id="@+id/radioGroup1"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
 
                             <RadioButton
                                 android:id="@+id/drink_1"
@@ -300,12 +311,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/drink_02" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
 
                             <RadioButton
                                 android:id="@+id/drink_3"
@@ -321,14 +326,6 @@
                                 android:layout_weight="1"
                                 android:text="@string/drink_04" />
 
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
                             <RadioButton
                                 android:id="@+id/drink_5"
                                 android:layout_width="match_parent"
@@ -342,12 +339,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/drink_06" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
 
                             <RadioButton
                                 android:id="@+id/drink_7"
@@ -362,13 +353,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/drink_08" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/drink_9"
@@ -383,12 +367,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/drink_10" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
 
                             <RadioButton
                                 android:id="@+id/drink_11"
@@ -403,9 +381,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/drink_12" />
-                        </LinearLayout>
 
-                    </RadioGroup>
+                        </RadioGroup>
+
+                    </LinearLayout>
 
                     <Space
                         android:layout_width="match_parent"
