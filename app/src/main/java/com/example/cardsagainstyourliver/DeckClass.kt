@@ -4,6 +4,7 @@ import java.io.OutputStream
 
 
 
+//Beinhaltet ein Spieldeck, die default size ist 52 Karten, wenn 32 gebraucht, muss man DeckClass(2) aufrufen
 class DeckClass(val deckSize:Int = 1) {
 
     var deck: MutableList<Null> = mutableListOf()
@@ -27,7 +28,7 @@ class DeckClass(val deckSize:Int = 1) {
 
     fun shuffle() = deck.shuffle()
 
-
+    //eine Karte wird aus dem Deck gezogen, wenn deck leer kommt Null
     fun drawCard(): Null {
         if (deck.isNotEmpty())
             return deck.removeAt(0)
