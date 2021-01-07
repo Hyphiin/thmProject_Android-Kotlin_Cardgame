@@ -25,7 +25,7 @@ class SpielerauswahlActivity : AppCompatActivity() {
             val GameStartButton = Intent(this, SchwimmenActivity::class.java)
             startActivity(GameStartButton)
         } else {
-            val GameStartButton2 = Intent(this, BettlerActivity::class.java)
+            val GameStartButton2 = Intent(this, SchwimmenActivity::class.java)
             startActivity(GameStartButton2)
         }
     }
