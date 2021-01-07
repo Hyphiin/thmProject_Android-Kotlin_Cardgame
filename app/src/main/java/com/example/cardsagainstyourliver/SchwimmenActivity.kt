@@ -9,7 +9,6 @@ import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -160,16 +159,18 @@ class SchwimmenActivity : AppCompatActivity() {
         toast.show()
     }
 
-    val dragListener = View.OnDragListener { view, event ->
+    val dragListener = View.OnDragListener { target, event ->
         when (event.action) {
             DragEvent.ACTION_DRAG_STARTED -> {
                 event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
-                view.invalidate()
+
+                target.invalidate()
                 true
             }
             DragEvent.ACTION_DRAG_LOCATION -> {
+
                 var xPos: Float = event.getX();
                 var yPos: Float = event.getY();
 
@@ -180,53 +181,52 @@ class SchwimmenActivity : AppCompatActivity() {
                 true
             }
             DragEvent.ACTION_DRAG_EXITED -> {
-                view.invalidate()
+                target.invalidate()
                 true
             }
             DragEvent.ACTION_DROP -> {
                 val item = event.clipData.getItemAt(0)
                 val dragData = item.text
 
-
-
                 Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
 
 
-                //var test : ImageView = findViewById(R.id.card_02)
-                //test.setImageResource(R.drawable.card_caro_10)
+                val dragged = event.localState as ImageView
 
 
-                view.invalidate()
+                val oldOwner = dragged.parent as ViewGroup
+                val newOwner = target.parent as ViewGroup
 
-                val v = event.localState as View
+                val draggedPosition = oldOwner.indexOfChild(dragged)
+                val targetPosition = oldOwner.indexOfChild(dragged)
+
+
+                oldOwner.removeView(dragged)
+                newOwner.addView(dragged, targetPosition)
+
+                newOwner.removeView(target)
+                oldOwner.addView(target, draggedPosition)
+
+                target.invalidate()
+
+                ///val v = event.localState as View
 
                 /* ändert image bei ziel
                 val target : ImageView = findViewById(v.getId())
                  target.setImageResource(R.drawable.card_caro_10)
                 */
-
-                /*
-                val target = v as ImageView
-
-                val temp =
-                    event.localState as ImageView
-                val dragged =
-                    findViewById<View>(temp.id) as ImageView
+                //var test : ImageView = findViewById(R.id.card_02)
+                //test.setImageResource(R.drawable.card_caro_10)
 
 
-                target.id = dragged.id
-                target.setImageDrawable(dragged.drawable)
+                //val owner = v.parent as ViewGroup
+                //owner.removeView(v)
 
-                dragged.id = temp.id
-                dragged.setImageDrawable(temp.drawable)
-                */
+                //test
+                /// val destination = view as LinearLayout
+                ///destination.addView(dragged)
 
-                val owner = v.parent as ViewGroup
-                owner.removeView(v)
-                val destination = view as LinearLayout
-                destination.addView(v)
-
-                v.visibility = View.VISIBLE
+                dragged.visibility = View.VISIBLE
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
@@ -234,8 +234,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
                 //
 
-
-                view.invalidate()
+                target.invalidate()
 
                 v.visibility =
                     View.VISIBLE //damit die Karte wenn sie falschplaziert wurde wieder sichtabr ist
