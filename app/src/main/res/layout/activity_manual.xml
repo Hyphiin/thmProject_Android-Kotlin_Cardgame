@@ -46,7 +46,7 @@
     <TextView
         android:id="@+id/manual_text"
         android:layout_width="280dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@color/backgroundColor2"
         android:fontFamily="@font/roboto_slab_bold"
