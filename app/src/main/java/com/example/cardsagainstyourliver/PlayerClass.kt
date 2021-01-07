@@ -36,9 +36,7 @@ class PlayerClass{
 
 
     fun clear() {
-      //  hand.clear()
-       // playerStats.delete()
+        //  hand.clear()
+        // playerStats.delete()
     }
 }
-
-

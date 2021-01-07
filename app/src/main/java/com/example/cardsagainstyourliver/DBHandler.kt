@@ -60,7 +60,7 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         //Toast.makeText(context,"Failed",Toast.LENGTH_SHORT).show()
         else
             Log.d("success","success")
-            Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show()
     }
     fun readData() : MutableList<PlayerClass>{
         var list: MutableList<PlayerClass> = ArrayList()
@@ -103,7 +103,7 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
                 cv.put(COl_DRINK,drink)
 
                 db.update(TABLE_NAME, cv, COL_ID+ "=? AND "+COL_NAME+ "=?",
-                arrayOf(result.getString(result.getColumnIndex(COL_ID)),
+                    arrayOf(result.getString(result.getColumnIndex(COL_ID)),
                         result.getString(result.getColumnIndex(COL_NAME))))
             }while(result.moveToNext())
         }
