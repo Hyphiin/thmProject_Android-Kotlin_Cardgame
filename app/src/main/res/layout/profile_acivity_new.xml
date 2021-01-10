@@ -125,20 +125,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/text_background_round"
-            android:fontFamily="@font/roboto_slab_bold"
-            android:gravity="center"
-            android:onClick="onClickNewProfil"
-            android:text="Profil erstellen"
-            android:textColor="@color/textColor2"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="30dp" />
@@ -150,6 +136,34 @@
         android:layout_height="45dp"
         android:background="@color/menuBarColor">
 
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/text_background_round"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:gravity="center"
+            android:onClick="onClickNewProfil"
+            android:text="@string/startGame_text"
+            android:textColor="@color/textColor2"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/text_background_round"
+        android:fontFamily="@font/roboto_slab_bold"
+        android:gravity="center"
+        android:onClick="onClickNewProfil"
+        android:text="Profil erstellen"
+        android:textColor="@color/textColor2"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

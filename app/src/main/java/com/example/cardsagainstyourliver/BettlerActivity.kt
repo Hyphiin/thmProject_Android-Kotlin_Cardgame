@@ -5,6 +5,7 @@ import android.content.ClipDescription
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +23,10 @@ class BettlerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bettler)
 
+        val p1Id = intent.getIntExtra("idP1", -1)
+        val p2Id = intent.getIntExtra("idP2", -1)
 
+        Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
         val dragView1: ImageView = findViewById(R.id.card_01)!!
         val dragView2: ImageView = findViewById(R.id.card_02)!!
 
