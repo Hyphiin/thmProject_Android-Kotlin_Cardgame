@@ -1,5 +1,7 @@
 package com.example.cardsagainstyourliver
 
+import android.graphics.Bitmap
+
 //Die Karten, die man auf der Hand hat
 class HandClass(val deck:DeckClass, val name:String) {
 
@@ -43,6 +45,11 @@ class HandClass(val deck:DeckClass, val name:String) {
     fun getValue(card:Null):Int{
         var valueNumber:Int = card.getValueNumber()
         return valueNumber
+    }
+
+    fun getPic(card:Null):String{
+        val picture: String = card.getPic()
+        return picture
     }
 
     //gibt die Höchste Hand Karte aus

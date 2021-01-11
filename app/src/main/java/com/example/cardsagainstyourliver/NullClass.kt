@@ -1,5 +1,9 @@
 package com.example.cardsagainstyourliver
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import java.io.IOException
 import java.io.OutputStream
 
 
@@ -21,4 +25,9 @@ open class Null {
     open fun getValueNumber():Int {
         return 1
     }
+
+    open fun getPic(): String {
+        return "card_heart_07.png"
+    }
+
 }

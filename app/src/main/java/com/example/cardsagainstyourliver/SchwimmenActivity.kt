@@ -28,6 +28,10 @@ class SchwimmenActivity : AppCompatActivity() {
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
 
+        val deck = DeckClass(2)
+        deck.shuffle()
+        val hand1 = HandClass(deck, "Schwimmen")
+
         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
         val dragView2: ImageView = findViewById(R.id.player_card_02)!!
         val dragView3: ImageView = findViewById(R.id.player_card_03)!!
