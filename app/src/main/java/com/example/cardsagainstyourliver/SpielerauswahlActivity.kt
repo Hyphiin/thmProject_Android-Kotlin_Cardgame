@@ -51,7 +51,7 @@ class SpielerauswahlActivity : AppCompatActivity() {
                 val id= ids[position]
                 if(selected.contains(id)){
                     selected.remove(id)
-                    parent.getChildAt(position).setBackgroundColor(Color.CYAN)//Wie kriege ich hier Backgroundcolor2?
+                    parent.getChildAt(position).setBackgroundColor(Color.parseColor("#007D7C"))//Wie kriege ich hier Backgroundcolor2?
                 }
                 else{
                     selected.add(id)
