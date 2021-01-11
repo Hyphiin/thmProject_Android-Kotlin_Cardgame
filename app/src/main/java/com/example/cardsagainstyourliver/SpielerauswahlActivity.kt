@@ -9,7 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.name_list_item.*
 import kotlinx.android.synthetic.main.profile_acivity_new.*
 
 
@@ -27,17 +26,25 @@ class SpielerauswahlActivity : AppCompatActivity() {
         var db =DBHandler(context)
         var names: MutableList<String> = ArrayList()
         var ids: MutableList<Int> = ArrayList()
-        var data=db.readData()
-        for(i in 0..(data.size-1)){
+        var data = db.readData()
+        for (i in 0..(data.size - 1)) {
             names.add(data.get(i).playerName)
             ids.add(data.get(i).id)
-            Log.d("dbAusgabe", data.get(i).playerName+data.get(i).gender.toString()+data.get(i).drink.toString())
+            Log.d(
+                "dbAusgabe",
+                data.get(i).playerName + data.get(i).gender.toString() + data.get(i).drink.toString()
+            )
         }
 
+        profil_text2.setText("Spielerauswahl")
         btn_start.setVisibility(View.VISIBLE)
+        btn_add.setVisibility(View.INVISIBLE)
 
-        val adapter = ArrayAdapter(this,
-            R.layout.name_list_item, names)
+
+        val adapter = ArrayAdapter(
+            this,
+            R.layout.name_list_item, names
+        )
 
         var selected: MutableList<Int> = ArrayList()
 
@@ -60,13 +67,18 @@ class SpielerauswahlActivity : AppCompatActivity() {
             }
         }
 
-        btn_start.setOnClickListener{
-            if(selected.size==2){
-                Log.d("jo","check")
-                val p1=selected[0]
-                val p2=selected[1]
-                onClickGameStartButton(p1,p2,modus)
+        btn_start.setOnClickListener {
+            if (selected.size == 2) {
+                Log.d("jo", "check")
+                val p1 = selected[0]
+                val p2 = selected[1]
+                onClickGameStartButton(p1, p2, modus)
             }
+        }
+
+        back_button.setOnClickListener {
+            val BackToMenuButton = Intent(this, MainActivity::class.java)
+            this.startActivity(BackToMenuButton)
         }
 
 
@@ -92,3 +104,4 @@ class SpielerauswahlActivity : AppCompatActivity() {
         startActivity(BackToGameListButton)
     }
 }
+
