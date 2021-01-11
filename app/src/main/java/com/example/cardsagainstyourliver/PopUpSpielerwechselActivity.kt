@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
 
-class PopUpActivity : Activity() {
+class PopUpSpielerwechselActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

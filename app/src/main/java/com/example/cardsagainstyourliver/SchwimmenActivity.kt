@@ -140,8 +140,16 @@ class SchwimmenActivity : AppCompatActivity() {
         val toast = Toast.makeText(applicationContext, "nächster Spieler", Toast.LENGTH_LONG)
         toast.show()
 
-        val SchwimmenPopUpEvent = Intent(this, PopUpActivity::class.java)
+        val SchwimmenPopUpEvent = Intent(this, PopUpSpielerwechselActivity::class.java)
         startActivity(SchwimmenPopUpEvent)
+    }
+
+    fun promilleAnzeigeTest(view: View) {
+        val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
+        toast.show()
+
+        val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
+        startActivity(PromillePopUpEvent)
     }
 
 

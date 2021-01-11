@@ -27,7 +27,10 @@
         <activity android:name=".NewGameActivity" />
         <activity android:name=".SpielerauswahlActivity" />
         <activity
-            android:name=".PopUpActivity"
+            android:name=".PopUpPromillerechnerActivity"
+            android:theme="@style/AppTheme.PopUpPromille" />
+        <activity
+            android:name=".PopUpSpielerwechselActivity"
             android:theme="@style/AppTheme.PopUp" />
 
 
