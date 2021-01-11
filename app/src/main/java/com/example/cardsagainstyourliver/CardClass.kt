@@ -3,6 +3,8 @@ package com.example.cardsagainstyourliver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import java.io.IOException
 import java.io.OutputStream
 
@@ -49,59 +51,60 @@ class CardClass( private val sign: Sign, private val value: Value) : Null() {
         return valueNumber
     }
 
-    override fun getPic():String{
-        var picture:String = "card_heart_07.png"
+    override fun getPic(): Int {
+
+        var picture:Int = R.drawable.card_kreuz_07
 
             when (sign) {
                 Sign.HERZ -> {
                     when (value) {
-                        Value.SIEBEN -> picture = "card_heart_07.png"
-                        Value.ACHT -> picture = "card_heart_08.png"
-                        Value.NEUN -> picture = "card_heart_09.png"
-                        Value.ZEHN -> picture = "card_heart_10.png"
-                        Value.BUBE -> picture = "card_heart_b.png"
-                        Value.DAME -> picture = "card_heart_d.png"
-                        Value.KOENIG -> picture = "card_heart_k.png"
-                        Value.ASS -> picture = "card_heart_a.png"
+                        Value.SIEBEN -> picture = R.drawable.card_heart_07
+                        Value.ACHT -> picture = R.drawable.card_heart_08
+                        Value.NEUN -> picture = R.drawable.card_heart_09
+                        Value.ZEHN -> picture = R.drawable.card_heart_10
+                        Value.BUBE -> picture = R.drawable.card_heart_b
+                        Value.DAME -> picture = R.drawable.card_heart_d
+                        Value.KOENIG -> picture = R.drawable.card_heart_k
+                        Value.ASS -> picture = R.drawable.card_heart_a
                         else -> true
                     }
                 }
                 Sign.KARO -> {
                     when (value) {
-                        Value.SIEBEN -> picture = "card_caro_07.png"
-                        Value.ACHT -> picture = "card_caro_08.png"
-                        Value.NEUN -> picture = "card_caro_09.png"
-                        Value.ZEHN -> picture = "card_caro_10.png"
-                        Value.BUBE -> picture = "card_caro_b.png"
-                        Value.DAME -> picture = "card_caro_d.png"
-                        Value.KOENIG -> picture = "card_caro_k.png"
-                        Value.ASS -> picture = "card_caro_a.png"
+                        Value.SIEBEN -> picture = R.drawable.card_caro_07
+                        Value.ACHT -> picture =  R.drawable.card_caro_08
+                        Value.NEUN -> picture =  R.drawable.card_caro_09
+                        Value.ZEHN -> picture =  R.drawable.card_caro_10
+                        Value.BUBE -> picture =  R.drawable.card_caro_b
+                        Value.DAME -> picture =  R.drawable.card_caro_d
+                        Value.KOENIG -> picture =  R.drawable.card_caro_k
+                        Value.ASS -> picture =  R.drawable.card_caro_a
                         else -> true
                     }
                 }
                 Sign.PIK -> {
                     when (value) {
-                        Value.SIEBEN -> picture = "card_pik_07.png"
-                        Value.ACHT -> picture = "card_pik_08.png"
-                        Value.NEUN -> picture = "card_pik_09.png"
-                        Value.ZEHN -> picture = "card_pik_10.png"
-                        Value.BUBE -> picture = "card_pik_b.png"
-                        Value.DAME -> picture = "card_pik_d.png"
-                        Value.KOENIG -> picture = "card_pik_k.png"
-                        Value.ASS -> picture = "card_pik_a.png"
+                        Value.SIEBEN -> picture =  R.drawable.card_pik_07
+                        Value.ACHT -> picture = R.drawable.card_pik_08
+                        Value.NEUN -> picture = R.drawable.card_pik_09
+                        Value.ZEHN -> picture = R.drawable.card_pik_10
+                        Value.BUBE -> picture = R.drawable.card_pik_b
+                        Value.DAME -> picture = R.drawable.card_pik_d
+                        Value.KOENIG -> picture = R.drawable.card_pik_k
+                        Value.ASS -> picture = R.drawable.card_pik_a
                         else -> true
                     }
                 }
                 Sign.KREUZ -> {
                     when (value) {
-                        Value.SIEBEN -> picture = "card_kreuz_07.png"
-                        Value.ACHT -> picture = "card_kreuz_08.png"
-                        Value.NEUN -> picture = "card_kreuz_09.png"
-                        Value.ZEHN -> picture = "card_kreuz_10.png"
-                        Value.BUBE -> picture = "card_kreuz_b.png"
-                        Value.DAME -> picture = "card_kreuz_d.png"
-                        Value.KOENIG -> picture = "card_kreuz_k.png"
-                        Value.ASS -> picture = "card_kreuz_a.png"
+                        Value.SIEBEN -> picture = R.drawable.card_kreuz_07
+                        Value.ACHT -> picture = R.drawable.card_kreuz_08
+                        Value.NEUN -> picture = R.drawable.card_kreuz_09
+                        Value.ZEHN -> picture = R.drawable.card_kreuz_10
+                        Value.BUBE -> picture = R.drawable.card_kreuz_b
+                        Value.DAME -> picture = R.drawable.card_kreuz_d
+                        Value.KOENIG -> picture = R.drawable.card_kreuz_k
+                        Value.ASS -> picture = R.drawable.card_kreuz_a
                         else -> true
                     }
                 }

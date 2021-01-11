@@ -3,6 +3,7 @@ package com.example.cardsagainstyourliver
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -28,9 +29,16 @@ class SchwimmenActivity : AppCompatActivity() {
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
 
+        val game = SchwimmenClass()
+        game.startGame(game)
         val deck = DeckClass(2)
         deck.shuffle()
-        val hand1 = HandClass(deck, "Schwimmen")
+        val p1hand = HandClass(deck, "Schwimmen")
+        val p2hand = HandClass(deck, "Schwimmen")
+        val table= HandClass(deck, "Null")
+        game.startHand(p1hand,table, deck)
+        val dump = HandClass(deck, "Null")
+
 
         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
         val dragView2: ImageView = findViewById(R.id.player_card_02)!!
@@ -40,7 +48,13 @@ class SchwimmenActivity : AppCompatActivity() {
         val dragView02: ImageView = findViewById(R.id.table_card_02)!!
         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
 
+        dragView1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+        dragView2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+        dragView3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
 
+        dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
 
 
@@ -141,6 +155,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
         }
     }
+
 
 
     fun onClickPauseMenuButton(view: View) {
@@ -252,6 +267,7 @@ class SchwimmenActivity : AppCompatActivity() {
             else -> true
         }
     }
-
-
 }
+
+
+

@@ -13,13 +13,13 @@ fun main(){
 class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false) {
 
     init{
-        val deck = DeckClass(2)
+       /*val deck = DeckClass(2)
         deck.shuffle()
         val hand1 = HandClass(deck, "Schwimmen")
         val hand2= HandClass(deck, "Null")
         val table= HandClass(deck, "Null")
         startHand(hand2,table, deck)
-        val dump = HandClass(deck, "Null")
+        val dump = HandClass(deck, "Null")*/
 
     }
 

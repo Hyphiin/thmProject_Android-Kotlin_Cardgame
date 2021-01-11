@@ -1,10 +1,10 @@
 package com.example.cardsagainstyourliver
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import java.io.IOException
+
+import android.graphics.drawable.Drawable
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import java.io.OutputStream
+
 
 
 //enthält die print Methode
@@ -26,8 +26,8 @@ open class Null {
         return 1
     }
 
-    open fun getPic(): String {
-        return "card_heart_07.png"
+   open fun getPic(): Int {
+        val test: Int = R.drawable.card_kreuz_07
+        return test
     }
-
 }
