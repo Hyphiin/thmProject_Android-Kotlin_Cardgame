@@ -144,7 +144,7 @@ class SchwimmenActivity : AppCompatActivity() {
         startActivity(SchwimmenPopUpEvent)
     }
 
-    fun promilleAnzeigeTest(view: View) {
+    fun promilleAnzeige(view: View) {
         val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
         toast.show()
 

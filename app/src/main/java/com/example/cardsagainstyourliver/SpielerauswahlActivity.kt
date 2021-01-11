@@ -3,6 +3,7 @@ package com.example.cardsagainstyourliver
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -17,6 +18,14 @@ class SpielerauswahlActivity : AppCompatActivity() {
         val message2 = intent.getStringExtra(EXTRA_MESSAGE_B)
 
 
+    }
+
+    fun kartenauswahl(view: View) {
+        val toast = Toast.makeText(applicationContext, "Wähle Handkarten", Toast.LENGTH_LONG)
+        toast.show()
+
+        val KartenauswahlPopUpEvent = Intent(this, PopUpKartenauswahlActivity::class.java)
+        startActivity(KartenauswahlPopUpEvent)
     }
 
     fun onClickGameStartButton(view: View) {
