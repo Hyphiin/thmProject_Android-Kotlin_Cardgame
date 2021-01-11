@@ -7,4 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.PopUp">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:src">@drawable/pause</item>
+    </style>
+
 </resources>

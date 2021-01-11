@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -21,6 +22,8 @@ class SchwimmenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schwimmen)
+
+        val b: Button = findViewById(R.id.klopfen_button)
 
 
         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
@@ -133,6 +136,14 @@ class SchwimmenActivity : AppCompatActivity() {
         }
     }
 
+    fun nextPlayerMenu(view: View) {
+        val toast = Toast.makeText(applicationContext, "nächster Spieler", Toast.LENGTH_LONG)
+        toast.show()
+
+        val SchwimmenPopUpEvent = Intent(this, PopUpActivity::class.java)
+        startActivity(SchwimmenPopUpEvent)
+    }
+
 
     fun onClickPauseMenuButton(view: View) {
         val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
@@ -152,6 +163,7 @@ class SchwimmenActivity : AppCompatActivity() {
     fun onClickKnockCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Klopfen", Toast.LENGTH_LONG)
         toast.show()
+
     }
 
     fun onClickShoveCards(view: View) {
