@@ -19,6 +19,20 @@ import kotlinx.android.synthetic.main.activity_schwimmen.*
 
 class SchwimmenActivity : AppCompatActivity() {
 
+    var game = SchwimmenClass()
+    var deck = DeckClass(2)
+    var p1hand = HandClass(deck, "Schwimmen")
+    var p2hand = HandClass(deck, "Schwimmen")
+    var table= HandClass(deck, "Null")
+    var dump = HandClass(deck, "Null")
+
+    var object1:Null = p1hand.getCard(0)
+    var object2:Null = table.getCard(0)
+
+    var handTrue = false
+    var tableTrue = false
+
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +43,15 @@ class SchwimmenActivity : AppCompatActivity() {
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
 
-        val game = SchwimmenClass()
+        game = SchwimmenClass()
         game.startGame(game)
-        val deck = DeckClass(2)
+        deck = DeckClass(2)
         deck.shuffle()
-        val p1hand = HandClass(deck, "Schwimmen")
-        val p2hand = HandClass(deck, "Schwimmen")
-        val table= HandClass(deck, "Null")
+        p1hand = HandClass(deck, "Schwimmen")
+        p2hand = HandClass(deck, "Schwimmen")
+        table= HandClass(deck, "Null")
         game.startHand(p1hand,table, deck)
-        val dump = HandClass(deck, "Null")
+        dump = HandClass(deck, "Null")
 
 
         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
@@ -68,12 +82,22 @@ class SchwimmenActivity : AppCompatActivity() {
         player_right.setOnDragListener(dragListener)
 
 
+
         // first drag and drop card
         dragView1.setOnLongClickListener {
             val clipText = "Player Card Left"
             val item = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item)
+
+            val string2 = "" + p1hand.getIndex(p1hand.getCard(0))
+
+            /*val string:String = ""+p1hand.getValue(p1hand.getCard(0))*/
+            val toast = Toast.makeText(applicationContext, "Erste Spielerkarte: $string2", Toast.LENGTH_LONG)
+            //toast.show()
+
+            object1 = p1hand.getCard(0)
+            //handTrue = true
 
             val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
@@ -95,7 +119,6 @@ class SchwimmenActivity : AppCompatActivity() {
 
             it.visibility = View.INVISIBLE
             true
-
         }
 
         //new drag and drop card
@@ -122,6 +145,9 @@ class SchwimmenActivity : AppCompatActivity() {
 
             val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            //object1 = table.getCard(0)
+            //tableTrue = true
 
             it.visibility = View.INVISIBLE
             true
@@ -181,7 +207,10 @@ class SchwimmenActivity : AppCompatActivity() {
     fun onClickShoveCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
         toast.show()
+        //game.push(table, dump, deck, true)
     }
+
+
 
     val dragListener = View.OnDragListener { target, event ->
         when (event.action) {
@@ -189,9 +218,18 @@ class SchwimmenActivity : AppCompatActivity() {
                 event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
+                //if (handTrue === true){
+                    object2 = table.getCard(0)
+                  //  handTrue = false
+               // }else{
+                   //object2 = p1hand.getCard(0)
+                   // tableTrue = false
+               // }
 
                 target.invalidate()
                 true
+
+
             }
             DragEvent.ACTION_DRAG_LOCATION -> {
 
@@ -201,7 +239,7 @@ class SchwimmenActivity : AppCompatActivity() {
                 var xPos2: String? = event.getX().toString();
                 var yPos2: String? = event.getY().toString();
 
-                Toast.makeText(this, xPos2, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, xPos2, Toast.LENGTH_SHORT).show()
                 true
             }
             DragEvent.ACTION_DRAG_EXITED -> {
@@ -212,7 +250,10 @@ class SchwimmenActivity : AppCompatActivity() {
                 val item = event.clipData.getItemAt(0)
                 val dragData = item.text
 
-                Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
+
+
+
+               // Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
 
 
                 val dragged = event.localState as ImageView
@@ -256,6 +297,11 @@ class SchwimmenActivity : AppCompatActivity() {
             DragEvent.ACTION_DRAG_ENDED -> {
                 val v = event.localState as View
 
+                game.changeCard(object1,object2,p1hand,table)
+
+                val string:String = "Hand: "+p1hand.getValue(p1hand.getCard(0)) + " Tisch:" + table.getValue(table.getCard(0))
+                val toast = Toast.makeText(applicationContext, " $string", Toast.LENGTH_LONG)
+                toast.show()
                 //
 
                 target.invalidate()

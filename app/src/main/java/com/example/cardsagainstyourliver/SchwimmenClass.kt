@@ -95,8 +95,8 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Anfrage zum Schieben, noch nicht fertig
-    fun push(player:PlayerClass, table:HandClass, dump:HandClass, deck:DeckClass, push:Boolean = false){ //Anfrage zum Schieben, noch nicht fertig
-        val playerID = player.playerName
+    fun push(table:HandClass, dump:HandClass, deck:DeckClass, push:Boolean = false){ //Anfrage zum Schieben, noch nicht fertig
+        //val playerID = player.playerName
         if (push == true){
             toDump(table, dump, deck)
         }

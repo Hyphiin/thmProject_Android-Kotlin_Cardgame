@@ -1,8 +1,5 @@
 package com.example.cardsagainstyourliver
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
-
 //Die Karten, die man auf der Hand hat
 class HandClass(val deck:DeckClass, val name:String) {
 
@@ -149,6 +146,10 @@ class HandClass(val deck:DeckClass, val name:String) {
     fun getCard(i:Int):Null{
         var handCard:Null = hand.get(i)
         return  handCard
+    }
+
+    fun getIndex(card: Null):Int{
+        return hand.indexOf(card)
     }
 
     fun getSize(): Int = hand.size
