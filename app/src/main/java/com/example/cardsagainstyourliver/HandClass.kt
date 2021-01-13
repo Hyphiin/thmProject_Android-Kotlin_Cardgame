@@ -30,6 +30,10 @@ class HandClass(val deck:DeckClass, val name:String) {
         hand.add(card)
     }
 
+    fun addAt(index:Int, card: Null){
+        hand.add(index, card)
+    }
+
     fun clear() {
         hand.clear()
     }
@@ -37,6 +41,10 @@ class HandClass(val deck:DeckClass, val name:String) {
     //eine spezifische Karte löschen
     fun delete(card:Null){
         hand.remove(card)
+    }
+
+    fun deleteAt(index:Int){
+        hand.removeAt(index)
     }
 
     //die Value Number einer Karte zum rechnen bekommen

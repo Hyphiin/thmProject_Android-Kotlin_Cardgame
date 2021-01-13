@@ -50,11 +50,13 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Eine Handkarte mit einer auf dem Tisch tauschen
-    fun changeCard(handCard:Null, tableCard:Null, hand:HandClass, table:HandClass){
-        hand.delete(handCard)
-        hand.add(tableCard)
-        table.delete(tableCard)
-        table.add(handCard)
+    fun changeCard(indexHand:Int, indexTable:Int, hand:HandClass, table:HandClass){
+        val zwischenHand = hand.getCard(indexHand)
+        val zwischenTable = table.getCard(indexTable)
+        hand.deleteAt(indexHand)
+        hand.addAt(indexHand, zwischenTable)
+        table.deleteAt(indexTable)
+        table.addAt(indexTable, zwischenHand)
     }
 
     //Spiel beenden --- noch nicht im Einsatz
