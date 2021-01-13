@@ -35,20 +35,20 @@ class BettlerActivity : AppCompatActivity() {
         deck.shuffle()
         var p1hand = HandClass(deck, "Bettler")
         var p2hand = HandClass(deck, "Bettler")
-        for (i in 0..p1hand.getSize()-1) {
+        for (i in 0..p1hand.getSize() - 1) {
             Log.d("hand1:", p1hand.getCard(i).toString())
         }
-        for (i in 0..p2hand.getSize()-1) {
+        for (i in 0..p2hand.getSize() - 1) {
             Log.d("hand2:", p2hand.getCard(i).toString())
         }
-        var table= HandClass(deck, "Null")
+        var table = HandClass(deck, "Null")
 
-        val dragView1: ImageView = findViewById(R.id.card_01)!!
-        val dragView2: ImageView = findViewById(R.id.card_02)!!
-        val dragView3: ImageView = findViewById(R.id.card_03)!!
-        val dragView4: ImageView = findViewById(R.id.card_04)!!
-        val dragView5: ImageView = findViewById(R.id.card_05)!!
-        val dragView6: ImageView = findViewById(R.id.card_06)!!
+        val dragView1: ImageView = findViewById(R.id.card1)!!
+        val dragView2: ImageView = findViewById(R.id.card2)!!
+        val dragView3: ImageView = findViewById(R.id.card3)!!
+        val dragView4: ImageView = findViewById(R.id.card4)!!
+        val dragView5: ImageView = findViewById(R.id.card5)!!
+        val dragView6: ImageView = findViewById(R.id.card6)!!
 
         dragView1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
         dragView2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
