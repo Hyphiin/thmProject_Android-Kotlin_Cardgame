@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_bettler.*
 
 class BettlerActivity : AppCompatActivity() {
 
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +28,37 @@ class BettlerActivity : AppCompatActivity() {
         val p2Id = intent.getIntExtra("idP2", -1)
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
+
+        var game = BettlerClass()
+        game.startGame(game) //was passiert hier?
+        var deck = DeckClass(2)
+        deck.shuffle()
+        var p1hand = HandClass(deck, "Bettler")
+        var p2hand = HandClass(deck, "Bettler")
+        for (i in 0..p1hand.getSize()-1) {
+            Log.d("hand1:", p1hand.getCard(i).toString())
+        }
+        for (i in 0..p2hand.getSize()-1) {
+            Log.d("hand2:", p2hand.getCard(i).toString())
+        }
+        var table= HandClass(deck, "Null")
+
         val dragView1: ImageView = findViewById(R.id.card_01)!!
         val dragView2: ImageView = findViewById(R.id.card_02)!!
+        val dragView3: ImageView = findViewById(R.id.card_03)!!
+        val dragView4: ImageView = findViewById(R.id.card_04)!!
+        val dragView5: ImageView = findViewById(R.id.card_05)!!
+        val dragView6: ImageView = findViewById(R.id.card_06)!!
+
+        dragView1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+        dragView2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+        dragView3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+        dragView4.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(3))))
+        dragView5.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(4))))
+        dragView6.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(5))))
+        //Hier fehlen weitere 10 karten, da layout noch nicht angepasst
+        //Sollte zum anpassen bei weiteren zügen in sinnvolle funktion gesteckt werden.
+
 
 
 

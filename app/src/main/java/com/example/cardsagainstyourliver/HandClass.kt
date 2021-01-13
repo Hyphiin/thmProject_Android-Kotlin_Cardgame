@@ -1,5 +1,7 @@
 package com.example.cardsagainstyourliver
 
+import android.util.Log
+
 //Die Karten, die man auf der Hand hat
 class HandClass(val deck:DeckClass, val name:String) {
 
@@ -16,7 +18,9 @@ class HandClass(val deck:DeckClass, val name:String) {
 
         }
         if (name === "Bettler"){
-            //...
+            for(i in 1..16){
+                take()
+            }
         }
     }
 
