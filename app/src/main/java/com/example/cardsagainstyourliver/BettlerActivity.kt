@@ -124,6 +124,11 @@ class BettlerActivity : AppCompatActivity() {
             }
             DragEvent.ACTION_DRAG_LOCATION -> true
             DragEvent.ACTION_DRAG_EXITED -> {
+
+                var xPos: Float = event.getX();
+                var yPos: Float = event.getY();
+
+
                 view.invalidate()
                 true
             }
@@ -148,7 +153,10 @@ class BettlerActivity : AppCompatActivity() {
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
+                val view = event.localState as View
                 view.invalidate()
+                view.visibility =
+                    View.VISIBLE //damit die Karte wenn sie falschplaziert wurde wieder sichtabr ist
                 true
             }
             else -> true

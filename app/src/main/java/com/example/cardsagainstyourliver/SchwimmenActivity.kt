@@ -3,7 +3,6 @@ package com.example.cardsagainstyourliver
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
