@@ -26,6 +26,10 @@ class SchwimmenActivity : AppCompatActivity() {
     var table= HandClass(deck, "Null")
     var dump = HandClass(deck, "Null")
 
+    var object1 = p1hand.getIndex(p1hand.getCard(0))
+    var object2 = p1hand.getIndex(p1hand.getCard(0))
+
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,10 +78,11 @@ class SchwimmenActivity : AppCompatActivity() {
         player_middle.setOnDragListener(dragListener)
         player_right.setOnDragListener(dragListener)
 
-        game.changeCard(p1hand.getIndex(p1hand.getCard(0)),table.getIndex(table.getCard(0)),p1hand,table)
+
 
         val toast = Toast.makeText(applicationContext, "HandKarte: ${p1hand.getCard(0)} Tischkarte: ${table.getCard(0)}", Toast.LENGTH_LONG)
-        toast.show()
+        val toast2 = Toast.makeText(applicationContext, "HandKarte: ${p2hand.toString()}", Toast.LENGTH_LONG)
+        //toast2.show()
 
         // first drag and drop card
         dragView1.setOnLongClickListener {
@@ -85,6 +90,8 @@ class SchwimmenActivity : AppCompatActivity() {
             val item = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item)
+
+            object1 = p1hand.getIndex(p1hand.getCard(0))
 
             val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
@@ -101,6 +108,8 @@ class SchwimmenActivity : AppCompatActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item2)
 
+            object1 = p1hand.getIndex(p1hand.getCard(1))
+
             val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
@@ -114,6 +123,8 @@ class SchwimmenActivity : AppCompatActivity() {
             val item3 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item3)
+
+            object1 = p1hand.getIndex(p1hand.getCard(2))
 
             val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
@@ -179,20 +190,60 @@ class SchwimmenActivity : AppCompatActivity() {
         startActivity(BackToMenuButton)
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun onClickSwapCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Tauschen", Toast.LENGTH_LONG)
-        toast.show()
+        //toast.show()
+        val zwischen1 = table.getIndex(table.getCard(0))
+        val zwischen2 = table.getIndex(table.getCard(1))
+        val zwischen3 = table.getIndex(table.getCard(2))
+
+        val hand1 : ImageView = findViewById(R.id.player_card_01)!!
+        var table1 : ImageView = findViewById(R.id.table_card_01)!!
+        val hand2 : ImageView = findViewById(R.id.player_card_02)!!
+        var table2 : ImageView = findViewById(R.id.table_card_02)!!
+        val hand3 : ImageView = findViewById(R.id.player_card_03)!!
+        var table3 : ImageView = findViewById(R.id.table_card_03)!!
+
+        game.changeCard(p1hand.getIndex(p1hand.getCard(0)),zwischen1,p1hand,table)
+        game.changeCard(p1hand.getIndex(p1hand.getCard(1)),zwischen2,p1hand,table)
+        game.changeCard(p1hand.getIndex(p1hand.getCard(2)),zwischen3,p1hand,table)
+
+        hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+        table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+        table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+        table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+
+        val toast2 = Toast.makeText(applicationContext, "${p1hand.getCard(0)}, ${p1hand.getCard(1)}, ${p1hand.getCard(2)} ", Toast.LENGTH_LONG)
+        toast2.show()
     }
 
     fun onClickKnockCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Klopfen", Toast.LENGTH_LONG)
-        toast.show()
+        //toast.show()
+        val text:String = game.endGame(p1hand, p2hand).toString()
+        val toast2 = Toast.makeText(applicationContext, text, Toast.LENGTH_LONG)
+        toast2.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun onClickShoveCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
-        toast.show()
-        //game.push(table, dump, deck, true)
+        //toast.show()
+        game.push(table, dump, deck, true)
+
+        var table1 : ImageView = findViewById(R.id.table_card_01)!!
+        var table2 : ImageView = findViewById(R.id.table_card_02)!!
+        var table3 : ImageView = findViewById(R.id.table_card_03)!!
+
+        table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+
+        val toast2 = Toast.makeText(applicationContext, "${table.toString()} ", Toast.LENGTH_LONG)
+        toast2.show()
     }
 
 
@@ -204,6 +255,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
                 target.invalidate()
+
                 true
 
 
@@ -216,7 +268,7 @@ class SchwimmenActivity : AppCompatActivity() {
                 var xPos2: String? = event.getX().toString();
                 var yPos2: String? = event.getY().toString();
 
-                Toast.makeText(this, xPos2, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, xPos2, Toast.LENGTH_SHORT).show()
                 true
             }
             DragEvent.ACTION_DRAG_EXITED -> {
@@ -226,8 +278,22 @@ class SchwimmenActivity : AppCompatActivity() {
             DragEvent.ACTION_DROP -> {
                 val item = event.clipData.getItemAt(0)
                 val dragData = item.text
+                var xPos: Float = event.getX();
+                var xPos2: String? = event.getX().toString();
 
-                Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
+                if (xPos > 180){
+                    object2 = table.getIndex(table.getCard(2))
+                }else if (xPos > 140){
+                    object2 = table.getIndex(table.getCard(1))
+                }else {
+                    object2 = table.getIndex(table.getCard(0))
+                }
+
+                game.changeCard(object1,object2,p1hand,table)
+
+                Toast.makeText(this, xPos2, Toast.LENGTH_SHORT).show()
+                //val toast = Toast.makeText(applicationContext, "XPos: ${xPos2}", Toast.LENGTH_LONG)
+                //toast.show()
 
                 val dragged = event.localState as ImageView
 
@@ -270,6 +336,9 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             DragEvent.ACTION_DRAG_ENDED -> {
                 val v = event.localState as View
+
+                val toast = Toast.makeText(applicationContext, "HandKarte: ${p1hand.getCard(object1)} Tischkarte: ${table.getCard(object2)}", Toast.LENGTH_LONG)
+                //toast.show()
 
                 target.invalidate()
 

@@ -2,6 +2,7 @@ package com.example.cardsagainstyourliver
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import android.widget.Toast
 
 fun main(){
     //nur zum testen erstellt
@@ -60,21 +61,26 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Spiel beenden --- noch nicht im Einsatz
-    fun close(player1:PlayerClass, player2:PlayerClass, hand1:HandClass, hand2:HandClass, close:Boolean = false){  //Zug von Spieler wird beendet, noch nicht fertig
-        val playerClose = player1.playerName
+    fun close(hand1:HandClass, hand2:HandClass, close:Boolean = false){  //Zug von Spieler wird beendet, noch nicht fertig
+        //val playerClose = player1.playerName
         if (close == true){
-            //endGame(hand1,hand2)
+            endGame(hand1,hand2)
         }
     }
 
     //Spielende, kann den Gewinner sagen --- noch nicht vollständig mit Herzangabe im Einsatz
-    fun endGame(hand1:HandClass, hand2:HandClass){
+    fun endGame(hand1:HandClass, hand2:HandClass):String{
+        var text:String = "hallo"
         if (hand1.getValueHand(hand1) > hand2.getValueHand(hand2)){
-            println("Gewinner ist Hand1!")
+            text = "Gewinner ist Hand1!"
+            return text
+
         }else if (hand1.getValueHand(hand1) < hand2.getValueHand(hand2)){
-            println("Gewinner ist Hand2!")
+            text = "Gewinner ist Hand2!"
+            return text
         }else {
-            println("Oha, Unentschieden!")
+            text = "Oha, Unentschieden!"
+            return text
         }
 
         /*if (lostPlayer == player1){
