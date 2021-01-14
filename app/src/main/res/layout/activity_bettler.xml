@@ -45,6 +45,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
@@ -201,6 +202,7 @@
             android:id="@+id/plcaholder_cards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal"
             android:translationY="-50dp">
@@ -227,38 +229,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/player_cards2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:translationY="60dp">
 
                 <Space
-                    android:layout_width="5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="10" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="400dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/card4"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         app:srcCompat="@drawable/card_caro_a" />
 
                     <ImageView
                         android:id="@+id/card15"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         android:translationX="-45dp"
@@ -266,8 +269,8 @@
 
                     <ImageView
                         android:id="@+id/card3"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         android:translationX="-90dp"
@@ -275,8 +278,8 @@
 
                     <ImageView
                         android:id="@+id/card14"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         android:translationX="-135dp"
@@ -284,8 +287,8 @@
 
                     <ImageView
                         android:id="@+id/card6"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         android:translationX="-180dp"
@@ -293,8 +296,8 @@
 
                     <ImageView
                         android:id="@+id/card9"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         android:translationX="-225dp"
@@ -302,8 +305,8 @@
 
                     <ImageView
                         android:id="@+id/card7"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         android:translationX="-270dp"
@@ -311,8 +314,8 @@
 
                     <ImageView
                         android:id="@+id/card10"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
+                        android:layout_width="80dp"
+                        android:layout_height="110dp"
                         android:layout_gravity="center"
                         android:cropToPadding="false"
                         android:translationX="-315dp"
@@ -320,9 +323,9 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="20dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="10" />
 
             </LinearLayout>
 
@@ -332,92 +335,98 @@
                 android:layout_height="wrap_content">
 
                 <Space
-                    android:layout_width="5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="10" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="400dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/card1"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        app:srcCompat="@drawable/card_caro_a" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/card2"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        android:translationX="-45dp"
-                        app:srcCompat="@drawable/card_caro_a" />
+                        <ImageView
+                            android:id="@+id/card1"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            app:srcCompat="@drawable/card_caro_a" />
 
-                    <ImageView
-                        android:id="@+id/card16"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        android:translationX="-90dp"
-                        app:srcCompat="@drawable/card_pik_10" />
+                        <ImageView
+                            android:id="@+id/card2"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            android:translationX="-45dp"
+                            app:srcCompat="@drawable/card_caro_a" />
 
-                    <ImageView
-                        android:id="@+id/card11"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        android:translationX="-135dp"
-                        app:srcCompat="@drawable/card_pik_10" />
+                        <ImageView
+                            android:id="@+id/card16"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            android:translationX="-90dp"
+                            app:srcCompat="@drawable/card_pik_10" />
 
-                    <ImageView
-                        android:id="@+id/card8"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        android:translationX="-180dp"
-                        app:srcCompat="@drawable/card_caro_a" />
+                        <ImageView
+                            android:id="@+id/card11"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            android:translationX="-135dp"
+                            app:srcCompat="@drawable/card_pik_10" />
 
-                    <ImageView
-                        android:id="@+id/card5"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        android:translationX="-225dp"
-                        app:srcCompat="@drawable/card_caro_a" />
+                        <ImageView
+                            android:id="@+id/card8"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            android:translationX="-180dp"
+                            app:srcCompat="@drawable/card_caro_a" />
 
-                    <ImageView
-                        android:id="@+id/card12"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        android:translationX="-270dp"
-                        app:srcCompat="@drawable/card_pik_10" />
+                        <ImageView
+                            android:id="@+id/card5"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            android:translationX="-225dp"
+                            app:srcCompat="@drawable/card_caro_a" />
 
-                    <ImageView
-                        android:id="@+id/card13"
-                        android:layout_width="90dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center"
-                        android:cropToPadding="false"
-                        android:translationX="-315dp"
-                        app:srcCompat="@drawable/card_pik_k" />
+                        <ImageView
+                            android:id="@+id/card12"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            android:translationX="-270dp"
+                            app:srcCompat="@drawable/card_pik_10" />
+
+                        <ImageView
+                            android:id="@+id/card13"
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:cropToPadding="false"
+                            android:translationX="-315dp"
+                            app:srcCompat="@drawable/card_pik_k" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="20dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="10" />
 
             </LinearLayout>
 
@@ -428,27 +437,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:background="@color/menuBarColor"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/menuBarColor"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/buttonText"
+            android:textSize="36sp" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/roboto_slab_bold"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="@color/buttonText"
-                android:textSize="36sp" />
-
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
