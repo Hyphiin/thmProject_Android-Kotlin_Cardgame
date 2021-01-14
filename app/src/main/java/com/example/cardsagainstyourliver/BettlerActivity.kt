@@ -35,9 +35,12 @@ class BettlerActivity : AppCompatActivity() {
         deck.shuffle()
         var p1hand = HandClass(deck, "Bettler")
         var p2hand = HandClass(deck, "Bettler")
+
+
         for (i in 0..p1hand.getSize() - 1) {
             Log.d("hand1:", p1hand.getCard(i).toString())
         }
+
         for (i in 0..p2hand.getSize() - 1) {
             Log.d("hand2:", p2hand.getCard(i).toString())
         }
@@ -49,15 +52,46 @@ class BettlerActivity : AppCompatActivity() {
         val dragView4: ImageView = findViewById(R.id.card4)!!
         val dragView5: ImageView = findViewById(R.id.card5)!!
         val dragView6: ImageView = findViewById(R.id.card6)!!
+        val dragView7: ImageView = findViewById(R.id.card7)!!
+        val dragView8: ImageView = findViewById(R.id.card8)!!
+        val dragView9: ImageView = findViewById(R.id.card9)!!
+        val dragView10: ImageView = findViewById(R.id.card10)!!
+        val dragView11: ImageView = findViewById(R.id.card11)!!
+        val dragView12: ImageView = findViewById(R.id.card12)!!
+        val dragView13: ImageView = findViewById(R.id.card13)!!
+        val dragView14: ImageView = findViewById(R.id.card14)!!
+        val dragView15: ImageView = findViewById(R.id.card15)!!
+        val dragView16: ImageView = findViewById(R.id.card16)!!
 
-        dragView1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
-        dragView2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
-        dragView3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
-        dragView4.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(3))))
-        dragView5.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(4))))
-        dragView6.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(5))))
-        //Hier fehlen weitere 10 karten, da layout noch nicht angepasst
+        var firstHand:HandClass
+        for(i in 0..p1hand.getSize() - 1) {
+            if (p1hand.getCard(i).toString() == "Karte: KARO SIEBEN") {
+                 firstHand=p1hand
+            }
+            else{
+                 firstHand=p2hand
+            }
+            dragView1.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(0))))
+            dragView2.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(1))))
+            dragView3.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(2))))
+            dragView4.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(3))))
+            dragView5.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(4))))
+            dragView6.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(5))))
+            dragView7.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(6))))
+            dragView8.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(7))))
+            dragView9.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(8))))
+            dragView10.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(9))))
+            dragView11.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(10))))
+            dragView12.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(11))))
+            dragView13.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(12))))
+            dragView14.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(13))))
+            dragView15.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(14))))
+            dragView16.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(15))))
+        }
+
         //Sollte zum anpassen bei weiteren zügen in sinnvolle funktion gesteckt werden.
+
+
 
 
 
@@ -97,6 +131,8 @@ class BettlerActivity : AppCompatActivity() {
 
         }
     }
+
+
 
     fun onClickStartGame(view: View) {
         setContentView(R.layout.activity_bettler)

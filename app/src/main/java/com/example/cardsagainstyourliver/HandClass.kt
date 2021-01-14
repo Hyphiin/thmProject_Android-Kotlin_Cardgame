@@ -51,6 +51,8 @@ class HandClass(val deck:DeckClass, val name:String) {
         hand.removeAt(index)
     }
 
+
+
     //die Value Number einer Karte zum rechnen bekommen
     fun getValue(card:Null):Int{
         var valueNumber:Int = card.getValueNumber()
@@ -61,6 +63,8 @@ class HandClass(val deck:DeckClass, val name:String) {
         val picture: Int = card.getPic()
         return picture
     }
+
+
 
     //gibt die Höchste Hand Karte aus
     fun getMaxValue(hand:HandClass):Int{
@@ -167,4 +171,5 @@ class HandClass(val deck:DeckClass, val name:String) {
     fun getSize(): Int = hand.size
 
     override fun toString() = hand.joinToString()
+
 }
