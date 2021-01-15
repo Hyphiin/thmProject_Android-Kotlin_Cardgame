@@ -61,11 +61,16 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Spiel beenden --- noch nicht im Einsatz
-    fun close(hand1:HandClass, hand2:HandClass, close:Boolean = false){  //Zug von Spieler wird beendet, noch nicht fertig
-        //val playerClose = player1.playerName
-        if (close == true){
-            endGame(hand1,hand2)
-        }
+    fun close(p1hand:HandClass, p2hand:HandClass, deck: DeckClass, table: HandClass, dump: HandClass, hand:HandClass){  //Zug von Spieler wird beendet
+
+        val deck = DeckClass(2)
+        deck.shuffle()
+        val p1hand = HandClass(deck, "Schwimmen")
+        val p2hand = HandClass(deck, "Schwimmen")
+        val table= HandClass(deck, "Null")
+        val dump = HandClass(deck, "Null")
+        val hand = p1hand
+
     }
 
     //Spielende, kann den Gewinner sagen --- noch nicht vollständig mit Herzangabe im Einsatz
