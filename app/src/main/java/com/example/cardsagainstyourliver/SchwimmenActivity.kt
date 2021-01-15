@@ -32,16 +32,26 @@ class SchwimmenActivity : AppCompatActivity() {
     var object1 = p1hand.getIndex(p1hand.getCard(0))
     var object2 = p1hand.getIndex(p1hand.getCard(0))
 
-    var hand = p1hand
+    var hand:HandClass = HandClass(deck, "Null")
 
+    var shove = false
+    var shoveStarterHand:HandClass = HandClass(deck, "Null")
+
+    var player1Name = "Jürgen"
+    var player2Name = "Klaus"
+
+    var knock = false
+    var knockStarterHand:HandClass = HandClass(deck, "Null")
+    var textGewinner:String = "Gewinne, Gewinne, Gewinne!"
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schwimmen)
 
-        val p1Id = intent.getIntExtra("idP1", -1)
-        val p2Id = intent.getIntExtra("idP2", -1)
+        var p1Id = intent.getIntExtra("idP1", -1)
+        var p2Id = intent.getIntExtra("idP2", -1)
+
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
 
@@ -72,7 +82,15 @@ class SchwimmenActivity : AppCompatActivity() {
         dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
         dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
+        val p1Pos =intent.getIntExtra("idPos1",-1)
+        val p2Pos =intent.getIntExtra("idPos2",-1)
 
+        val context=this
+        var db =DBHandler(context)
+        var data=db.readData()
+
+        player1Name = data.get(p1Pos).playerName
+        player2Name = data.get(p2Pos).playerName
 
         /*table_left.setOnDragListener(dragListener)
         table_middle.setOnDragListener(dragListener)
@@ -252,9 +270,34 @@ class SchwimmenActivity : AppCompatActivity() {
         table2.setBackgroundColor(Color.WHITE)
         table3.setBackgroundColor(Color.WHITE)
 
-        Handler().postDelayed({
-            nextPlayerMenu(view)
-        }, 1500)
+        if (shove === true){
+            shove = false
+            shoveStarterHand = HandClass(deck,"Null")
+        }
+
+        if(knock === true){
+            knock = false
+            knockStarterHand = HandClass(deck,"Null")
+
+            game.close(p1hand, p2hand, deck, table, dump, hand)
+
+            val winner:Int = game.endGame(p1hand, p2hand)
+            if(winner === 1){
+                textGewinner = "Gewinner: ${player1Name}"
+            }else if(winner === 2){
+                textGewinner = "Gewinner: ${player2Name}"
+            }else{
+                textGewinner = "Yippieh, Unentschieden!"
+            }
+            val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
+            toast2.show()
+
+
+        } else {
+            Handler().postDelayed({
+                nextPlayerMenu(view)
+            }, 1500)
+        }
 
     }
 
@@ -333,35 +376,179 @@ class SchwimmenActivity : AppCompatActivity() {
         val toast2 = Toast.makeText(applicationContext, "${hand.getCard(0)}, ${hand.getCard(1)}, ${hand.getCard(2)} ", Toast.LENGTH_LONG)
         //toast2.show()
 
-        Handler().postDelayed({
-            nextPlayerMenu(view)
-        }, 1500)
+        if (shove === true){
+            shove = false
+            shoveStarterHand = HandClass(deck,"Null")
+        }
+
+        if(knock === true){
+            knock = false
+            knockStarterHand = HandClass(deck,"Null")
+
+            game.close(p1hand, p2hand, deck, table, dump, hand)
+
+            val winner:Int = game.endGame(p1hand, p2hand)
+            if(winner === 1){
+                textGewinner = "Gewinner: ${player1Name}"
+            }else if(winner === 2){
+                textGewinner = "Gewinner: ${player2Name}"
+            }else{
+                textGewinner = "Yippieh, Unentschieden!"
+            }
+            val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
+            toast2.show()
+
+
+        } else {
+            Handler().postDelayed({
+                nextPlayerMenu(view)
+            }, 1500)
+        }
+
     }
 
     fun onClickKnockCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Klopfen", Toast.LENGTH_LONG)
         //toast.show()
-        val text:String = game.endGame(p1hand, p2hand).toString()
-        val toast2 = Toast.makeText(applicationContext, text, Toast.LENGTH_LONG)
-        toast2.show()
+
+        if (knockStarterHand != p1hand && knockStarterHand != p1hand){
+            if (hand === p1hand){
+                knockStarterHand = p1hand
+                knock = true
+                Handler().postDelayed({
+                    nextPlayerMenu(view)
+                }, 1500)
+            }else if(hand === p2hand){
+                knockStarterHand = p2hand
+                knock = true
+                Handler().postDelayed({
+                    nextPlayerMenu(view)
+                }, 1500)
+            }
+        }else  if(knock === true){
+            knock = false
+            knockStarterHand = HandClass(deck,"Null")
+
+            game.close(p1hand, p2hand, deck, table, dump, hand)
+
+            val winner:Int = game.endGame(p1hand, p2hand)
+            if(winner === 1){
+                textGewinner = "Gewinner: ${player1Name}"
+            }else if(winner === 2){
+                textGewinner = "Gewinner: ${player2Name}"
+            }else{
+                textGewinner = "Yippieh, Unentschieden!"
+            }
+            val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
+            toast2.show()
+
+
+        } else {
+            Handler().postDelayed({
+                nextPlayerMenu(view)
+            }, 1500)
+        }
+
+
+        if (shove === true){
+            shove = false
+            shoveStarterHand = HandClass(deck,"Null")
+        }
+
+
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun onClickShoveCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
         toast.show()
-        game.push(table, dump, deck, true)
 
-        val table1 : ImageView = findViewById(R.id.table_card_01)!!
-        val table2 : ImageView = findViewById(R.id.table_card_02)!!
-        val table3 : ImageView = findViewById(R.id.table_card_03)!!
+        if (shoveStarterHand != p1hand && shoveStarterHand != p2hand) {
+            if(hand === p1hand){
+                shoveStarterHand = p1hand
+                shove = true
+                Handler().postDelayed({
+                    nextPlayerMenu(view)
+                }, 1500)
+            }else if(hand === p2hand){
+                shoveStarterHand = p2hand
+                shove = true
+                Handler().postDelayed({
+                    nextPlayerMenu(view)
+                }, 1500)
+            }
+        }else if(shoveStarterHand === p1hand && shove === true){
+            if(hand===p2hand){
+                game.push(table, dump, deck, true)
 
-        table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
-        table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
-        table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+                val table1: ImageView = findViewById(R.id.table_card_01)!!
+                val table2: ImageView = findViewById(R.id.table_card_02)!!
+                val table3: ImageView = findViewById(R.id.table_card_03)!!
 
-        val toast2 = Toast.makeText(applicationContext, "${table.toString()} ", Toast.LENGTH_LONG)
-        toast2.show()
+                table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+                table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+                table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+
+                val toast2 =
+                    Toast.makeText(applicationContext, "${table.toString()} ", Toast.LENGTH_LONG)
+                toast2.show()
+
+                shove = false
+                shoveStarterHand = HandClass(deck,"Null")
+
+                Handler().postDelayed({
+                    nextPlayerMenu(view)
+                }, 1500)
+            }
+        }else if(shoveStarterHand === p2hand && shove === true){
+            if(hand===p1hand){
+                game.push(table, dump, deck, true)
+
+                val table1: ImageView = findViewById(R.id.table_card_01)!!
+                val table2: ImageView = findViewById(R.id.table_card_02)!!
+                val table3: ImageView = findViewById(R.id.table_card_03)!!
+
+                table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+                table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+                table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+
+                val toast2 =
+                    Toast.makeText(applicationContext, "${table.toString()} ", Toast.LENGTH_LONG)
+                toast2.show()
+
+                shove = false
+                shoveStarterHand = HandClass(deck,"Null")
+
+                Handler().postDelayed({
+                    nextPlayerMenu(view)
+                }, 1500)
+            }
+        }
+
+        if(knock === true){
+            knock = false
+            knockStarterHand = HandClass(deck,"Null")
+
+            game.close(p1hand, p2hand, deck, table, dump, hand)
+
+            val winner:Int = game.endGame(p1hand, p2hand)
+            if(winner === 1){
+                textGewinner = "Gewinner: ${player1Name}"
+            }else if(winner === 2){
+                textGewinner = "Gewinner: ${player2Name}"
+            }else{
+                textGewinner = "Yippieh, Unentschieden!"
+            }
+            val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
+            toast2.show()
+
+
+        } else {
+            Handler().postDelayed({
+                nextPlayerMenu(view)
+            }, 1500)
+        }
+
     }
 
 
