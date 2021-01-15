@@ -23,6 +23,11 @@
 
     </style>
 
+    <style name="AppTheme.PopUpSpielende">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:src">@drawable/pause</item>
+    </style>
+
     <style name="AppTheme.Card1">
         <item name="android:src">@drawable/card_caro_07</item>
     </style>

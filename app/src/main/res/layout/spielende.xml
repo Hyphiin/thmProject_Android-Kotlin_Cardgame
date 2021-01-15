@@ -19,58 +19,27 @@
 
         <TextView
             android:id="@+id/player_id"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:background="@color/backgroundColor2"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:text="Spieler"
             android:textSize="36sp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="45dp" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/result_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-
-            <ImageView
-                android:id="@+id/heart1"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/herz_full" />
-
-            <ImageView
-                android:id="@+id/heart2"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/herz_full" />
-
-            <ImageView
-                android:id="@+id/heart3"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/herz_full" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:gravity="center"
+            android:text="hat gewonnen!"
+            android:textSize="36sp" />
 
         <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <ImageView
             android:id="@+id/test1"
@@ -86,16 +55,20 @@
             android:layout_height="45dp" />
 
         <Button
-            android:id="@+id/test"
+            android:id="@+id/next_round_btn"
             android:layout_width="250dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:background="@drawable/text_background_round"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:onClick="nextPlayer"
-            android:text="wechsel"
+            android:onClick="nextRound"
+            android:text="Weiter"
             android:textSize="36sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <Space
             android:layout_width="wrap_content"

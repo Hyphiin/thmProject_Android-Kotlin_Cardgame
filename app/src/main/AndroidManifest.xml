@@ -35,6 +35,9 @@
         <activity
             android:name=".PopUpKartenauswahlActivity"
             android:theme="@style/AppTheme.PopUpKartenauswahl" />
+        <activity
+            android:name=".PopUpSpielendeActivity"
+            android:theme="@style/AppTheme.PopUpSpielende" />
 
 
     </application>

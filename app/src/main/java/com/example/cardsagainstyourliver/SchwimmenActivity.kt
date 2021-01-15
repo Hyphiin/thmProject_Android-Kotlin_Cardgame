@@ -4,20 +4,15 @@ import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.view.DragEvent
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_schwimmen.*
 
 
 class SchwimmenActivity : AppCompatActivity() {
@@ -326,6 +321,14 @@ class SchwimmenActivity : AppCompatActivity() {
 
     }
 
+
+    fun nextRoundMenu(view: View) {
+        val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
+        toast.show()
+
+        val NextRoundMenuPopUpEvent = Intent(this, PopUpSpielendeActivity::class.java)
+        startActivity(NextRoundMenuPopUpEvent)
+    }
 
     fun promilleAnzeige(view: View) {
         val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
