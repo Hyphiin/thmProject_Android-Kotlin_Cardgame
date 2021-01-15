@@ -32,6 +32,7 @@ class SchwimmenActivity : AppCompatActivity() {
     var object1 = p1hand.getIndex(p1hand.getCard(0))
     var object2 = p1hand.getIndex(p1hand.getCard(0))
 
+    var hand = p1hand
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -53,6 +54,7 @@ class SchwimmenActivity : AppCompatActivity() {
         table= HandClass(deck, "Null")
         game.startHand(p1hand,table, deck)
         dump = HandClass(deck, "Null")
+        hand = p1hand
 
         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
         val dragView2: ImageView = findViewById(R.id.player_card_02)!!
@@ -62,9 +64,9 @@ class SchwimmenActivity : AppCompatActivity() {
         val dragView02: ImageView = findViewById(R.id.table_card_02)!!
         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
 
-        dragView1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
-        dragView2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
-        dragView3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+        dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
+        dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
+        dragView3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
 
         dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
         dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
@@ -94,7 +96,7 @@ class SchwimmenActivity : AppCompatActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item)
 
-            object1 = p1hand.getIndex(p1hand.getCard(0))
+            object1 = hand.getIndex(hand.getCard(0))
 
             dragView1.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
@@ -113,7 +115,7 @@ class SchwimmenActivity : AppCompatActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item2)
 
-            object1 = p1hand.getIndex(p1hand.getCard(1))
+            object1 = hand.getIndex(hand.getCard(1))
 
             dragView2.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
@@ -131,7 +133,7 @@ class SchwimmenActivity : AppCompatActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item3)
 
-            object1 = p1hand.getIndex(p1hand.getCard(2))
+            object1 = hand.getIndex(hand.getCard(2))
 
             dragView3.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
@@ -206,41 +208,41 @@ class SchwimmenActivity : AppCompatActivity() {
         val table3: ImageView = findViewById(R.id.table_card_03)!!
 
 
-        game.changeCard(object1, object2, p1hand, table)
+        game.changeCard(object1, object2, hand, table)
 
         if (object1 == 0 && object2 == 0){
-            hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+            hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
             table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
         }else if(object1 == 0 && object2 == 1){
-            hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+            hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
             table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
         }else if(object1 == 0 && object2 == 2){
-            hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+            hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
             table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
         }else if(object1 == 1 && object2 == 0){
-            hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+            hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
             table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
         }else if(object1 == 1 && object2 == 1){
-            hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+            hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
             table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
         }else if(object1 == 1 && object2 == 2){
-            hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+            hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
             table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
         }else if(object1 == 2 && object2 == 0){
-            hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+            hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
             table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
         }else if(object1 == 2 && object2 == 1){
-            hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+            hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
             table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
         }else if(object1 == 2 && object2 == 2){
-            hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+            hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
             table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
         }else{
             val toast = Toast.makeText(applicationContext, "Upsi", Toast.LENGTH_LONG)
             toast.show()
         }
 
-        val toast = Toast.makeText(applicationContext, "${p1hand.getCard(0)}, ${p1hand.getCard(1)}, ${p1hand.getCard(2)} ", Toast.LENGTH_LONG)
+        val toast = Toast.makeText(applicationContext, "${hand.getCard(0)}, ${hand.getCard(1)}, ${hand.getCard(2)} ", Toast.LENGTH_LONG)
         toast.show()
 
         hand1.setBackgroundColor(Color.WHITE)
@@ -262,11 +264,25 @@ class SchwimmenActivity : AppCompatActivity() {
 
         val SchwimmenPopUpEvent = Intent(this, PopUpSpielerwechselActivity::class.java)
         startActivity(SchwimmenPopUpEvent)
+
+        Handler().postDelayed({
+            val hand1 : ImageView = findViewById(R.id.player_card_01)!!
+            val hand2 : ImageView = findViewById(R.id.player_card_02)!!
+            val hand3 : ImageView = findViewById(R.id.player_card_03)!!
+
+            if (hand == p1hand){
+                hand = p2hand
+            }else{
+                hand = p1hand
+            }
+
+            hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
+            hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
+            hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
+        }, 1000)
+
     }
 
-    fun nextPlayer(){
-
-    }
 
     fun promilleAnzeige(view: View) {
         val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
@@ -303,19 +319,23 @@ class SchwimmenActivity : AppCompatActivity() {
         val hand3 : ImageView = findViewById(R.id.player_card_03)!!
         val table3 : ImageView = findViewById(R.id.table_card_03)!!
 
-        game.changeCard(p1hand.getIndex(p1hand.getCard(0)),zwischen1,p1hand,table)
-        game.changeCard(p1hand.getIndex(p1hand.getCard(1)),zwischen2,p1hand,table)
-        game.changeCard(p1hand.getIndex(p1hand.getCard(2)),zwischen3,p1hand,table)
+        game.changeCard(hand.getIndex(hand.getCard(0)),zwischen1,hand,table)
+        game.changeCard(hand.getIndex(hand.getCard(1)),zwischen2,hand,table)
+        game.changeCard(hand.getIndex(hand.getCard(2)),zwischen3,hand,table)
 
-        hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+        hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
         table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
-        hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+        hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
         table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
-        hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+        hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
         table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
-        val toast2 = Toast.makeText(applicationContext, "${p1hand.getCard(0)}, ${p1hand.getCard(1)}, ${p1hand.getCard(2)} ", Toast.LENGTH_LONG)
+        val toast2 = Toast.makeText(applicationContext, "${hand.getCard(0)}, ${hand.getCard(1)}, ${hand.getCard(2)} ", Toast.LENGTH_LONG)
         //toast2.show()
+
+        Handler().postDelayed({
+            nextPlayerMenu(view)
+        }, 1500)
     }
 
     fun onClickKnockCards(view: View) {
