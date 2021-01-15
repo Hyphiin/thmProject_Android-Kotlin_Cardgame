@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -13,9 +13,28 @@
         <item name="android:src">@drawable/bier</item>
     </style>
 
+
+    <style name="heart_empty">
+        <item name="android:src">@drawable/heart_empty</item>
+
+    </style>
+
+    <style name="heart_full">
+        <item name="android:src">@drawable/heart_full</item>
+
+    </style>
+
+
     <style name="AppTheme.PopUpSpielerwechsel">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:src">@drawable/herz_full</item>
+        <item name="android:src">@drawable/pause</item>
+
+    </style>
+
+
+    <style name="AppTheme.PopUpSpielerwechselTest" parent="@style/AppTheme.PopUpSpielerwechsel">
+        <item name="android:src">@drawable/pause</item>
+
     </style>
 
     <style name="AppTheme.PopUpKartenauswahl">
