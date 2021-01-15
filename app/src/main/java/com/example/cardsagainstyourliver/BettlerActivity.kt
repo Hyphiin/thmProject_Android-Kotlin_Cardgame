@@ -126,6 +126,7 @@ class BettlerActivity : AppCompatActivity() {
 
 
         player_cards.setOnDragListener(dragListener)
+        player_cards2.setOnDragListener(dragListener)
         plcaholder_cards.setOnDragListener(dragListener)
 
         // first drag and drop card
@@ -149,6 +150,196 @@ class BettlerActivity : AppCompatActivity() {
             val item2 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item2)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+        dragView3.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item3 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item3)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView4.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item4 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item4)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView5.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item5 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item5)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView6.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item6 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item6)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView7.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item7 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item7)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView8.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item8 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item8)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView9.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item9 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item9)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView10.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item10 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item10)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+        dragView11.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item11 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item11)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+        dragView12.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item12 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item12)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+        dragView13.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item13 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item13)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+        dragView14.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item14 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item14)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+        dragView15.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item15 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item15)
+
+            val dragShadowBuilder = View.DragShadowBuilder(it)
+            it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+            it.visibility = View.INVISIBLE
+            true
+
+        }
+
+        dragView16.setOnLongClickListener {
+            val clipText = "Player Card Left"
+            val item16 = ClipData.Item(clipText)
+            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+            val data = ClipData(clipText, mimeTypes, item16)
 
             val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
