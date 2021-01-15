@@ -72,19 +72,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/test1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/buttonColor"
-            app:srcCompat="@drawable/pause" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="45dp" />
-
         <Button
             android:id="@+id/test"
             android:layout_width="250dp"

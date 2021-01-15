@@ -15,7 +15,7 @@
 
     <style name="AppTheme.PopUpSpielerwechsel">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:src">@drawable/pause</item>
+        <item name="android:src">@drawable/herz_full</item>
     </style>
 
     <style name="AppTheme.PopUpKartenauswahl">
@@ -26,6 +26,7 @@
     <style name="AppTheme.PopUpSpielende">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:src">@drawable/pause</item>
+
     </style>
 
     <style name="AppTheme.Card1">
