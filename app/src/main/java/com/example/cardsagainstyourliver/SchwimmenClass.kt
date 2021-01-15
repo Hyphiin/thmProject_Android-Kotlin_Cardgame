@@ -69,18 +69,18 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Spielende, kann den Gewinner sagen --- noch nicht vollständig mit Herzangabe im Einsatz
-    fun endGame(hand1:HandClass, hand2:HandClass):String{
-        var text:String = "hallo"
+    fun endGame(hand1:HandClass, hand2:HandClass):Int{
+        var winner:Int
         if (hand1.getValueHand(hand1) > hand2.getValueHand(hand2)){
-            text = "Gewinner ist Hand1!"
-            return text
+            winner = 1
+            return winner
 
         }else if (hand1.getValueHand(hand1) < hand2.getValueHand(hand2)){
-            text = "Gewinner ist Hand2!"
-            return text
+            winner = 2
+            return winner
         }else {
-            text = "Oha, Unentschieden!"
-            return text
+            winner = 0
+            return winner
         }
 
         /*if (lostPlayer == player1){
