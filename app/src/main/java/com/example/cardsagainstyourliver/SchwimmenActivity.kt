@@ -3,6 +3,7 @@ package com.example.cardsagainstyourliver
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -69,19 +70,19 @@ class SchwimmenActivity : AppCompatActivity() {
 
 
 
-        table_left.setOnDragListener(dragListener)
+        /*table_left.setOnDragListener(dragListener)
         table_middle.setOnDragListener(dragListener)
         table_right.setOnDragListener(dragListener)
         //tableCard3.setOnDragListener(dragListener)
 
         player_left.setOnDragListener(dragListener)
         player_middle.setOnDragListener(dragListener)
-        player_right.setOnDragListener(dragListener)
+        player_right.setOnDragListener(dragListener)*/
 
 
 
-        val toast = Toast.makeText(applicationContext, "HandKarte: ${p1hand.getCard(0)} Tischkarte: ${table.getCard(0)}", Toast.LENGTH_LONG)
-        val toast2 = Toast.makeText(applicationContext, "HandKarte: ${p2hand.toString()}", Toast.LENGTH_LONG)
+        //val toast = Toast.makeText(applicationContext, "HandKarte: ${p1hand.getCard(0)} Tischkarte: ${table.getCard(0)}", Toast.LENGTH_LONG).show()
+        //val toast2 = Toast.makeText(applicationContext, "HandKarte: ${p2hand.toString()}", Toast.LENGTH_LONG).show()
         //toast2.show()
 
         // first drag and drop card
@@ -93,10 +94,12 @@ class SchwimmenActivity : AppCompatActivity() {
 
             object1 = p1hand.getIndex(p1hand.getCard(0))
 
-            val dragShadowBuilder = View.DragShadowBuilder(it)
+            dragView1.setBackgroundColor(getResources().getColor(R.color.colorAccent))
+
+            /*val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE // damit die karte während dem drag unsichtbar wird
+            it.visibility = View.INVISIBLE // damit die karte während dem drag unsichtbar wird*/
             true
 
         }
@@ -110,10 +113,12 @@ class SchwimmenActivity : AppCompatActivity() {
 
             object1 = p1hand.getIndex(p1hand.getCard(1))
 
-            val dragShadowBuilder = View.DragShadowBuilder(it)
+            dragView2.setBackgroundColor(getResources().getColor(R.color.colorAccent))
+
+            /*val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE
+            it.visibility = View.INVISIBLE*/
             true
         }
 
@@ -126,10 +131,12 @@ class SchwimmenActivity : AppCompatActivity() {
 
             object1 = p1hand.getIndex(p1hand.getCard(2))
 
-            val dragShadowBuilder = View.DragShadowBuilder(it)
+            dragView3.setBackgroundColor(getResources().getColor(R.color.colorAccent))
+
+            /*val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE
+            it.visibility = View.INVISIBLE*/
             true
 
         }
@@ -141,11 +148,15 @@ class SchwimmenActivity : AppCompatActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item01)
 
-            val dragShadowBuilder = View.DragShadowBuilder(it)
+            object2 = table.getIndex(table.getCard(0))
+            dragView01.setBackgroundColor(getResources().getColor(R.color.colorAccent))
+
+            /*val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
 
-            it.visibility = View.INVISIBLE
+
+            it.visibility = View.INVISIBLE*/
             true
 
         }
@@ -155,10 +166,13 @@ class SchwimmenActivity : AppCompatActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item02)
 
-            val dragShadowBuilder = View.DragShadowBuilder(it)
+            object2 = table.getIndex(table.getCard(1))
+            dragView02.setBackgroundColor(getResources().getColor(R.color.colorAccent))
+
+            /*val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE
+            it.visibility = View.INVISIBLE*/
             true
 
         }
@@ -169,16 +183,71 @@ class SchwimmenActivity : AppCompatActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(clipText, mimeTypes, item03)
 
-            val dragShadowBuilder = View.DragShadowBuilder(it)
+            object2 = table.getIndex(table.getCard(2))
+            dragView03.setBackgroundColor(getResources().getColor(R.color.colorAccent))
+
+            /*val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE
+            it.visibility = View.INVISIBLE*/
             true
 
         }
     }
 
+    fun onClickChangeCards(view: View) {
+        val hand1: ImageView = findViewById(R.id.player_card_01)!!
+        val table1: ImageView = findViewById(R.id.table_card_01)!!
+        val hand2: ImageView = findViewById(R.id.player_card_02)!!
+        val table2: ImageView = findViewById(R.id.table_card_02)!!
+        val hand3: ImageView = findViewById(R.id.player_card_03)!!
+        val table3: ImageView = findViewById(R.id.table_card_03)!!
 
+        game.changeCard(object1, object2, p1hand, table)
+
+        if (object1 == 0 && object2 == 0){
+            hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+            table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        }else if(object1 == 0 && object2 == 1){
+            hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+            table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        }else if(object1 == 0 && object2 == 2){
+            hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+            table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+        }else if(object1 == 1 && object2 == 0){
+            hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+            table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        }else if(object1 == 1 && object2 == 1){
+            hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+            table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        }else if(object1 == 1 && object2 == 2){
+            hand2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+            table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+        }else if(object1 == 2 && object2 == 0){
+            hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+            table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        }else if(object1 == 2 && object2 == 1){
+            hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+            table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        }else if(object1 == 2 && object2 == 2){
+            hand3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
+            table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+        }else{
+            val toast = Toast.makeText(applicationContext, "Upsi", Toast.LENGTH_LONG)
+            toast.show()
+        }
+
+        val toast = Toast.makeText(applicationContext, "${p1hand.getCard(0)}, ${p1hand.getCard(1)}, ${p1hand.getCard(2)} ", Toast.LENGTH_LONG)
+        toast.show()
+
+        hand1.setBackgroundColor(Color.WHITE)
+        hand2.setBackgroundColor(Color.WHITE)
+        hand3.setBackgroundColor(Color.WHITE)
+        table1.setBackgroundColor(Color.WHITE)
+        table2.setBackgroundColor(Color.WHITE)
+        table3.setBackgroundColor(Color.WHITE)
+
+    }
 
     fun onClickPauseMenuButton(view: View) {
         val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
@@ -199,11 +268,11 @@ class SchwimmenActivity : AppCompatActivity() {
         val zwischen3 = table.getIndex(table.getCard(2))
 
         val hand1 : ImageView = findViewById(R.id.player_card_01)!!
-        var table1 : ImageView = findViewById(R.id.table_card_01)!!
+        val table1 : ImageView = findViewById(R.id.table_card_01)!!
         val hand2 : ImageView = findViewById(R.id.player_card_02)!!
-        var table2 : ImageView = findViewById(R.id.table_card_02)!!
+        val table2 : ImageView = findViewById(R.id.table_card_02)!!
         val hand3 : ImageView = findViewById(R.id.player_card_03)!!
-        var table3 : ImageView = findViewById(R.id.table_card_03)!!
+        val table3 : ImageView = findViewById(R.id.table_card_03)!!
 
         game.changeCard(p1hand.getIndex(p1hand.getCard(0)),zwischen1,p1hand,table)
         game.changeCard(p1hand.getIndex(p1hand.getCard(1)),zwischen2,p1hand,table)
@@ -217,7 +286,7 @@ class SchwimmenActivity : AppCompatActivity() {
         table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
         val toast2 = Toast.makeText(applicationContext, "${p1hand.getCard(0)}, ${p1hand.getCard(1)}, ${p1hand.getCard(2)} ", Toast.LENGTH_LONG)
-        toast2.show()
+        //toast2.show()
     }
 
     fun onClickKnockCards(view: View) {
@@ -231,12 +300,12 @@ class SchwimmenActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun onClickShoveCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
-        //toast.show()
+        toast.show()
         game.push(table, dump, deck, true)
 
-        var table1 : ImageView = findViewById(R.id.table_card_01)!!
-        var table2 : ImageView = findViewById(R.id.table_card_02)!!
-        var table3 : ImageView = findViewById(R.id.table_card_03)!!
+        val table1 : ImageView = findViewById(R.id.table_card_01)!!
+        val table2 : ImageView = findViewById(R.id.table_card_02)!!
+        val table3 : ImageView = findViewById(R.id.table_card_03)!!
 
         table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
         table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
@@ -248,6 +317,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
 
 
+   /*@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     val dragListener = View.OnDragListener { target, event ->
         when (event.action) {
             DragEvent.ACTION_DRAG_STARTED -> {
@@ -291,26 +361,32 @@ class SchwimmenActivity : AppCompatActivity() {
 
                 game.changeCard(object1,object2,p1hand,table)
 
-                Toast.makeText(this, xPos2, Toast.LENGTH_SHORT).show()
-                //val toast = Toast.makeText(applicationContext, "XPos: ${xPos2}", Toast.LENGTH_LONG)
+                //Toast.makeText(this, xPos2, Toast.LENGTH_SHORT).show()
+                val toast = Toast.makeText(applicationContext, "XPos: ${dragData}", Toast.LENGTH_LONG)
                 //toast.show()
 
-                val dragged = event.localState as ImageView
+                val dragged = event.localState as ImageView //hand 0, dragView1 R.id.player_card_01
 
 
-                val oldOwner = dragged.parent as ViewGroup
-                val newOwner = target.parent as ViewGroup
+                val oldOwner = dragged.parent as ViewGroup  //hand 0
+                val newOwner = target.parent as ViewGroup   //table 0
 
-                val draggedPosition = oldOwner.indexOfChild(dragged)
-                val targetPosition = oldOwner.indexOfChild(dragged)
+                val draggedPosition = oldOwner.indexOfChild(dragged) // dragView1 R.id.player_card_01
+                val targetPosition = oldOwner.indexOfChild(dragged) //  dragView1 R.id.player_card_01
 
 
-                oldOwner.removeView(dragged)
+                oldOwner.removeView(dragged)    //dragView1 wird von
                 newOwner.addView(dragged, targetPosition)
 
                 newOwner.removeView(target)
                 oldOwner.addView(target, draggedPosition)
 
+
+                /*oldOwner.addView(findViewById(R.id.player_card_01)!!)
+                newOwner.addView(findViewById(R.id.table_card_01)!!)
+
+                hand1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+                table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))*/
 
                 target.invalidate()
 
@@ -331,7 +407,7 @@ class SchwimmenActivity : AppCompatActivity() {
                 /// val destination = view as LinearLayout
                 ///destination.addView(dragged)
 
-                dragged.visibility = View.VISIBLE
+                //dragged.visibility = View.VISIBLE
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
@@ -348,7 +424,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             else -> true
         }
-    }
+    }*/
 }
 
 

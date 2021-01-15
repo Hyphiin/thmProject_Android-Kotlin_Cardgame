@@ -208,7 +208,7 @@
         android:orientation="horizontal">
 
         <Space
-            android:layout_width="60dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="0" />
 
@@ -224,6 +224,21 @@
 
         <Space
             android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+        <Button
+            android:id="@+id/single_change_button"
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:background="@drawable/text_background_round"
+            android:foreground="@drawable/klopfen_button"
+            android:onClick="onClickChangeCards" />
+
+        <Space
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="0" />
 
@@ -253,7 +268,7 @@
             android:onClick="onClickKnockCards" />
 
         <Space
-            android:layout_width="50dp"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:layout_weight="0" />
 
