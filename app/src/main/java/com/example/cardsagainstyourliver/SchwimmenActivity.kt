@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -202,6 +203,9 @@ class SchwimmenActivity : AppCompatActivity() {
         val table2: ImageView = findViewById(R.id.table_card_02)!!
         val hand3: ImageView = findViewById(R.id.player_card_03)!!
         val table3: ImageView = findViewById(R.id.table_card_03)!!
+    fun nextPlayerMenu(view: View) {
+        val toast = Toast.makeText(applicationContext, "nächster Spieler", Toast.LENGTH_LONG)
+        toast.show()
 
         game.changeCard(object1, object2, p1hand, table)
 
@@ -248,6 +252,19 @@ class SchwimmenActivity : AppCompatActivity() {
         table3.setBackgroundColor(Color.WHITE)
 
     }
+
+        val SchwimmenPopUpEvent = Intent(this, PopUpSpielerwechselActivity::class.java)
+        startActivity(SchwimmenPopUpEvent)
+    }
+
+    fun promilleAnzeige(view: View) {
+        val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
+        toast.show()
+
+        val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
+        startActivity(PromillePopUpEvent)
+    }
+
 
     fun onClickPauseMenuButton(view: View) {
         val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)

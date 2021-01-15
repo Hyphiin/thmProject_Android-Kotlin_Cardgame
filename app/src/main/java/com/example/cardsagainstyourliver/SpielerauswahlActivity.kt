@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -70,6 +71,14 @@ class SpielerauswahlActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    fun kartenauswahl(view: View) {
+        val toast = Toast.makeText(applicationContext, "Wähle Handkarten", Toast.LENGTH_LONG)
+        toast.show()
+
+        val KartenauswahlPopUpEvent = Intent(this, PopUpKartenauswahlActivity::class.java)
+        startActivity(KartenauswahlPopUpEvent)
     }
 
     fun onClickGameStartButton( p1:Int, p2:Int, modus:String ) {
