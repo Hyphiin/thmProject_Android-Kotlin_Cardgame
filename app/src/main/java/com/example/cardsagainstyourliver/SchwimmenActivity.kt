@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.DragEvent
 import android.view.View
@@ -203,9 +204,7 @@ class SchwimmenActivity : AppCompatActivity() {
         val table2: ImageView = findViewById(R.id.table_card_02)!!
         val hand3: ImageView = findViewById(R.id.player_card_03)!!
         val table3: ImageView = findViewById(R.id.table_card_03)!!
-    fun nextPlayerMenu(view: View) {
-        val toast = Toast.makeText(applicationContext, "nächster Spieler", Toast.LENGTH_LONG)
-        toast.show()
+
 
         game.changeCard(object1, object2, p1hand, table)
 
@@ -251,10 +250,22 @@ class SchwimmenActivity : AppCompatActivity() {
         table2.setBackgroundColor(Color.WHITE)
         table3.setBackgroundColor(Color.WHITE)
 
+        Handler().postDelayed({
+            nextPlayerMenu(view)
+        }, 1500)
+
     }
+
+    fun nextPlayerMenu(view: View) {
+        val toast = Toast.makeText(applicationContext, "nächster Spieler", Toast.LENGTH_LONG)
+        toast.show()
 
         val SchwimmenPopUpEvent = Intent(this, PopUpSpielerwechselActivity::class.java)
         startActivity(SchwimmenPopUpEvent)
+    }
+
+    fun nextPlayer(){
+
     }
 
     fun promilleAnzeige(view: View) {
@@ -263,6 +274,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
         val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
         startActivity(PromillePopUpEvent)
+
     }
 
 
