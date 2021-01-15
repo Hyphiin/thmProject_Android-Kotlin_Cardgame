@@ -64,7 +64,9 @@ class HandClass(val deck:DeckClass, val name:String) {
         return picture
     }
 
+    fun sort(){
 
+    }
 
     //gibt die Höchste Hand Karte aus
     fun getMaxValue(hand:HandClass):Int{

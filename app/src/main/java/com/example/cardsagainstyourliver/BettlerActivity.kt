@@ -9,14 +9,15 @@ import android.util.Log
 import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_bettler.*
 
 class BettlerActivity : AppCompatActivity() {
+    companion object {
+        var currentPlayer:Int=0
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -46,50 +47,76 @@ class BettlerActivity : AppCompatActivity() {
         }
         var table = HandClass(deck, "Null")
 
-        val dragView1: ImageView = findViewById(R.id.card1)!!
-        val dragView2: ImageView = findViewById(R.id.card2)!!
-        val dragView3: ImageView = findViewById(R.id.card3)!!
-        val dragView4: ImageView = findViewById(R.id.card4)!!
-        val dragView5: ImageView = findViewById(R.id.card5)!!
-        val dragView6: ImageView = findViewById(R.id.card6)!!
-        val dragView7: ImageView = findViewById(R.id.card7)!!
-        val dragView8: ImageView = findViewById(R.id.card8)!!
-        val dragView9: ImageView = findViewById(R.id.card9)!!
-        val dragView10: ImageView = findViewById(R.id.card10)!!
-        val dragView11: ImageView = findViewById(R.id.card11)!!
-        val dragView12: ImageView = findViewById(R.id.card12)!!
-        val dragView13: ImageView = findViewById(R.id.card13)!!
-        val dragView14: ImageView = findViewById(R.id.card14)!!
-        val dragView15: ImageView = findViewById(R.id.card15)!!
-        val dragView16: ImageView = findViewById(R.id.card16)!!
+        val dragView1: ImageView = findViewById(R.id.card_1)!!
+        val dragView2: ImageView = findViewById(R.id.card_2)!!
+        val dragView3: ImageView = findViewById(R.id.card_3)!!
+        val dragView4: ImageView = findViewById(R.id.card_4)!!
+        val dragView5: ImageView = findViewById(R.id.card_5)!!
+        val dragView6: ImageView = findViewById(R.id.card_6)!!
+        val dragView7: ImageView = findViewById(R.id.card_7)!!
+        val dragView8: ImageView = findViewById(R.id.card_8)!!
+        val dragView9: ImageView = findViewById(R.id.card_9)!!
+        val dragView10: ImageView = findViewById(R.id.card_10)!!
+        val dragView11: ImageView = findViewById(R.id.card_11)!!
+        val dragView12: ImageView = findViewById(R.id.card_12)!!
+        val dragView13: ImageView = findViewById(R.id.card_13)!!
+        val dragView14: ImageView = findViewById(R.id.card_14)!!
+        val dragView15: ImageView = findViewById(R.id.card_15)!!
+        val dragView16: ImageView = findViewById(R.id.card_16)!!
+        
+        val playerSign: TextView =findViewById(R.id.playerSign)!!
+        var opposition=1
+        if(currentPlayer==1){
+             opposition=2
+        }
+        playerSign.setText("Schiebe an Player"+opposition.toString())
+        
 
-        var firstHand:HandClass
-        for(i in 0..p1hand.getSize() - 1) {
-            if (p1hand.getCard(i).toString() == "Karte: KARO SIEBEN") {
-                 firstHand=p1hand
-            }
-            else{
-                 firstHand=p2hand
-            }
-            dragView1.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(0))))
-            dragView2.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(1))))
-            dragView3.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(2))))
-            dragView4.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(3))))
-            dragView5.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(4))))
-            dragView6.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(5))))
-            dragView7.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(6))))
-            dragView8.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(7))))
-            dragView9.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(8))))
-            dragView10.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(9))))
-            dragView11.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(10))))
-            dragView12.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(11))))
-            dragView13.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(12))))
-            dragView14.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(13))))
-            dragView15.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(14))))
-            dragView16.setImageDrawable(getDrawable(firstHand.getPic(firstHand.getCard(15))))
+
+        var cardViews:MutableList<ImageView> = mutableListOf(dragView1, dragView2, dragView3, dragView4, dragView5, dragView6, dragView7, dragView8,dragView9,dragView10,dragView11,dragView12,dragView13,dragView14,dragView15,dragView16 )
+        
+        setStartingPlayer(p1hand)// bestimmt wer beginnt
+        fillView(cardViews,p1hand,p2hand)//bestückt views mit karten/macht gespielte karten unsichtbar
+
+        playerSign.setOnClickListener{
+            changePlayer(playerSign)
+            fillView(cardViews,p1hand,p2hand)
         }
 
-        //Sollte zum anpassen bei weiteren zügen in sinnvolle funktion gesteckt werden.
+        for(i in 0..15){
+            cardViews[i].setOnClickListener{//logik für einen Spielzug
+                Log.d("selected Card pos:", i.toString())
+                var currentHand: HandClass = p2hand
+                if(currentPlayer == 1) {
+                    currentHand = p1hand
+                }
+                //currentHand.getCard(i) sinnlos?
+                if(table.getSize()<1){
+                    Log.d("state:","tisch leer")
+                    table_card.setImageDrawable(getDrawable(currentHand.getPic(currentHand.getCard(i))))
+                    table.add(currentHand.getCard(i))
+                    currentHand.delete(currentHand.getCard(i))
+                    Log.d("neue Hand: größe",currentHand.getSize().toString())
+                    changePlayer(playerSign)
+                    fillView(cardViews,p1hand,p2hand)
+                }
+                else{
+                    if(checkIfLegal(currentHand.getCard(i),table.getCard(table.getSize()-1))) {
+                        Log.d("state:","legaler move")
+                        table_card.setImageDrawable(getDrawable(currentHand.getPic(currentHand.getCard(i))))
+                        table.add(currentHand.getCard(i))
+                        currentHand.delete(currentHand.getCard(i))
+                        Log.d("neue Hand: größe",currentHand.getSize().toString())
+                        changePlayer(playerSign)
+                        fillView(cardViews,p1hand,p2hand)
+                    }
+                    else{
+                        Log.d("state:","illegaler move")
+                        Toast.makeText(this, "Die Karte muss Höher sein, siehe Anleitung", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
 
 
 
@@ -132,7 +159,47 @@ class BettlerActivity : AppCompatActivity() {
         }
     }
 
+    fun checkIfLegal(playedCard:Null, tableCard:Null):Boolean{
+        Log.d("tischkarte:",tableCard.toString())
+        Log.d("LegalCheck:",playedCard.getValueNumberBettler().toString()+"-playedCard "+tableCard.getValueNumberBettler().toString()+"-tableCard")
+        return playedCard.getValueNumberBettler()>tableCard.getValueNumberBettler()
+    }
 
+    fun changePlayer(playerSign: TextView){
+        if(currentPlayer==1){
+            currentPlayer=2
+            playerSign.setText("Schieben an Player 1")
+        }
+        else{
+            currentPlayer=1
+            playerSign.setText("Schieben an Player 2")
+        }
+    }
+
+    fun setStartingPlayer(p1hand:HandClass) {
+        currentPlayer=2
+        for (i in 0..p1hand.getSize() - 1) {
+            if (p1hand.getCard(i).toString() == "Karte: KARO SIEBEN") {
+                Log.d("beginn:", "p1")
+                currentPlayer = 1
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    fun fillView(cardViews:MutableList<ImageView>, p1hand:HandClass, p2hand:HandClass) {
+        var currentHand: HandClass = p2hand//hier scheint current hand nicht ganz zu klappen beim schieben
+        Log.d("gerade:", currentHand.getSize().toString())
+        if(currentPlayer==1){
+            currentHand=p1hand
+        }
+            for (i in 0..currentHand.getSize()-1) {
+                cardViews[i].setImageDrawable(getDrawable(currentHand.getPic(currentHand.getCard(i))))
+            }
+            for (i in currentHand.getSize()..15){
+                cardViews[i].setVisibility(View.INVISIBLE)
+            }
+        }
 
     fun onClickStartGame(view: View) {
         setContentView(R.layout.activity_bettler)

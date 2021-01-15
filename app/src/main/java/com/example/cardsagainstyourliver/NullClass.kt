@@ -30,4 +30,8 @@ open class Null {
         val test: Int = R.drawable.card_kreuz_07
         return test
     }
+
+    open fun getValueNumberBettler(): Int {
+        TODO("Not yet implemented")
+    }
 }
