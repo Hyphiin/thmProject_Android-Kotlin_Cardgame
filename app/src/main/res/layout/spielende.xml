@@ -18,7 +18,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/player_id"
+            android:id="@+id/player_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="@color/backgroundColor2"

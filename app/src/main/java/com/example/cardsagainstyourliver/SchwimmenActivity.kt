@@ -9,10 +9,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
+import kotlinx.android.synthetic.main.activity_bettler.*
+import kotlinx.android.synthetic.main.player_change.*
 
 
 class SchwimmenActivity : AppCompatActivity() {
@@ -34,6 +36,11 @@ class SchwimmenActivity : AppCompatActivity() {
 
     var player1Name = "Jürgen"
     var player2Name = "Klaus"
+
+    public var player1Hearts = 3
+    public var player2Hearts = 3
+
+    var name = "derzeitiger Spieler"
 
     var knock = false
     var knockStarterHand:HandClass = HandClass(deck, "Null")
@@ -83,6 +90,11 @@ class SchwimmenActivity : AppCompatActivity() {
         val context=this
         var db =DBHandler(context)
         var data=db.readData()
+
+
+        //var text3 = textView3.getText().toString()
+       // Log.d("View: ",text3)
+
 
         player1Name = data.get(p1Pos).playerName
         player2Name = data.get(p2Pos).playerName
@@ -279,14 +291,17 @@ class SchwimmenActivity : AppCompatActivity() {
             val winner:Int = game.endGame(p1hand, p2hand)
             if(winner === 1){
                 textGewinner = "Gewinner: ${player1Name}"
+                player2Hearts --
             }else if(winner === 2){
                 textGewinner = "Gewinner: ${player2Name}"
+                player1Hearts --
             }else{
                 textGewinner = "Yippieh, Unentschieden!"
             }
             val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             toast2.show()
 
+            spielEnde(view)
 
         } else {
             Handler().postDelayed({
@@ -297,28 +312,45 @@ class SchwimmenActivity : AppCompatActivity() {
     }
 
     fun nextPlayerMenu(view: View) {
-        val toast = Toast.makeText(applicationContext, "nächster Spieler", Toast.LENGTH_LONG)
-        toast.show()
-
-        val SchwimmenPopUpEvent = Intent(this, PopUpSpielerwechselActivity::class.java)
-        startActivity(SchwimmenPopUpEvent)
-
-        Handler().postDelayed({
-            val hand1 : ImageView = findViewById(R.id.player_card_01)!!
-            val hand2 : ImageView = findViewById(R.id.player_card_02)!!
-            val hand3 : ImageView = findViewById(R.id.player_card_03)!!
-
-            if (hand == p1hand){
-                hand = p2hand
+            //val toast = Toast.makeText(applicationContext, name, Toast.LENGTH_LONG)
+            //toast.show()
+            if(hand == p2hand){
+                name = player2Name
             }else{
-                hand = p1hand
+                name = player1Name
             }
 
-            hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
-            hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
-            hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
-        }, 1000)
+            val intent = Intent(this, PopUpSpielerwechselActivity::class.java)
+            intent.putExtra("heart1", player1Hearts)
+            intent.putExtra("heart2", player2Hearts)
+            intent.putExtra("name", name)
+            intent.putExtra("player1name", player1Name)
+            intent.putExtra("player2name", player2Name)
+            startActivity(intent)
 
+            Handler().postDelayed({
+                val hand1: ImageView = findViewById(R.id.player_card_01)!!
+                val hand2: ImageView = findViewById(R.id.player_card_02)!!
+                val hand3: ImageView = findViewById(R.id.player_card_03)!!
+
+                if (hand == p1hand) {
+                    hand = p2hand
+                } else {
+                    hand = p1hand
+                }
+
+                hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
+                hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
+                hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
+            }, 1000)
+    }
+
+    fun spielEnde(view: View) {
+        //val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
+        //toast.show()
+
+        val SpielendePopUpEvent = Intent(this, PopUpSpielendeActivity::class.java)
+        startActivity(SpielendePopUpEvent)
     }
 
 
@@ -393,14 +425,17 @@ class SchwimmenActivity : AppCompatActivity() {
             val winner:Int = game.endGame(p1hand, p2hand)
             if(winner === 1){
                 textGewinner = "Gewinner: ${player1Name}"
+                player2Hearts --
             }else if(winner === 2){
                 textGewinner = "Gewinner: ${player2Name}"
+                player1Hearts --
             }else{
                 textGewinner = "Yippieh, Unentschieden!"
             }
             val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             toast2.show()
 
+            spielEnde(view)
 
         } else {
             Handler().postDelayed({
@@ -437,14 +472,17 @@ class SchwimmenActivity : AppCompatActivity() {
             val winner:Int = game.endGame(p1hand, p2hand)
             if(winner === 1){
                 textGewinner = "Gewinner: ${player1Name}"
+                player2Hearts --
             }else if(winner === 2){
                 textGewinner = "Gewinner: ${player2Name}"
+                player1Hearts --
             }else{
                 textGewinner = "Yippieh, Unentschieden!"
             }
             val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             toast2.show()
 
+            spielEnde(view)
 
         } else {
             Handler().postDelayed({
@@ -537,14 +575,17 @@ class SchwimmenActivity : AppCompatActivity() {
             val winner:Int = game.endGame(p1hand, p2hand)
             if(winner === 1){
                 textGewinner = "Gewinner: ${player1Name}"
+                player2Hearts --
             }else if(winner === 2){
                 textGewinner = "Gewinner: ${player2Name}"
+                player1Hearts --
             }else{
                 textGewinner = "Yippieh, Unentschieden!"
             }
             val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             toast2.show()
 
+            spielEnde(view)
 
         } else {
             Handler().postDelayed({

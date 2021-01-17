@@ -4,6 +4,10 @@ import android.app.Activity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import kotlinx.android.synthetic.main.player_change.*
 
 class PopUpSpielerwechselActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,14 +21,49 @@ class PopUpSpielerwechselActivity : Activity() {
         val width = dm.widthPixels
         val height = dm.heightPixels
 
+        val player1heart = intent.getIntExtra("heart1", -1)
+        val player2heart = intent.getIntExtra("heart2", -1)
+        var name = intent.getStringExtra("name")
+        val player1Name = intent.getStringExtra("player1name")
+        val player2Name = intent.getStringExtra("player2name")
+
+
+        val heart1: ImageView = findViewById(R.id.heart1)!!
+        val heart2: ImageView = findViewById(R.id.heart2)!!
+        val heart3: ImageView = findViewById(R.id.heart3)!!
+        val textView: TextView = findViewById(R.id.player_name)!!
+
+        if(name == player1Name){
+            textView.setText(player2Name)
+            if (player2heart == 2) {
+                heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
+            } else if (player2heart == 1) {
+                heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
+                heart2.setImageDrawable(getDrawable(R.drawable.heart_empty))
+            } else if (player2heart == 0) {
+                heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
+                heart2.setImageDrawable(getDrawable(R.drawable.heart_empty))
+                heart1.setImageDrawable(getDrawable(R.drawable.heart_empty))
+            }
+        }else {
+            textView.setText(player1Name)
+            if (player1heart == 2) {
+                heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
+            } else if (player1heart == 1) {
+                heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
+                heart2.setImageDrawable(getDrawable(R.drawable.heart_empty))
+            } else if (player1heart == 0) {
+                heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
+                heart2.setImageDrawable(getDrawable(R.drawable.heart_empty))
+                heart1.setImageDrawable(getDrawable(R.drawable.heart_empty))
+            }
+        }
 
         window.setLayout(
             (width * 0.805).toInt(),
             (height * 0.805).toInt()
         )
-
-
-    }
+}
 
 
     fun nextPlayer(view: View) {

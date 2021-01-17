@@ -18,13 +18,20 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/player_id"
+            android:id="@+id/player_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:text="Spieler"
             android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/coole_View"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CoolerSPielr" />
 
         <Space
             android:layout_width="match_parent"
@@ -57,8 +64,8 @@
                 app:srcCompat="@drawable/heart_full" />
 
             <ImageView
-                style="@style/heart_empty"
                 android:id="@+id/heart3"
+                style="@style/heart_full"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
