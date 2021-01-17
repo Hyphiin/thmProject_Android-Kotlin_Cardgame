@@ -20,6 +20,7 @@ class BettlerActivity : AppCompatActivity() {
         var winner:Int=0
         var opposition:Int=0
         var kartenWahl:Boolean=false
+        var firstmove=true
     }
 
 
@@ -89,17 +90,20 @@ class BettlerActivity : AppCompatActivity() {
             if(playerSign.getText().toString().equals(winner.toString()+" ist könig! Drücken für neue Runde")){
                 deck = DeckClass(2)
                 deck.shuffle()
-                 p1hand = HandClass(deck, "Bettler")
-                 p2hand = HandClass(deck, "Bettler")
-                 table = HandClass(deck, "Null")//Todo: Kartentausch
-                 fillView(cardViews,p1hand,p2hand)
+                p1hand = HandClass(deck, "Bettler")
+                p2hand = HandClass(deck, "Bettler")
+                table = HandClass(deck, "Null")
+                playerSign.setText("König gebe eine Karte ab!")
+                kartenWahl=true
+                fillView(cardViews,p1hand,p2hand)
+
             }
             else {
                 changePlayer(playerSign)
                 table.clear()
-                table_card.setImageDrawable(null)
                 fillView(cardViews, p1hand, p2hand)
             }
+            table_card.setImageDrawable(null)//Todo: Durch platzhalter ersetzen
         }
 
         for(i in 0..15){
@@ -109,7 +113,27 @@ class BettlerActivity : AppCompatActivity() {
                 if(currentPlayer == 1) {
                     currentHand = p1hand
                 }
-                if(table.getSize()<1){
+                if(kartenWahl){//Hier wird kartentausch geregelt
+                    if(winner==1){
+                        var bestCard=p2hand.getHighestCard(p2hand)
+                        p1hand.add(bestCard)
+                        p2hand.delete(bestCard)
+                        p2hand.add(p1hand.getCard(i))
+                        p1hand.delete(p1hand.getCard(i))
+                    }
+                    else{
+                        var bestCard=p1hand.getHighestCard(p1hand)
+                        p2hand.add(bestCard)
+                        p1hand.delete(bestCard)
+                        p1hand.add(p2hand.getCard(i))
+                        p2hand.delete(p2hand.getCard(i))
+                    }
+                    changePlayer(playerSign)
+                    fillView(cardViews,p1hand,p2hand)
+                    playerSign.setText("Arschloch: "+currentPlayer+" beginnt")
+                    kartenWahl=false
+                }
+                else if(table.getSize()<1){
                     Log.d("state:","tisch leer")
                     playCard(currentHand,table,i,cardViews,p1hand,p2hand)
                 }
@@ -233,6 +257,7 @@ class BettlerActivity : AppCompatActivity() {
             winner=currentPlayer
         }
         playerSign.setText(winner.toString()+" ist könig! Drücken für neue Runde")
+
     }
 
     fun setOpposition(){
@@ -262,11 +287,12 @@ class BettlerActivity : AppCompatActivity() {
                 currentPlayer = 1
             }
         }
+        playerSign.setText("Player "+currentPlayer+" beginnt!")
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun fillView(cardViews:MutableList<ImageView>, p1hand:HandClass, p2hand:HandClass) {
-        var currentHand: HandClass = p2hand//hier scheint current hand nicht ganz zu klappen beim schieben
+        var currentHand: HandClass = p2hand
         if(currentPlayer==1){
             currentHand=p1hand
         }

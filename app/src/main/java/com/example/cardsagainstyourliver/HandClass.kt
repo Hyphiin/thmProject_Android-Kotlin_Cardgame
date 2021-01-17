@@ -88,6 +88,19 @@ class HandClass(val deck:DeckClass, val name:String) {
         return maxNum
     }
 
+    fun getHighestCard(hand:HandClass):Null{
+        var maxNum = 0
+        var highestCard:Null=Null()
+        for(i in 0..hand.getSize()-1){
+            if(hand.getCard(i).getValueNumberBettler()>maxNum){
+                maxNum=hand.getCard(i).getValueNumberBettler()
+                highestCard=hand.getCard(i)
+            }
+        }
+
+        return highestCard
+    }
+
     //bestimmt den gesamt Value der Hand nach Schwimmen Regeln
     fun getValueHand(hand:HandClass):Int{
         var valueHand:Int = 0
