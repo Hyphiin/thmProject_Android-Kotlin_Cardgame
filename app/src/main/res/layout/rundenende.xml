@@ -25,7 +25,6 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:text="Spieler"
-            android:textColor="@color/buttonText"
             android:textSize="36sp" />
 
         <TextView
@@ -36,7 +35,6 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:text="hat gewonnen!"
-            android:textColor="@color/buttonText"
             android:textSize="36sp" />
 
         <Space
@@ -65,7 +63,6 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:text=" neues Spiel"
-            android:textColor="@color/buttonText"
             android:textSize="30sp" />
 
         <Space
@@ -82,7 +79,6 @@
             android:gravity="center"
             android:onClick="onClickBackToMenuButton"
             android:text="@string/menu_text"
-            android:textColor="@color/buttonText"
             android:textSize="30sp" />
 
         <Space
@@ -99,7 +95,6 @@
             android:gravity="center"
             android:onClick="promilleAnzeige"
             android:text="Promille"
-            android:textColor="@color/buttonText"
             android:textSize="30sp" />
 
         <Space
