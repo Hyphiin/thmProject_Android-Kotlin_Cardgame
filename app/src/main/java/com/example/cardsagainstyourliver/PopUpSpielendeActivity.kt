@@ -29,17 +29,17 @@ class PopUpSpielendeActivity : Activity() {
         val textView2: TextView = findViewById(R.id.player_name2)!!
 
 
-        if(textGewinner == player1Name){
+        if (textGewinner == player1Name) {
             textView.setText(player1Name)
-        }else if(textGewinner == player2Name){
+        } else if (textGewinner == player2Name) {
             textView.setText(player2Name)
-        }else{
+        } else {
             textView.setText("Keiner")
         }
 
-        if(playerStart == player1Name) {
+        if (playerStart == player1Name) {
             textView2.setText(player2Name)
-        }else{
+        } else {
             textView2.setText(player1Name)
         }
 
@@ -61,18 +61,19 @@ class PopUpSpielendeActivity : Activity() {
         val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
         startActivity(PromillePopUpEvent)
 
-    fun nextRound(view: View) {
-        finish()
-    }
+        fun nextRound(view: View) {
+            finish()
+        }
 
 
-    fun onClickPauseMenuButton(view: View) {
-        val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
-        startActivity(PauseMenuButton)
-    }
+        fun onClickPauseMenuButton(view: View) {
+            val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
+            startActivity(PauseMenuButton)
+        }
 
-    fun onClickBackToMenuButton(view: View) {
-        val BackToMenuButton = Intent(this, MainActivity::class.java)
-        startActivity(BackToMenuButton)
+        fun onClickBackToMenuButton(view: View) {
+            val BackToMenuButton = Intent(this, MainActivity::class.java)
+            startActivity(BackToMenuButton)
+        }
     }
 }
