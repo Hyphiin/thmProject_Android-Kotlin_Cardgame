@@ -36,10 +36,10 @@
             android:name=".PopUpKartenauswahlActivity"
             android:theme="@style/AppTheme.PopUpKartenauswahl" />
         <activity
-            android:name=".PopUpRundenendeActivity"
+            android:name=".PopUpSpielendeActivity"
             android:theme="@style/AppTheme.PopUpSpielende" />
         <activity
-            android:name=".PopUpSpielendeActivity"
+            android:name=".PopUpRundenendeActivity"
             android:theme="@style/AppTheme.PopUpSpielende" />
 
 

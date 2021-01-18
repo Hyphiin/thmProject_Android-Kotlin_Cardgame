@@ -3,7 +3,6 @@ package com.example.cardsagainstyourliver
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -281,6 +280,131 @@ class SchwimmenActivity : AppCompatActivity() {
     }
 
 
+
+
+    fun nextPlayerMenu(view: View) {
+            //val toast = Toast.makeText(applicationContext, name, Toast.LENGTH_LONG)
+            //toast.show()
+            if(hand == p2hand){
+                name = player2Name
+            }else{
+                name = player1Name
+            }
+
+            val intent = Intent(this, PopUpSpielerwechselActivity::class.java)
+            intent.putExtra("heart1", player1Hearts)
+            intent.putExtra("heart2", player2Hearts)
+            intent.putExtra("name", name)
+            intent.putExtra("player1name", player1Name)
+            intent.putExtra("player2name", player2Name)
+            intent.putExtra("knock",knock)
+            intent.putExtra("shove",shove)
+            startActivity(intent)
+
+            Handler().postDelayed({
+                val hand1: ImageView = findViewById(R.id.player_card_01)!!
+                val hand2: ImageView = findViewById(R.id.player_card_02)!!
+                val hand3: ImageView = findViewById(R.id.player_card_03)!!
+
+                if (hand == p1hand) {
+                    hand = p2hand
+                } else {
+                    hand = p1hand
+                }
+
+                hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
+                hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
+                hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
+            }, 1000)
+    }
+
+    fun rundenEnde(view: View) {
+        //val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
+        //toast.show()
+
+        if(player1Hearts >= 0 || player2Hearts >= 0) {
+            val intent = Intent(this, PopUpRundenendeActivity::class.java)
+            intent.putExtra("textGewinner", textGewinner)
+            intent.putExtra("player1name", player1Name)
+            intent.putExtra("player2name", player2Name)
+            intent.putExtra("playerStart", playerStart)
+            startActivity(intent)
+
+            //game.close(p1hand,p2hand,deck,table,dump,hand,playerStart,player1Name)
+            Handler().postDelayed({
+                deck = DeckClass(2)
+                deck.shuffle()
+                p1hand = HandClass(deck, "Null")
+                p2hand = HandClass(deck, "Null")
+                table = HandClass(deck, "Null")
+                dump = HandClass(deck, "Null")
+                if (playerStart == player1Name) {
+                    game.startHand(p2hand, table, deck)
+                    p1hand = HandClass(deck, "Schwimmen")
+                    hand = p2hand
+                    playerStart = player2Name
+                    val toast =
+                        Toast.makeText(applicationContext, "Player1Starter", Toast.LENGTH_LONG)
+                    //toast.show()
+                } else if (playerStart == player2Name) {
+                    game.startHand(p1hand, table, deck)
+                    p2hand = HandClass(deck, "Schwimmen")
+                    hand = p1hand
+                    playerStart = player1Name
+                    val toast =
+                        Toast.makeText(applicationContext, "Player2Starter", Toast.LENGTH_LONG)
+                    //toast.show()
+                } else {
+                    val toast =
+                        Toast.makeText(applicationContext, "hand nicht def", Toast.LENGTH_LONG)
+                    //toast.show()
+                }
+
+                val hand1: ImageView = findViewById(R.id.player_card_01)!!
+                val table1: ImageView = findViewById(R.id.table_card_01)!!
+                val hand2: ImageView = findViewById(R.id.player_card_02)!!
+                val table2: ImageView = findViewById(R.id.table_card_02)!!
+                val hand3: ImageView = findViewById(R.id.player_card_03)!!
+                val table3: ImageView = findViewById(R.id.table_card_03)!!
+
+                hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
+                table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+                hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
+                table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+                hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
+                table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+
+            }, 1000)
+            Handler().postDelayed({
+                startHandView()
+            }, 3000)
+        }else if(player1Hearts < 0 || player2Hearts < 0){
+            val intent = Intent(this, PopUpSpielendeActivity::class.java)
+            startActivity(intent)
+        }
+
+
+    }
+
+    fun spielEnde(view: View) {
+        //val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
+        //toast.show()
+
+        val SpielendePopUpEvent = Intent(this, PopUpSpielendeActivity::class.java)
+        startActivity(SpielendePopUpEvent)
+    }
+
+
+    fun nextRoundMenu(view: View) {
+        val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
+        toast.show()
+
+        val NextRoundMenuPopUpEvent = Intent(this, PopUpRundenendeActivity::class.java)
+        startActivity(NextRoundMenuPopUpEvent)
+    }
+
+
+
     fun onClickChangeCards(view: View) {
         val hand1: ImageView = findViewById(R.id.player_card_01)!!
         val table1: ImageView = findViewById(R.id.table_card_01)!!
@@ -356,7 +480,7 @@ class SchwimmenActivity : AppCompatActivity() {
             //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             //toast2.show()
 
-            spielEnde(view)
+            rundenEnde(view)
 
         } else {
             Handler().postDelayed({
@@ -364,137 +488,6 @@ class SchwimmenActivity : AppCompatActivity() {
             }, 1500)
         }
 
-    }
-
-    fun nextPlayerMenu(view: View) {
-            //val toast = Toast.makeText(applicationContext, name, Toast.LENGTH_LONG)
-            //toast.show()
-            if(hand == p2hand){
-                name = player2Name
-            }else{
-                name = player1Name
-            }
-
-            val intent = Intent(this, PopUpSpielerwechselActivity::class.java)
-            intent.putExtra("heart1", player1Hearts)
-            intent.putExtra("heart2", player2Hearts)
-            intent.putExtra("name", name)
-            intent.putExtra("player1name", player1Name)
-            intent.putExtra("player2name", player2Name)
-            intent.putExtra("knock",knock)
-            intent.putExtra("shove",shove)
-            startActivity(intent)
-
-            Handler().postDelayed({
-                val hand1: ImageView = findViewById(R.id.player_card_01)!!
-                val hand2: ImageView = findViewById(R.id.player_card_02)!!
-                val hand3: ImageView = findViewById(R.id.player_card_03)!!
-
-                if (hand == p1hand) {
-                    hand = p2hand
-                } else {
-                    hand = p1hand
-                }
-
-                hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
-                hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
-                hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
-            }, 1000)
-    }
-
-    fun spielEnde(view: View) {
-        //val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
-        //toast.show()
-        val intent = Intent(this, PopUpSpielendeActivity::class.java)
-        intent.putExtra("textGewinner", textGewinner)
-        intent.putExtra("player1name", player1Name)
-        intent.putExtra("player2name", player2Name)
-        intent.putExtra("playerStart", playerStart)
-        startActivity(intent)
-
-        //game.close(p1hand,p2hand,deck,table,dump,hand,playerStart,player1Name)
-        Handler().postDelayed({
-            deck = DeckClass(2)
-            deck.shuffle()
-            p1hand = HandClass(deck, "Null")
-            p2hand = HandClass(deck, "Null")
-            table = HandClass(deck, "Null")
-            dump = HandClass(deck, "Null")
-            if (playerStart == player1Name){
-                game.startHand(p2hand,table,deck)
-                p1hand = HandClass(deck,"Schwimmen")
-                hand = p2hand
-                playerStart = player2Name
-                val toast = Toast.makeText(applicationContext, "Player1Starter", Toast.LENGTH_LONG)
-                //toast.show()
-            }else if(playerStart == player2Name){
-                game.startHand(p1hand,table,deck)
-                p2hand = HandClass(deck,"Schwimmen")
-                hand = p1hand
-                playerStart = player1Name
-                val toast = Toast.makeText(applicationContext, "Player2Starter", Toast.LENGTH_LONG)
-                //toast.show()
-            }else{
-                val toast = Toast.makeText(applicationContext, "hand nicht def", Toast.LENGTH_LONG)
-                //toast.show()
-            }
-
-            val hand1 : ImageView = findViewById(R.id.player_card_01)!!
-            val table1 : ImageView = findViewById(R.id.table_card_01)!!
-            val hand2 : ImageView = findViewById(R.id.player_card_02)!!
-            val table2 : ImageView = findViewById(R.id.table_card_02)!!
-            val hand3 : ImageView = findViewById(R.id.player_card_03)!!
-            val table3 : ImageView = findViewById(R.id.table_card_03)!!
-
-            hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
-            table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
-            hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
-            table2.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
-            hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
-            table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
-
-        }, 1000)
-        Handler().postDelayed({
-            startHandView()
-        }, 3000)
-
-    }
-
-    fun rundenEnde(view: View) {
-        //val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
-        //toast.show()
-
-        val SpielendePopUpEvent = Intent(this, PopUpSpielendeActivity::class.java)
-        startActivity(SpielendePopUpEvent)
-    }
-
-
-    fun nextRoundMenu(view: View) {
-        val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
-        toast.show()
-
-        val NextRoundMenuPopUpEvent = Intent(this, PopUpSpielendeActivity::class.java)
-        startActivity(NextRoundMenuPopUpEvent)
-    }
-
-    fun promilleAnzeige(view: View) {
-        val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
-        toast.show()
-
-        val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
-        startActivity(PromillePopUpEvent)
-
-    }
-
-
-    fun onClickPauseMenuButton(view: View) {
-        val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
-        startActivity(PauseMenuButton)
-    }
-
-    fun onClickBackToMenuButton(view: View) {
-        val BackToMenuButton = Intent(this, MainActivity::class.java)
-        startActivity(BackToMenuButton)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -555,7 +548,7 @@ class SchwimmenActivity : AppCompatActivity() {
             //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             //toast2.show()
 
-            spielEnde(view)
+            rundenEnde(view)
 
         } else {
             Handler().postDelayed({
@@ -606,7 +599,7 @@ class SchwimmenActivity : AppCompatActivity() {
             //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             //toast2.show()
 
-            spielEnde(view)
+            rundenEnde(view)
 
         } else {
             Handler().postDelayed({
@@ -730,9 +723,28 @@ class SchwimmenActivity : AppCompatActivity() {
             //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             //toast2.show()
 
-            spielEnde(view)
+            rundenEnde(view)
         }
+    }
 
+
+    fun promilleAnzeige(view: View) {
+        val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
+        toast.show()
+
+        val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
+        startActivity(PromillePopUpEvent)
+
+    }
+
+    fun onClickPauseMenuButton(view: View) {
+        val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
+        startActivity(PauseMenuButton)
+    }
+
+    fun onClickBackToMenuButton(view: View) {
+        val BackToMenuButton = Intent(this, MainActivity::class.java)
+        startActivity(BackToMenuButton)
     }
 
 
