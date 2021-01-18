@@ -1,15 +1,17 @@
 package com.example.cardsagainstyourliver
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
+import android.widget.Toast
 
 class PopUpSpielendeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.spielende)
+        setContentView(R.layout.rundenende)
 
         val dm: DisplayMetrics = DisplayMetrics()
         this.windowManager.defaultDisplay.getMetrics(dm)
@@ -27,9 +29,23 @@ class PopUpSpielendeActivity : Activity() {
     }
 
 
-    fun nextRound(view: View) {
+    fun promilleAnzeige(view: View) {
+        val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
+        toast.show()
 
-        finish()
+        val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
+        startActivity(PromillePopUpEvent)
 
+    }
+
+
+    fun onClickPauseMenuButton(view: View) {
+        val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
+        startActivity(PauseMenuButton)
+    }
+
+    fun onClickBackToMenuButton(view: View) {
+        val BackToMenuButton = Intent(this, MainActivity::class.java)
+        startActivity(BackToMenuButton)
     }
 }
