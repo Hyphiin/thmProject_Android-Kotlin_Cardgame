@@ -3,6 +3,7 @@ package com.example.cardsagainstyourliver
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,9 @@ class BettlerActivity : AppCompatActivity() {
         var opposition:Int=0
         var kartenWahl:Boolean=false
         var firstmove=true
+        var nuOfCardsPlayed=0
+        var nuOfCardsLying=0
+        var deck = DeckClass(2)
     }
 
 
@@ -42,7 +46,7 @@ class BettlerActivity : AppCompatActivity() {
 
         var game = BettlerClass()
         game.startGame(game) //was passiert hier?
-        var deck = DeckClass(2)
+
         deck.shuffle()
         var p1hand = HandClass(deck, "Bettler")
         var p2hand = HandClass(deck, "Bettler")
@@ -56,6 +60,7 @@ class BettlerActivity : AppCompatActivity() {
             Log.d("hand2:", p2hand.getCard(i).toString())
         }
         var table = HandClass(deck, "Null")
+        var temp = HandClass(deck,"Null")
 
         val dragView1: ImageView = findViewById(R.id.card1)!!
         val dragView2: ImageView = findViewById(R.id.card2)!!
@@ -75,9 +80,12 @@ class BettlerActivity : AppCompatActivity() {
         val dragView16: ImageView = findViewById(R.id.card16)!!
         
         val playerSign: TextView =findViewById(R.id.playerSign)!!
+        val nuOfCards: TextView= findViewById(R.id.nuOfCards)!!
+
 
         setOpposition()
         playerSign.setText("Schiebe an "+opposition.toString())
+        nuOfCards.setText(nuOfCardsPlayed.toString())
         
 
 
@@ -85,6 +93,41 @@ class BettlerActivity : AppCompatActivity() {
         
         setStartingPlayer(p1hand)// bestimmt wer beginnt
         fillView(cardViews,p1hand,p2hand)//erste bestückung der Views
+
+        submit.setOnClickListener{
+            var currentHand: HandClass = p2hand
+            if(currentPlayer == 1) {
+                currentHand = p1hand
+            }
+            if(temp.getSize()==0){
+                Toast.makeText(this, "Bitte wähle Karten aus", Toast.LENGTH_SHORT).show()
+            }
+            else if(table.getSize()==0){
+                playCard(currentHand,table,cardViews,p1hand,p2hand, temp)
+            }
+            else if(temp.getSize()== nuOfCardsPlayed){
+                if(temp.getCard(0).getValueNumberBettler()>table.getCard(table.getSize()-1).getValueNumber()){
+                    playCard(currentHand,table,cardViews,p1hand,p2hand, temp)
+                }
+                else{
+                    Toast.makeText(this, "Die gewählten Karten müssen höher sein, siehe Anleitung", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else{
+                Toast.makeText(this, "Du musst genauso viele Karten legen wie dein Gegner", Toast.LENGTH_SHORT).show()
+            }
+            /*if(checkIfLegal(currentHand.getCard(i),table.getCard(table.getSize()-1))) {
+                Log.d("state:","legaler move")
+                playCard(currentHand,table,i,cardViews,p1hand,p2hand)
+            }
+            else{
+                Log.d("state:","illegaler move")
+                Toast.makeText(this, "Die Karte muss Höher sein, siehe Anleitung", Toast.LENGTH_SHORT).show()
+            }
+            //changePlayer(playerSign)
+            //fillView(cardViews, p1hand, p2hand)
+            //nuOfCards.setText(nuOfCardsPlayed.toString()) -> iwie anders*/
+        }
 
         playerSign.setOnClickListener{
             if(playerSign.getText().toString().equals(winner.toString()+" ist könig! Drücken für neue Runde")){
@@ -95,11 +138,15 @@ class BettlerActivity : AppCompatActivity() {
                 table = HandClass(deck, "Null")
                 playerSign.setText("König gebe eine Karte ab!")
                 kartenWahl=true
+                temp.clear()
+                nuOfCardsPlayed=0
                 fillView(cardViews,p1hand,p2hand)
 
             }
             else {
+                nuOfCardsPlayed=0
                 changePlayer(playerSign)
+                temp.clear()
                 table.clear()
                 fillView(cardViews, p1hand, p2hand)
             }
@@ -133,103 +180,57 @@ class BettlerActivity : AppCompatActivity() {
                     playerSign.setText("Arschloch: "+currentPlayer+" beginnt")
                     kartenWahl=false
                 }
-                else if(table.getSize()<1){
+                else if(temp.getSize()<1){
                     Log.d("state:","tisch leer")
-                    playCard(currentHand,table,i,cardViews,p1hand,p2hand)
+                    selectCard(cardViews,currentHand,i,temp)
+                    //playCard(currentHand,table,i,cardViews,p1hand,p2hand)
                 }
                 else{
-                    if(checkIfLegal(currentHand.getCard(i),table.getCard(table.getSize()-1))) {
+                    if(currentHand.getCard(i).getValue()==temp.getCard(temp.getSize()-1).getValue()) {
                         Log.d("state:","legaler move")
-                        playCard(currentHand,table,i,cardViews,p1hand,p2hand)
+                        selectCard(cardViews,currentHand,i,temp)
+                        //playCard(currentHand,table,i,cardViews,p1hand,p2hand)
                     }
                     else{
                         Log.d("state:","illegaler move")
-                        Toast.makeText(this, "Die Karte muss Höher sein, siehe Anleitung", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Nur Karten gleicher Wertigkeit können zusammen gelegt werden", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
+    }
 
-        for(i in 0..15){
-            cardViews[i].setOnLongClickListener {
-                val clipText = "Player Card Left"
-                val item = ClipData.Item(clipText)
-                val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                val data = ClipData(clipText, mimeTypes, item)
-
-                val dragShadowBuilder = View.DragShadowBuilder(it)
-                it.startDragAndDrop(data, dragShadowBuilder, it, 0)
-
-                it.visibility = View.INVISIBLE
-                true
-
+    fun selectCard(cardViews: MutableList<ImageView>,currentHand: HandClass,i: Int,temp:HandClass){
+        var deleted=false
+        var posToDelete:Int=-1
+        for(n in 0..temp.getSize()-1){
+            if(temp.getCard(n).getSign()==currentHand.getCard(i).getSign()){
+                posToDelete=n
+                cardViews[i].setBackgroundColor(Color.WHITE)
+                deleted=true
             }
         }
-
-        val dragListener = View.OnDragListener { view, event ->
-            var currentHand: HandClass = p2hand
-            if(currentPlayer == 1) {
-                currentHand = p1hand
-            }
-            when (event.action) {
-                DragEvent.ACTION_DRAG_STARTED -> {
-                    event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                }
-                DragEvent.ACTION_DRAG_ENTERED -> {
-                    view.invalidate()
-                    true
-                }
-                DragEvent.ACTION_DRAG_LOCATION -> true
-                DragEvent.ACTION_DRAG_EXITED -> {
-
-                    var xPos: Float = event.getX();
-                    var yPos: Float = event.getY();
-
-
-                    view.invalidate()
-                    true
-                }
-                DragEvent.ACTION_DROP -> {
-                    val item = event.clipData.getItemAt(0)
-                    val dragData = item.text
-
-                    Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
-                    //var test : ImageView = findViewById(R.id.table_card_01)
-                    //test.setImageResource(R.drawable.card_caro_10)
-
-
-                    view.invalidate()
-
-                    val v = event.localState as View
-                    val owner = v.parent as ViewGroup
-                    owner.removeView(v)
-                    val destination = view as LinearLayout//view in welchem gedropt wird
-                    destination.addView(v)
-                    Log.d("destination",destination.toString())
-                    v.visibility = View.VISIBLE
-                    true
-                }
-                DragEvent.ACTION_DRAG_ENDED -> {
-                    val view = event.localState as View
-                    view.invalidate()
-                    view.visibility =
-                        View.VISIBLE //damit die Karte wenn sie falschplaziert wurde wieder sichtabr ist
-                    true
-                }
-                else -> true
-            }
+        if(posToDelete>-1){
+            temp.deleteAt(posToDelete)
         }
-
-        player_cards.setOnDragListener(dragListener)
-        player_cards2.setOnDragListener(dragListener)
-        plcaholder_cards.setOnDragListener(dragListener)
+        if(deleted!=true) {
+            cardViews[i].setBackgroundColor(Color.parseColor("#007D7C"))
+            temp.add(currentHand.getCard(i))
+        }
+        Log.d("added",temp.toString())
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun playCard(currentHand:HandClass, table:HandClass, position:Int, cardViews: MutableList<ImageView>, p1hand: HandClass, p2hand: HandClass){
-        table_card.setImageDrawable(getDrawable(currentHand.getPic(currentHand.getCard(position))))
-        table.add(currentHand.getCard(position))
-        currentHand.delete(currentHand.getCard(position))
+    fun playCard(currentHand:HandClass, table:HandClass, cardViews: MutableList<ImageView>, p1hand: HandClass, p2hand: HandClass, temp:HandClass){
+        nuOfCardsPlayed=temp.getSize()
+        Log.d("temp", (temp.getSize()).toString())
+        Log.d("current", (currentHand.getSize()).toString())
+        table_card.setImageDrawable(getDrawable(temp.getPic(temp.getCard(temp.getSize()-1))))
+        for(i in 0..temp.getSize()-1){
+           table.add(temp.getCard(i))
+            currentHand.delete(temp.getCard(i))
+        }
+        temp.clear()
         Log.d("neue Hand: größe",currentHand.getSize().toString())
         if(currentHand.getSize()==0){
             Log.d("gameState","letzte Karte gelegt")
@@ -238,6 +239,7 @@ class BettlerActivity : AppCompatActivity() {
         else {
             changePlayer(playerSign)
             fillView(cardViews, p1hand, p2hand)
+            nuOfCards.setText(nuOfCardsPlayed.toString())
         }
     }
 
@@ -300,10 +302,12 @@ class BettlerActivity : AppCompatActivity() {
             for (i in 0..currentHand.getSize()-1) {
                 cardViews[i].setImageDrawable(getDrawable(currentHand.getPic(currentHand.getCard(i))))
                 cardViews[i].setVisibility(View.VISIBLE)
+                cardViews[i].setBackgroundColor(Color.WHITE)
             }
             for (i in currentHand.getSize()..15){
                 cardViews[i].setVisibility(View.INVISIBLE)
             }
+        nuOfCards.setText(nuOfCardsPlayed.toString())
         }
 
     fun onClickStartGame(view: View) {
@@ -320,6 +324,78 @@ class BettlerActivity : AppCompatActivity() {
         startActivity(BackToMenuButton)
     }
 
+    /*for(i in 0..15){
+            cardViews[i].setOnLongClickListener {
+                val clipText = "Player Card Left"
+                val item = ClipData.Item(clipText)
+                val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                val data = ClipData(clipText, mimeTypes, item)
 
+                val dragShadowBuilder = View.DragShadowBuilder(it)
+                it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
+                it.visibility = View.INVISIBLE
+                true
+
+            }
+        }*/
+
+/*  val dragListener = View.OnDragListener { view, event ->
+            var currentHand: HandClass = p2hand
+            if(currentPlayer == 1) {
+                currentHand = p1hand
+            }
+            when (event.action) {
+                DragEvent.ACTION_DRAG_STARTED -> {
+                    event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+                }
+                DragEvent.ACTION_DRAG_ENTERED -> {
+                    view.invalidate()
+                    true
+                }
+                DragEvent.ACTION_DRAG_LOCATION -> true
+                DragEvent.ACTION_DRAG_EXITED -> {
+
+                    var xPos: Float = event.getX();
+                    var yPos: Float = event.getY();
+
+
+                    view.invalidate()
+                    true
+                }
+                DragEvent.ACTION_DROP -> {
+                    val item = event.clipData.getItemAt(0)
+                    val dragData = item.text
+
+                    Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
+                    //var test : ImageView = findViewById(R.id.table_card_01)
+                    //test.setImageResource(R.drawable.card_caro_10)
+
+
+                    view.invalidate()
+
+                    val v = event.localState as View
+                    val owner = v.parent as ViewGroup
+                    owner.removeView(v)
+                    val destination = view as LinearLayout//view in welchem gedropt wird
+                    destination.addView(v)
+                    Log.d("destination",destination.toString())
+                    v.visibility = View.VISIBLE
+                    true
+                }
+                DragEvent.ACTION_DRAG_ENDED -> {
+                    val view = event.localState as View
+                    view.invalidate()
+                    view.visibility =
+                        View.VISIBLE //damit die Karte wenn sie falschplaziert wurde wieder sichtabr ist
+                    true
+                }
+                else -> true
+            }
+        }
+
+        player_cards.setOnDragListener(dragListener)
+        player_cards2.setOnDragListener(dragListener)
+        plcaholder_cards.setOnDragListener(dragListener)*/
 
 }
