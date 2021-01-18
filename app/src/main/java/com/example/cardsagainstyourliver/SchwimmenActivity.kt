@@ -9,12 +9,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.ContextThemeWrapper
-import kotlinx.android.synthetic.main.activity_bettler.*
-import kotlinx.android.synthetic.main.player_change.*
 
 
 class SchwimmenActivity : AppCompatActivity() {
@@ -460,6 +458,14 @@ class SchwimmenActivity : AppCompatActivity() {
             startHandView()
         }, 3000)
 
+    }
+
+    fun rundenEnde(view: View) {
+        //val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
+        //toast.show()
+
+        val SpielendePopUpEvent = Intent(this, PopUpSpielendeActivity::class.java)
+        startActivity(SpielendePopUpEvent)
     }
 
 
