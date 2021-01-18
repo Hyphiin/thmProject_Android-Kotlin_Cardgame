@@ -18,7 +18,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/player_name"
+            android:id="@+id/player_name1"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="@color/backgroundColor2"
@@ -34,8 +34,28 @@
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:text="hat gewonnen!"
+            android:text="hat die Runde gewonnen!"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/player_name2"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor2"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:gravity="center"
+            android:text="Spieler"
             android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/result_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:gravity="center"
+            android:text="du bist dran!"
+            android:textSize="24sp" />
 
         <Space
             android:layout_width="match_parent"

@@ -25,23 +25,22 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //die für Schwimmen spezifische Starthandabfrage --- noch nicht im Einsatz
-    fun startHand(hand2:HandClass, table:HandClass, deck:DeckClass){
-        val hand2a = HandClass(deck, "Schwimmen") //durch Click muss ausgewählt werden, welche Hand gezeigt wird
-        val hand2b = HandClass(deck, "Schwimmen") //und dann muss Entscheidung fallen, behalten oder anderes nehmen (a = true/false)
+    fun startHand(p1hand: HandClass, table:HandClass, deck:DeckClass){
+        val hand2a = HandClass(deck, "Schwimmen")
+        val hand2b = HandClass(deck, "Schwimmen")
         val a = false
         if (a == true){
-            hand2.add(hand2a.getCard(0))
-            hand2.add(hand2a.getCard(1))
-            hand2.add(hand2a.getCard(2))
+            p1hand.add(hand2a.getCard(0))
+            p1hand.add(hand2a.getCard(1))
+            p1hand.add(hand2a.getCard(2))
 
             table.add(hand2b.getCard(0))
             table.add(hand2b.getCard(1))
             table.add(hand2b.getCard(2))
-
         }else {
-            hand2.add(hand2b.getCard(0))
-            hand2.add(hand2b.getCard(1))
-            hand2.add(hand2b.getCard(2))
+            p1hand.add(hand2b.getCard(0))
+            p1hand.add(hand2b.getCard(1))
+            p1hand.add(hand2b.getCard(2))
 
             table.add(hand2a.getCard(0))
             table.add(hand2a.getCard(1))
@@ -61,15 +60,19 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Spiel beenden --- noch nicht im Einsatz
-    fun close(p1hand:HandClass, p2hand:HandClass, deck: DeckClass, table: HandClass, dump: HandClass, hand:HandClass){  //Zug von Spieler wird beendet
+    fun close(p1hand:HandClass, p2hand:HandClass, deck: DeckClass, table: HandClass, dump: HandClass, hand:HandClass, startPlayer:String, p1name:String) {  //Zug von Spieler wird beendet
 
         val deck = DeckClass(2)
         deck.shuffle()
         val p1hand = HandClass(deck, "Schwimmen")
         val p2hand = HandClass(deck, "Schwimmen")
-        val table= HandClass(deck, "Null")
+        val table = HandClass(deck, "Null")
         val dump = HandClass(deck, "Null")
-        val hand = p1hand
+        if (startPlayer == p1name){
+            var hand = p2hand
+        }else{
+            var hand = p1hand
+        }
 
     }
 

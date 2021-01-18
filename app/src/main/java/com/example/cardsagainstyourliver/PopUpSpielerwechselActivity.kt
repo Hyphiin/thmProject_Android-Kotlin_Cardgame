@@ -6,7 +6,6 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import kotlinx.android.synthetic.main.player_change.*
 
 class PopUpSpielerwechselActivity : Activity() {
@@ -26,15 +25,23 @@ class PopUpSpielerwechselActivity : Activity() {
         var name = intent.getStringExtra("name")
         val player1Name = intent.getStringExtra("player1name")
         val player2Name = intent.getStringExtra("player2name")
-
+        val knock = intent.getBooleanExtra("knock", false)
+        val shove =  intent.getBooleanExtra("shove", false)
 
         val heart1: ImageView = findViewById(R.id.heart1)!!
         val heart2: ImageView = findViewById(R.id.heart2)!!
         val heart3: ImageView = findViewById(R.id.heart3)!!
-        val textView: TextView = findViewById(R.id.player_name)!!
+        val textView: TextView = findViewById(R.id.player_name1)!!
+        val textView3: TextView = findViewById(R.id.coole_View)!!
 
         if(name == player1Name){
             textView.setText(player2Name)
+            if(knock){
+                textView3.setText("$player1Name hat beendet!")
+            }
+            if(shove){
+                textView3.setText("$player1Name hat geschoben!")
+            }
             if (player2heart == 2) {
                 heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
             } else if (player2heart == 1) {
@@ -47,6 +54,12 @@ class PopUpSpielerwechselActivity : Activity() {
             }
         }else {
             textView.setText(player1Name)
+            if(knock){
+                textView3.setText("$player2Name hat beendet!")
+            }
+            if(shove){
+                textView3.setText("$player2Name hat geschoben!")
+            }
             if (player1heart == 2) {
                 heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
             } else if (player1heart == 1) {
@@ -58,6 +71,8 @@ class PopUpSpielerwechselActivity : Activity() {
                 heart1.setImageDrawable(getDrawable(R.drawable.heart_empty))
             }
         }
+
+
 
         window.setLayout(
             (width * 0.805).toInt(),
