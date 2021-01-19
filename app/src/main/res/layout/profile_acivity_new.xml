@@ -147,8 +147,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:layout_weight="1" />
+            android:layout_height="30dp" />
 
         <Button
             android:id="@+id/btn_add"
@@ -166,9 +165,8 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/menuBarColor" />
+            android:layout_height="30dp" />
+
     </LinearLayout>
 
 </LinearLayout>

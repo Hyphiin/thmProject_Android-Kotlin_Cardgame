@@ -26,7 +26,21 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".NewGameActivity" />
         <activity android:name=".SpielerauswahlActivity" />
-        <activity android:name=".Spielerauswahl2Activity" />
+        <activity
+            android:name=".PopUpPromillerechnerActivity"
+            android:theme="@style/AppTheme.PopUpPromille" />
+        <activity
+            android:name=".PopUpSpielerwechselActivity"
+            android:theme="@style/AppTheme.PopUpSpielerwechsel" />
+        <activity
+            android:name=".PopUpKartenauswahlActivity"
+            android:theme="@style/AppTheme.PopUpKartenauswahl" />
+        <activity
+            android:name=".PopUpSpielendeActivity"
+            android:theme="@style/AppTheme.PopUpSpielende" />
+        <activity
+            android:name=".PopUpRundenendeActivity"
+            android:theme="@style/AppTheme.PopUpSpielende" />
 
 
     </application>

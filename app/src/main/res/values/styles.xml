@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -6,5 +6,67 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="AppTheme.PopUpPromille">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:src">@drawable/bier</item>
+    </style>
+
+
+    <style name="heart_empty">
+        <item name="android:src">@drawable/heart_empty</item>
+
+    </style>
+
+    <style name="heart_full">
+        <item name="android:src">@drawable/heart_full</item>
+
+    </style>
+
+
+    <style name="AppTheme.PopUpSpielerwechsel">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:src">@drawable/pause</item>
+
+    </style>
+
+
+    <style name="AppTheme.PopUpSpielerwechselTest" parent="@style/AppTheme.PopUpSpielerwechsel">
+        <item name="android:src">@drawable/pause</item>
+
+    </style>
+
+    <style name="AppTheme.PopUpKartenauswahl">
+        <item name="android:windowIsTranslucent">true</item>
+
+    </style>
+
+    <style name="AppTheme.PopUpSpielende">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:src">@drawable/pause</item>
+
+    </style>
+
+    <style name="AppTheme.Card1">
+        <item name="android:src">@drawable/card_caro_07</item>
+    </style>
+
+    <style name="AppTheme.Card2">
+        <item name="android:src">@drawable/card_caro_08</item>
+    </style>
+
+    <style name="AppTheme.Card3">
+        <item name="android:src">@drawable/card_caro_09</item>
+    </style>
+
+    <style name="AppTheme.CorrectButton">
+        <item name="android:src">@drawable/correct</item>
+    </style>
+
+    <style name="AppTheme.WrongButton">
+        <item name="android:src">@drawable/wrong_button</item>
+    </style>
+
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.cardsagainstyourliver
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import android.widget.Toast
 
 fun main(){
     //nur zum testen erstellt
@@ -24,23 +25,22 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //die für Schwimmen spezifische Starthandabfrage --- noch nicht im Einsatz
-    fun startHand(hand2:HandClass, table:HandClass, deck:DeckClass){
-        val hand2a = HandClass(deck, "Schwimmen") //durch Click muss ausgewählt werden, welche Hand gezeigt wird
-        val hand2b = HandClass(deck, "Schwimmen") //und dann muss Entscheidung fallen, behalten oder anderes nehmen (a = true/false)
+    fun startHand(p1hand: HandClass, table:HandClass, deck:DeckClass){
+        val hand2a = HandClass(deck, "Schwimmen")
+        val hand2b = HandClass(deck, "Schwimmen")
         val a = false
         if (a == true){
-            hand2.add(hand2a.getCard(0))
-            hand2.add(hand2a.getCard(1))
-            hand2.add(hand2a.getCard(2))
+            p1hand.add(hand2a.getCard(0))
+            p1hand.add(hand2a.getCard(1))
+            p1hand.add(hand2a.getCard(2))
 
             table.add(hand2b.getCard(0))
             table.add(hand2b.getCard(1))
             table.add(hand2b.getCard(2))
-
         }else {
-            hand2.add(hand2b.getCard(0))
-            hand2.add(hand2b.getCard(1))
-            hand2.add(hand2b.getCard(2))
+            p1hand.add(hand2b.getCard(0))
+            p1hand.add(hand2b.getCard(1))
+            p1hand.add(hand2b.getCard(2))
 
             table.add(hand2a.getCard(0))
             table.add(hand2a.getCard(1))
@@ -60,21 +60,47 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Spiel beenden --- noch nicht im Einsatz
-    fun close(player1:PlayerClass, player2:PlayerClass, hand1:HandClass, hand2:HandClass, close:Boolean = false){  //Zug von Spieler wird beendet, noch nicht fertig
-        val playerClose = player1.playerName
-        if (close == true){
-            //endGame(hand1,hand2)
+    fun close(p1hand:HandClass, p2hand:HandClass, deck: DeckClass, table: HandClass, dump: HandClass, hand:HandClass, startPlayer:String, p1name:String) {  //Zug von Spieler wird beendet
+
+        val deck = DeckClass(2)
+        deck.shuffle()
+        val p1hand = HandClass(deck, "Schwimmen")
+        val p2hand = HandClass(deck, "Schwimmen")
+        val table = HandClass(deck, "Null")
+        val dump = HandClass(deck, "Null")
+        if (startPlayer == p1name){
+            var hand = p2hand
+        }else{
+            var hand = p1hand
         }
     }
 
     //Spielende, kann den Gewinner sagen --- noch nicht vollständig mit Herzangabe im Einsatz
-    fun endGame(hand1:HandClass, hand2:HandClass){
-        if (hand1.getValueHand(hand1) > hand2.getValueHand(hand2)){
-            println("Gewinner ist Hand1!")
+    fun endGame(hand1:HandClass, hand2:HandClass):Int{
+        var winner:Int
+
+        if(hand1.getValueHand(hand1) == 33){
+            winner = 331
+            return winner
+        }else if(hand2.getValueHand(hand2) == 33){
+            winner = 332
+            return winner
+        } else if(hand1.getValueHand(hand1) == 31){
+            winner = 311
+            return winner
+        }else if(hand2.getValueHand(hand2) == 31){
+            winner = 312
+            return winner
+        }else if (hand1.getValueHand(hand1) > hand2.getValueHand(hand2)){
+            winner = 1
+            return winner
+
         }else if (hand1.getValueHand(hand1) < hand2.getValueHand(hand2)){
-            println("Gewinner ist Hand2!")
+            winner = 2
+            return winner
         }else {
-            println("Oha, Unentschieden!")
+            winner = 0
+            return winner
         }
 
         /*if (lostPlayer == player1){
@@ -93,6 +119,10 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
                  	//spiel Beenden, gewinner ist player1
             	}
          }*/
+
+    }
+
+    fun thirtyOne(hand1: HandClass, hand2: HandClass){
 
     }
 
