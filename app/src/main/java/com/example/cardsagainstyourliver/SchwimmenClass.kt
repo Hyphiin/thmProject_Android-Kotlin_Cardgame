@@ -73,13 +73,25 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
         }else{
             var hand = p1hand
         }
-
     }
 
     //Spielende, kann den Gewinner sagen --- noch nicht vollständig mit Herzangabe im Einsatz
     fun endGame(hand1:HandClass, hand2:HandClass):Int{
         var winner:Int
-        if (hand1.getValueHand(hand1) > hand2.getValueHand(hand2)){
+
+        if(hand1.getValueHand(hand1) == 33){
+            winner = 331
+            return winner
+        }else if(hand2.getValueHand(hand2) == 33){
+            winner = 332
+            return winner
+        } else if(hand1.getValueHand(hand1) == 31){
+            winner = 311
+            return winner
+        }else if(hand2.getValueHand(hand2) == 31){
+            winner = 312
+            return winner
+        }else if (hand1.getValueHand(hand1) > hand2.getValueHand(hand2)){
             winner = 1
             return winner
 
@@ -107,6 +119,10 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
                  	//spiel Beenden, gewinner ist player1
             	}
          }*/
+
+    }
+
+    fun thirtyOne(hand1: HandClass, hand2: HandClass){
 
     }
 

@@ -44,6 +44,11 @@ class SchwimmenActivity : AppCompatActivity() {
     var knockStarterHand:HandClass = HandClass(deck, "Null")
     var textGewinner:String = "Gewinne, Gewinne, Gewinne!"
 
+    var thirtyOne = false
+
+    var p1Pos = 0
+    var p2Pos = 0
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -209,7 +214,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }
     }
 
-    public fun startHandView() {
+    fun startHandView() {
         //val toast = Toast.makeText(applicationContext, "Starthand", Toast.LENGTH_LONG)
 
         game = SchwimmenClass()
@@ -229,15 +234,20 @@ class SchwimmenActivity : AppCompatActivity() {
         val toast = Toast.makeText(applicationContext, " ${startHand1.toString()}", Toast.LENGTH_LONG)
         toast.show()
 
-
         val intent = Intent(this, PopUpKartenauswahlActivity::class.java)
         intent.putExtra("p1hand", card1)
         intent.putExtra("p1hand2", card2)
         intent.putExtra("p1hand3", card3)
+        intent.putExtra("name", name)
+        intent.putExtra("player1name", player1Name)
+        intent.putExtra("player2name", player2Name)
+        intent.putExtra("idPos1",p1Pos)
+        intent.putExtra("idPos2",p2Pos)
         startActivity(intent)
 
         val a = intent.getBooleanExtra("a",false)
         Log.d("Intent in Schwimmen:", a.toString())
+
 
         if (a === false){
             Log.d("Intent in if:", a.toString())
@@ -374,6 +384,8 @@ class SchwimmenActivity : AppCompatActivity() {
                 hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
                 table3.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
+                thirtyOne = false
+
             }, 1000)
             Handler().postDelayed({
                 startHandView()
@@ -458,34 +470,37 @@ class SchwimmenActivity : AppCompatActivity() {
         table2.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
         table3.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
 
-        if (shove){
-            shove = false
-            shoveStarterHand = HandClass(deck,"Null")
-        }
+        thirtyOne(view)
 
-        if(knock){
-            knock = false
-            knockStarterHand = HandClass(deck,"Null")
-
-            val winner:Int = game.endGame(p1hand, p2hand)
-            if(winner === 1){
-                textGewinner = player1Name
-                player2Hearts --
-            }else if(winner === 2){
-                textGewinner = player2Name
-                player1Hearts --
-            }else{
-                textGewinner = "Yippieh, Unentschieden!"
+        if (thirtyOne === false) {
+            if (shove) {
+                shove = false
+                shoveStarterHand = HandClass(deck, "Null")
             }
-            //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
-            //toast2.show()
+            if (knock) {
+                knock = false
+                knockStarterHand = HandClass(deck, "Null")
 
-            rundenEnde(view)
+                val winner: Int = game.endGame(p1hand, p2hand)
+                if (winner === 1) {
+                    textGewinner = player1Name
+                    player2Hearts--
+                } else if (winner === 2) {
+                    textGewinner = player2Name
+                    player1Hearts--
+                } else {
+                    textGewinner = "Yippieh, Unentschieden!"
+                }
+                //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
+                //toast2.show()
 
-        } else {
-            Handler().postDelayed({
-                nextPlayerMenu(view)
-            }, 1500)
+                rundenEnde(view)
+
+            } else {
+                Handler().postDelayed({
+                    nextPlayerMenu(view)
+                }, 1500)
+            }
         }
 
     }
@@ -558,6 +573,36 @@ class SchwimmenActivity : AppCompatActivity() {
 
     }
 
+    fun thirtyOne(view:View){
+        var winner:Int = game.endGame(p1hand, p2hand)
+        val toast = Toast.makeText(applicationContext, "${winner}", Toast.LENGTH_LONG)
+        toast.show()
+        if(winner === 331){
+            textGewinner = player1Name
+            player2Hearts --
+            thirtyOne = true
+            rundenEnde(view)
+        }else if(winner === 332){
+            textGewinner = player2Name
+            player1Hearts --
+            thirtyOne = true
+            rundenEnde(view)
+        }else if(winner === 311){
+            textGewinner = player1Name
+            player2Hearts --
+            thirtyOne = true
+            rundenEnde(view)
+        }else if(winner === 312){
+            textGewinner = player2Name
+            player1Hearts --
+            thirtyOne = true
+            rundenEnde(view)
+        }else{
+            val toast = Toast.makeText(applicationContext, "nix", Toast.LENGTH_LONG)
+            //toast.show()
+        }
+    }
+
     fun onClickKnockCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Klopfen", Toast.LENGTH_LONG)
         //toast.show()
@@ -585,8 +630,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }else if(knock){
             knock = false
             knockStarterHand = HandClass(deck,"Null")
-
-            val winner:Int = game.endGame(p1hand, p2hand)
+            var winner:Int = game.endGame(p1hand, p2hand)
             if(winner === 1){
                 textGewinner = player1Name
                 player2Hearts --
@@ -598,7 +642,6 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
             //toast2.show()
-
             rundenEnde(view)
 
         } else {

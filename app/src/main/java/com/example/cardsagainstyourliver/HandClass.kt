@@ -137,6 +137,7 @@ class HandClass(val deck:DeckClass, val name:String) {
         return valueHand
     }
 
+
     //überprüfen ob signs zweier Karten übereinstimmen
     fun legalCombiSign(card1:Null, card2:Null):Boolean{
         var legalSign = false
