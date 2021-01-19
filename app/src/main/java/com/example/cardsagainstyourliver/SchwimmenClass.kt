@@ -13,50 +13,13 @@ fun main(){
 class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false) {
 
     init{
-        val deck = DeckClass(2)
+       /*val deck = DeckClass(2)
         deck.shuffle()
         val hand1 = HandClass(deck, "Schwimmen")
         val hand2= HandClass(deck, "Null")
         val table= HandClass(deck, "Null")
         startHand(hand2,table, deck)
-        val dump = HandClass(deck, "Null")
-        //alles was hier kommt nur für testen in Kotlin Playground
-
-        println("Erste Karte Spieler1: "+hand1.getValue(hand1.getCard(0)))
-        println("Summe Hand Spieler1: "+hand1.getValueHand(hand1))
-        println("---------------------------")
-        println("Spieler 1: "+hand1.toString())
-        println("Spieler 2: "+hand2.toString())
-        println("----------")
-        println("Tisch: "+table.toString())
-        println("Ablagestapel: "+dump.toString())
-        println("-----------------changeCard:")
-        changeCard(hand1.getCard(0),table.getCard(0), hand1, table)
-        println("Spieler 1: "+hand1.toString())
-        println("Spieler 2: "+hand2.toString())
-        println("----------")
-        println("Tisch: "+table.toString())
-        println("Ablagestapel: "+dump.toString())
-        println("---------------------toDump:")
-        toDump(table, dump, deck)
-        println("Spieler 1: "+hand1.toString())
-        println("Spieler 2: "+hand2.toString())
-        println("----------")
-        println("Tisch: "+table.toString())
-        println("Ablagestapel: "+dump.toString())
-        println("---------------ganz oft toDump:")
-        for (i in 0..20){
-            toDump(table, dump, deck)
-        }
-        println("Spieler 1: "+hand1.toString())
-        println("Spieler 2: "+hand2.toString())
-        println("----------")
-        println("Tisch: "+table.toString())
-        println("Ablagestapel: "+dump.toString())
-        println("---------------------Endergebnis:")
-        println("Spieler 1: "+hand1.getValueHand(hand1))
-        println("Spieler 2: "+hand2.getValueHand(hand2))
-        endGame(hand1,hand2)
+        val dump = HandClass(deck, "Null")*/
 
     }
 
@@ -87,11 +50,13 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Eine Handkarte mit einer auf dem Tisch tauschen
-    fun changeCard(handCard:Null, tableCard:Null, hand:HandClass, table:HandClass){
-        hand.delete(handCard)
-        hand.add(tableCard)
-        table.delete(tableCard)
-        table.add(handCard)
+    fun changeCard(indexHand:Int, indexTable:Int, hand:HandClass, table:HandClass){
+        val zwischenHand = hand.getCard(indexHand)
+        val zwischenTable = table.getCard(indexTable)
+        hand.deleteAt(indexHand)
+        hand.addAt(indexHand, zwischenTable)
+        table.deleteAt(indexTable)
+        table.addAt(indexTable, zwischenHand)
     }
 
     //Spiel beenden --- noch nicht im Einsatz
@@ -132,8 +97,8 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
     }
 
     //Anfrage zum Schieben, noch nicht fertig
-    fun push(player:PlayerClass, table:HandClass, dump:HandClass, deck:DeckClass, push:Boolean = false){ //Anfrage zum Schieben, noch nicht fertig
-        val playerID = player.playerName
+    fun push(table:HandClass, dump:HandClass, deck:DeckClass, push:Boolean = false){ //Anfrage zum Schieben, noch nicht fertig
+        //val playerID = player.playerName
         if (push == true){
             toDump(table, dump, deck)
         }

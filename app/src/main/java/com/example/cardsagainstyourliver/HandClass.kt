@@ -1,5 +1,7 @@
 package com.example.cardsagainstyourliver
 
+import android.util.Log
+
 //Die Karten, die man auf der Hand hat
 class HandClass(val deck:DeckClass, val name:String) {
 
@@ -16,7 +18,9 @@ class HandClass(val deck:DeckClass, val name:String) {
 
         }
         if (name === "Bettler"){
-            //...
+            for(i in 1..16){
+                take()
+            }
         }
     }
 
@@ -30,6 +34,10 @@ class HandClass(val deck:DeckClass, val name:String) {
         hand.add(card)
     }
 
+    fun addAt(index:Int, card: Null){
+        hand.add(index, card)
+    }
+
     fun clear() {
         hand.clear()
     }
@@ -39,10 +47,25 @@ class HandClass(val deck:DeckClass, val name:String) {
         hand.remove(card)
     }
 
+    fun deleteAt(index:Int){
+        hand.removeAt(index)
+    }
+
+
+
     //die Value Number einer Karte zum rechnen bekommen
     fun getValue(card:Null):Int{
         var valueNumber:Int = card.getValueNumber()
         return valueNumber
+    }
+
+    fun getPic(card:Null):Int{
+        val picture: Int = card.getPic()
+        return picture
+    }
+
+    fun sort(){
+
     }
 
     //gibt die Höchste Hand Karte aus
@@ -63,6 +86,19 @@ class HandClass(val deck:DeckClass, val name:String) {
         }
 
         return maxNum
+    }
+
+    fun getHighestCard(hand:HandClass):Null{
+        var maxNum = 0
+        var highestCard:Null=Null()
+        for(i in 0..hand.getSize()-1){
+            if(hand.getCard(i).getValueNumberBettler()>maxNum){
+                maxNum=hand.getCard(i).getValueNumberBettler()
+                highestCard=hand.getCard(i)
+            }
+        }
+
+        return highestCard
     }
 
     //bestimmt den gesamt Value der Hand nach Schwimmen Regeln
@@ -143,7 +179,12 @@ class HandClass(val deck:DeckClass, val name:String) {
         return  handCard
     }
 
+    fun getIndex(card: Null):Int{
+        return hand.indexOf(card)
+    }
+
     fun getSize(): Int = hand.size
 
     override fun toString() = hand.joinToString()
+
 }

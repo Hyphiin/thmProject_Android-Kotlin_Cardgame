@@ -18,6 +18,14 @@ import kotlinx.android.synthetic.main.activity_schwimmen.*
 
 class SchwimmenActivity : AppCompatActivity() {
 
+    var game = SchwimmenClass()
+    var deck = DeckClass(2)
+    var p1hand = HandClass(deck, "Schwimmen")
+    var p2hand = HandClass(deck, "Schwimmen")
+    var table= HandClass(deck, "Null")
+    var dump = HandClass(deck, "Null")
+
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +36,16 @@ class SchwimmenActivity : AppCompatActivity() {
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
 
+        game = SchwimmenClass()
+        game.startGame(game)
+        deck = DeckClass(2)
+        deck.shuffle()
+        p1hand = HandClass(deck, "Schwimmen")
+        p2hand = HandClass(deck, "Schwimmen")
+        table= HandClass(deck, "Null")
+        game.startHand(p1hand,table, deck)
+        dump = HandClass(deck, "Null")
+
         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
         val dragView2: ImageView = findViewById(R.id.player_card_02)!!
         val dragView3: ImageView = findViewById(R.id.player_card_03)!!
@@ -36,7 +54,13 @@ class SchwimmenActivity : AppCompatActivity() {
         val dragView02: ImageView = findViewById(R.id.table_card_02)!!
         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
 
+        dragView1.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(0))))
+        dragView2.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(1))))
+        dragView3.setImageDrawable(getDrawable(p1hand.getPic(p1hand.getCard(2))))
 
+        dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
 
 
@@ -49,6 +73,10 @@ class SchwimmenActivity : AppCompatActivity() {
         player_middle.setOnDragListener(dragListener)
         player_right.setOnDragListener(dragListener)
 
+        game.changeCard(p1hand.getIndex(p1hand.getCard(0)),table.getIndex(table.getCard(0)),p1hand,table)
+
+        val toast = Toast.makeText(applicationContext, "HandKarte: ${p1hand.getCard(0)} Tischkarte: ${table.getCard(0)}", Toast.LENGTH_LONG)
+        toast.show()
 
         // first drag and drop card
         dragView1.setOnLongClickListener {
@@ -77,7 +105,6 @@ class SchwimmenActivity : AppCompatActivity() {
 
             it.visibility = View.INVISIBLE
             true
-
         }
 
         //new drag and drop card
@@ -104,6 +131,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
             val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
+
 
             it.visibility = View.INVISIBLE
             true
@@ -139,6 +167,7 @@ class SchwimmenActivity : AppCompatActivity() {
     }
 
 
+
     fun onClickPauseMenuButton(view: View) {
         val PauseMenuButton = Intent(this, PauseMenuActivity::class.java)
         startActivity(PauseMenuButton)
@@ -162,7 +191,10 @@ class SchwimmenActivity : AppCompatActivity() {
     fun onClickShoveCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
         toast.show()
+        //game.push(table, dump, deck, true)
     }
+
+
 
     val dragListener = View.OnDragListener { target, event ->
         when (event.action) {
@@ -170,9 +202,10 @@ class SchwimmenActivity : AppCompatActivity() {
                 event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
             }
             DragEvent.ACTION_DRAG_ENTERED -> {
-
                 target.invalidate()
                 true
+
+
             }
             DragEvent.ACTION_DRAG_LOCATION -> {
 
@@ -195,7 +228,6 @@ class SchwimmenActivity : AppCompatActivity() {
 
                 Toast.makeText(this, dragData, Toast.LENGTH_SHORT).show()
 
-
                 val dragged = event.localState as ImageView
 
 
@@ -211,6 +243,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
                 newOwner.removeView(target)
                 oldOwner.addView(target, draggedPosition)
+
 
                 target.invalidate()
 
@@ -237,8 +270,6 @@ class SchwimmenActivity : AppCompatActivity() {
             DragEvent.ACTION_DRAG_ENDED -> {
                 val v = event.localState as View
 
-                //
-
                 target.invalidate()
 
                 v.visibility =
@@ -248,6 +279,7 @@ class SchwimmenActivity : AppCompatActivity() {
             else -> true
         }
     }
-
-
 }
+
+
+

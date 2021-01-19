@@ -47,6 +47,7 @@ class SpielerauswahlActivity : AppCompatActivity() {
         )
 
         var selected: MutableList<Int> = ArrayList()
+        var selectedpos: MutableList<Int> = ArrayList()
 
         val nameList: ListView = findViewById(R.id.name_list)
         nameList.setAdapter(adapter)
@@ -56,23 +57,30 @@ class SpielerauswahlActivity : AppCompatActivity() {
                                      position: Int, id: Long) {
 
                 val id= ids[position]
+
                 if(selected.contains(id)){
                     selected.remove(id)
+                    selectedpos.remove(position)
                     parent.getChildAt(position).setBackgroundColor(Color.parseColor("#007D7C"))//Wie kriege ich hier Backgroundcolor2?
                 }
                 else{
                     selected.add(id)
+                    selectedpos.add(position)
                     parent.getChildAt(position).setBackgroundColor(Color.GRAY)
                 }
             }
         }
 
-        btn_start.setOnClickListener {
-            if (selected.size == 2) {
-                Log.d("jo", "check")
-                val p1 = selected[0]
-                val p2 = selected[1]
-                onClickGameStartButton(p1, p2, modus)
+        btn_start.setOnClickListener{
+            if(selected.size==2){
+                Log.d("jo","check")
+                val p1=selected[0]
+                val p2=selected[1]
+                val p1pos=selectedpos[0]
+                val p2pos=selectedpos[1]
+                Log.d("jo",p1pos.toString()+" "+p2pos.toString())
+
+                onClickGameStartButton(p1,p2,p1pos,p2pos,modus)
             }
         }
 
@@ -84,17 +92,22 @@ class SpielerauswahlActivity : AppCompatActivity() {
 
     }
 
-    fun onClickGameStartButton( p1:Int, p2:Int, modus:String ) {
+    fun onClickGameStartButton( p1:Int, p2:Int,p1pos:Int,p2pos:Int, modus:String ) {
 
         if (modus== EXTRA_MESSAGE_S) {
             val intent = Intent(this, SchwimmenActivity::class.java)
             intent.putExtra("idP1",p1)
             intent.putExtra("idP2",p2)
+            intent.putExtra("idPos1",p1pos)
+            intent.putExtra("idPos2",p2pos)
+
             startActivity(intent)
         } else {
             val intent = Intent(this, BettlerActivity::class.java)
             intent.putExtra("idP1",p1)
             intent.putExtra("idP2",p2)
+            intent.putExtra("idPos1",p1pos)
+            intent.putExtra("idPos2",p2pos)
             startActivity(intent)
         }
     }
