@@ -37,10 +37,43 @@
             android:layout_weight="0" />
 
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Spieler 1 hat:"
+            android:textSize="36sp" />
+
+        <TextView
             android:id="@+id/promille_anzeige"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:gravity="center"
+            android:text="3,2 promille"
+            android:textColor="@color/buttonText"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Spieler 2 hat:"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/promille_anzeige2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:text="3,2 promille"
