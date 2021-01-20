@@ -23,6 +23,9 @@ class SchwimmenActivity : AppCompatActivity() {
     var table= HandClass(deck, "Null")
     var dump = HandClass(deck, "Null")
 
+    var startHand1 = HandClass(deck, "Null")
+    var startHand2 = HandClass(deck, "Null")
+
     var object1 = 0
     var object2 = 0
 
@@ -54,22 +57,10 @@ class SchwimmenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schwimmen)
 
-
         val p1Id = intent.getIntExtra("idP1", -1)
         val p2Id = intent.getIntExtra("idP2", -1)
 
-
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString())
-
-
-        val dragView1: ImageView = findViewById(R.id.player_card_01)!!
-        val dragView2: ImageView = findViewById(R.id.player_card_02)!!
-        val dragView3: ImageView = findViewById(R.id.player_card_03)!!
-
-        val dragView01: ImageView = findViewById(R.id.table_card_01)!!
-        val dragView02: ImageView = findViewById(R.id.table_card_02)!!
-        val dragView03: ImageView = findViewById(R.id.table_card_03)!!
-
 
         val p1Pos =intent.getIntExtra("idPos1",-1)
         val p2Pos =intent.getIntExtra("idPos2",-1)
@@ -79,15 +70,82 @@ class SchwimmenActivity : AppCompatActivity() {
         var data=db.readData()
 
 
-        //var text3 = textView3.getText().toString()
-       // Log.d("View: ",text3)
 
+        Log.d("onCreate: ","onCreate")
 
         player1Name = data.get(p1Pos).playerName
         player2Name = data.get(p2Pos).playerName
         playerStart = player1Name
 
         startHandView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.d("onResume: ","onResume")
+
+        val p1Id = intent.getIntExtra("idP1", -1)
+        val p2Id = intent.getIntExtra("idP2", -1)
+
+        //Log.d("Spieler onResume:", p1Id.toString()+" "+p2Id.toString())
+
+        val p1Pos =intent.getIntExtra("idPos1",-1)
+        val p2Pos =intent.getIntExtra("idPos2",-1)
+
+        val dragView1: ImageView = findViewById(R.id.player_card_01)!!
+        val dragView2: ImageView = findViewById(R.id.player_card_02)!!
+        val dragView3: ImageView = findViewById(R.id.player_card_03)!!
+
+        val dragView01: ImageView = findViewById(R.id.table_card_01)!!
+        val dragView02: ImageView = findViewById(R.id.table_card_02)!!
+        val dragView03: ImageView = findViewById(R.id.table_card_03)!!
+
+        val context=this
+        var db =DBHandler(context)
+        var data=db.readData()
+
+        //var text3 = textView3.getText().toString()
+        // Log.d("View: ",text3)
+
+        player1Name = data.get(p1Pos).playerName
+        player2Name = data.get(p2Pos).playerName
+        playerStart = player1Name
+
+        val a = intent.getBooleanExtra("a",false)
+        Log.d("Intent in Schwimmen:", a.toString())
+
+
+        if (a === true){
+            Log.d("Intent in if:", a.toString())
+            p1hand.add(startHand1.getCard(0))
+            p1hand.add(startHand1.getCard(1))
+            p1hand.add(startHand1.getCard(2))
+
+            table.add(startHand2.getCard(0))
+            table.add(startHand2.getCard(1))
+            table.add(startHand2.getCard(2))
+        }else {
+            Log.d("Intent in else:", a.toString())
+            p1hand.add(startHand2.getCard(0))
+            p1hand.add(startHand2.getCard(1))
+            p1hand.add(startHand2.getCard(2))
+
+            table.add(startHand1.getCard(0))
+            table.add(startHand1.getCard(1))
+            table.add(startHand1.getCard(2))
+        }
+
+        hand = p1hand
+
+
+        dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
+        dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
+        dragView3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
+
+        dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+        dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+        dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
         /*table_left.setOnDragListener(dragListener)
         table_middle.setOnDragListener(dragListener)
@@ -214,6 +272,12 @@ class SchwimmenActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        Log.d("onPause: ","onPause")
+    }
+
+
     fun startHandView() {
         //val toast = Toast.makeText(applicationContext, "Starthand", Toast.LENGTH_LONG)
 
@@ -226,8 +290,8 @@ class SchwimmenActivity : AppCompatActivity() {
         table= HandClass(deck, "Null")
         dump = HandClass(deck, "Null")
 
-        val startHand1 = HandClass(deck, "Schwimmen")
-        val startHand2 = HandClass(deck, "Schwimmen")
+        startHand1 = HandClass(deck, "Schwimmen")
+        startHand2 = HandClass(deck, "Schwimmen")
         val card1 = startHand1.getPic(startHand1.getCard(0))
         val card2 = startHand1.getPic(startHand1.getCard(1))
         val card3 = startHand1.getPic(startHand1.getCard(2))
@@ -244,51 +308,7 @@ class SchwimmenActivity : AppCompatActivity() {
         intent.putExtra("idPos1",p1Pos)
         intent.putExtra("idPos2",p2Pos)
         startActivity(intent)
-
-        val a = intent.getBooleanExtra("a",false)
-        Log.d("Intent in Schwimmen:", a.toString())
-
-
-        if (a === false){
-            Log.d("Intent in if:", a.toString())
-            p1hand.add(startHand1.getCard(0))
-            p1hand.add(startHand1.getCard(1))
-            p1hand.add(startHand1.getCard(2))
-
-            table.add(startHand2.getCard(0))
-            table.add(startHand2.getCard(1))
-            table.add(startHand2.getCard(2))
-        }else {
-            Log.d("Intent in else:", a.toString())
-            p1hand.add(startHand2.getCard(0))
-            p1hand.add(startHand2.getCard(1))
-            p1hand.add(startHand2.getCard(2))
-
-            table.add(startHand1.getCard(0))
-            table.add(startHand1.getCard(1))
-            table.add(startHand1.getCard(2))
-        }
-
-        hand = p1hand
-
-
-        val dragView1: ImageView = findViewById(R.id.player_card_01)!!
-        val dragView2: ImageView = findViewById(R.id.player_card_02)!!
-        val dragView3: ImageView = findViewById(R.id.player_card_03)!!
-
-        val dragView01: ImageView = findViewById(R.id.table_card_01)!!
-        val dragView02: ImageView = findViewById(R.id.table_card_02)!!
-        val dragView03: ImageView = findViewById(R.id.table_card_03)!!
-
-        dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
-        dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
-        dragView3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
-
-        dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
-        dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
-        dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
     }
-
 
 
 

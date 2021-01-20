@@ -30,9 +30,9 @@ class PopUpKartenauswahlActivity : Activity() {
         val card3: ImageView = findViewById(R.id.table_card_03)!!
         val textView: TextView = findViewById(R.id.player_nameWahl)!!
 
-        val p1hand = intent.getIntExtra("p1hand",-1)
-        val p1hand2 = intent.getIntExtra("p1hand2",-1)
-        val p1hand3 = intent.getIntExtra("p1hand3",-1)
+        val p1hand = intent.getIntExtra("p1hand", -1)
+        val p1hand2 = intent.getIntExtra("p1hand2", -1)
+        val p1hand3 = intent.getIntExtra("p1hand3", -1)
 
         var name = intent.getStringExtra("name")
         val player1Name = intent.getStringExtra("player1name")
@@ -66,9 +66,10 @@ class PopUpKartenauswahlActivity : Activity() {
         val a = false
         val intent = Intent(this, SchwimmenActivity::class.java)
         intent.putExtra("a", a)
-        intent.putExtra("idPos1",p1Pos)
-        intent.putExtra("idPos2",p2Pos)
-        startActivity(intent)
+        intent.putExtra("idPos1", p1Pos)
+        intent.putExtra("idPos2", p2Pos)
+        intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(intent, 0)
         finish()
 
     }
@@ -79,9 +80,10 @@ class PopUpKartenauswahlActivity : Activity() {
         val a = true
         val intent = Intent(this, SchwimmenActivity::class.java)
         intent.putExtra("a", a)
-        intent.putExtra("idPos1",p1Pos)
-        intent.putExtra("idPos2",p2Pos)
-        startActivity(intent)
+        intent.putExtra("idPos1", p1Pos)
+        intent.putExtra("idPos2", p2Pos)
+        intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        startActivityIfNeeded(intent, 0)
         finish()
 
     }
