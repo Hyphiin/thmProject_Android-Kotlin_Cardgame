@@ -43,8 +43,8 @@ class SchwimmenActivity : AppCompatActivity() {
     var player2weight = 0
     var player1gender = 0
     var player2gender = 0
-    var player1permille = 0.0
-    var player2permille = 0.0
+    var player1permille = 0
+    var player2permille = 0
 
 
     var player1Hearts = 3
@@ -79,9 +79,6 @@ class SchwimmenActivity : AppCompatActivity() {
         var db =DBHandler(context)
         var data=db.readData()
 
-        var PRechner = PerMilleCalculator()
-        var percentage = 0.0
-        var ml = 0.0
 
         Log.d("onCreate: ","onCreate")
 
@@ -99,23 +96,140 @@ class SchwimmenActivity : AppCompatActivity() {
         player1permille = data.get(p1Pos).alcoholLevel
         player2permille = data.get(p2Pos).alcoholLevel
 
+        calculatePermille()
+        startHandView()
+    }
+
+    fun calculatePermille(){
+
+        var PRechner = PerMilleCalculator()
+        var percentage = 0.0
+        var ml = 0.0
+
         when(player1drink){
             0 -> {
                 percentage = 5.0
                 ml = 100.0
-                player1permille = PRechner.permille(player1weight, player1gender, percentage, ml, 2)
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            1 ->{
+                percentage = 12.0
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            2 ->{
+                percentage = 10.0
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            3 ->{
+                percentage = 65.0
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            4 ->{
+                percentage = 37.5
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            5 ->{
+                percentage = 40.0
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            6 ->{
+                percentage = 38.0
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            7 ->{
+                percentage = 37.5
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            8 ->{
+                percentage = 12.8
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            9 ->{
+                percentage = 4.0
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            10 ->{
+                percentage = 5.5
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
+            }
+            11 ->{
+                percentage = 6.9
+                ml = 100.0
+                player1permille = (PRechner.permille(player1weight, player1gender, percentage, ml, 2)*100).toInt()
             }
         }
         when(player2drink){
             0 -> {
                 percentage = 5.0
                 ml = 100.0
-                PRechner.permille(player2weight, player2gender, percentage, ml, 2)
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            1 -> {
+                percentage = 12.0
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            2 -> {
+                percentage = 10.0
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            3 -> {
+                percentage = 65.0
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            4 -> {
+                percentage = 37.5
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            5 -> {
+                percentage = 40.0
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            6 -> {
+                percentage = 38.0
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            7 -> {
+                percentage = 37.5
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            8 -> {
+                percentage = 12.8
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            9 -> {
+                percentage = 4.0
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            10 -> {
+                percentage = 5.5
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
+            }
+            11 -> {
+                percentage = 6.9
+                ml = 100.0
+                player2permille = (PRechner.permille(player2weight, player2gender, percentage, ml, 2)*100).toInt()
             }
         }
-
-
-        startHandView()
     }
 
     override fun onResume() {
