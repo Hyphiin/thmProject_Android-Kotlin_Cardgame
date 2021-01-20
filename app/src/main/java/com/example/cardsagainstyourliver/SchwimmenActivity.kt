@@ -1,5 +1,6 @@
 package com.example.cardsagainstyourliver
 
+import android.app.Activity.RESULT_OK
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
@@ -8,13 +9,19 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
+
 
 
 class SchwimmenActivity : AppCompatActivity() {
+
+    private val SECOND_ACTIVITY_REQUEST_CODE = 0
 
     var game = SchwimmenClass()
     var deck = DeckClass(2)
@@ -43,8 +50,8 @@ class SchwimmenActivity : AppCompatActivity() {
     var player2weight = 0
     var player1gender = 0
     var player2gender = 0
-    var player1permille = 0.0
-    var player2permille = 0.0
+    var player1permille:Any = 0.0
+    var player2permille:Any = 0.0
 
 
     var player1Hearts = 3
@@ -150,40 +157,6 @@ class SchwimmenActivity : AppCompatActivity() {
         player2Name = data.get(p2Pos).playerName
         playerStart = player1Name
 
-        val a = intent.getBooleanExtra("a",false)
-        Log.d("Intent in Schwimmen:", a.toString())
-
-
-        if (a === true){
-            Log.d("Intent in if:", a.toString())
-            p1hand.add(startHand1.getCard(0))
-            p1hand.add(startHand1.getCard(1))
-            p1hand.add(startHand1.getCard(2))
-
-            table.add(startHand2.getCard(0))
-            table.add(startHand2.getCard(1))
-            table.add(startHand2.getCard(2))
-        }else {
-            Log.d("Intent in else:", a.toString())
-            p1hand.add(startHand2.getCard(0))
-            p1hand.add(startHand2.getCard(1))
-            p1hand.add(startHand2.getCard(2))
-
-            table.add(startHand1.getCard(0))
-            table.add(startHand1.getCard(1))
-            table.add(startHand1.getCard(2))
-        }
-
-        hand = p1hand
-
-
-        dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
-        dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
-        dragView3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
-
-        dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
-        dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
-        dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
 
         /*table_left.setOnDragListener(dragListener)
         table_middle.setOnDragListener(dragListener)
@@ -310,6 +283,50 @@ class SchwimmenActivity : AppCompatActivity() {
         }
     }
 
+     // This method is called when the second activity finishes
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+         super.onActivityResult(requestCode, resultCode, data)
+
+         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
+         val dragView2: ImageView = findViewById(R.id.player_card_02)!!
+         val dragView3: ImageView = findViewById(R.id.player_card_03)!!
+
+         val dragView01: ImageView = findViewById(R.id.table_card_01)!!
+         val dragView02: ImageView = findViewById(R.id.table_card_02)!!
+         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
+
+         // Check that it is the SecondActivity with an OK result
+         if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+             if (resultCode == RESULT_CANCELED) {
+                 p1hand.add(startHand1.getCard(0))
+                 p1hand.add(startHand1.getCard(1))
+                 p1hand.add(startHand1.getCard(2))
+
+                 table.add(startHand2.getCard(0))
+                 table.add(startHand2.getCard(1))
+                 table.add(startHand2.getCard(2))
+             } else {
+                 p1hand.add(startHand2.getCard(0))
+                 p1hand.add(startHand2.getCard(1))
+                 p1hand.add(startHand2.getCard(2))
+
+                 table.add(startHand1.getCard(0))
+                 table.add(startHand1.getCard(1))
+                 table.add(startHand1.getCard(2))
+             }
+         }
+         hand = p1hand
+
+         dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
+         dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
+         dragView3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
+
+         dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
+         dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
+         dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+    }
+
+
     override fun onPause() {
         super.onPause()
         Log.d("onPause: ","onPause")
@@ -345,7 +362,7 @@ class SchwimmenActivity : AppCompatActivity() {
         intent.putExtra("player2name", player2Name)
         intent.putExtra("idPos1",p1Pos)
         intent.putExtra("idPos2",p2Pos)
-        startActivity(intent)
+        startActivityForResult(intent,SECOND_ACTIVITY_REQUEST_CODE)
     }
 
 

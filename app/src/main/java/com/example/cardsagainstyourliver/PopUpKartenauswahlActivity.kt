@@ -1,6 +1,7 @@
 package com.example.cardsagainstyourliver
 
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -60,16 +61,16 @@ class PopUpKartenauswahlActivity : Activity() {
 
     }
 
+
+
     fun newCards(view: View) {
         val toast = Toast.makeText(applicationContext, "neue Karten nehmen", Toast.LENGTH_LONG)
         toast.show()
-        val a = false
-        val intent = Intent(this, SchwimmenActivity::class.java)
-        intent.putExtra("a", a)
+
+        val intent = Intent()
         intent.putExtra("idPos1", p1Pos)
         intent.putExtra("idPos2", p2Pos)
-        intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-        startActivityIfNeeded(intent, 0)
+        setResult(RESULT_OK, intent)
         finish()
 
     }
@@ -77,13 +78,11 @@ class PopUpKartenauswahlActivity : Activity() {
     fun thisCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Diese Karten behalten", Toast.LENGTH_LONG)
         toast.show()
-        val a = true
-        val intent = Intent(this, SchwimmenActivity::class.java)
-        intent.putExtra("a", a)
+
+        val intent = Intent()
         intent.putExtra("idPos1", p1Pos)
         intent.putExtra("idPos2", p2Pos)
-        intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-        startActivityIfNeeded(intent, 0)
+        setResult(RESULT_CANCELED, intent)
         finish()
 
     }
