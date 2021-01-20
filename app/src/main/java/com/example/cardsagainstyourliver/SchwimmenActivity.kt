@@ -22,6 +22,7 @@ import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
 class SchwimmenActivity : AppCompatActivity() {
 
     private val SECOND_ACTIVITY_REQUEST_CODE = 0
+    private val THIRD_ACTIVITY_REQUEST_CODE = 1
 
     var game = SchwimmenClass()
     var deck = DeckClass(2)
@@ -59,11 +60,10 @@ class SchwimmenActivity : AppCompatActivity() {
     var player1permille = 0
     var player2permille = 0
 
-
     var player1Hearts = 3
     var player2Hearts = 3
 
-    var name = "derzeitiger Spieler"
+    var name = player1Name
     var playerStart = player1Name
 
     var knock = false
@@ -92,13 +92,14 @@ class SchwimmenActivity : AppCompatActivity() {
         var db =DBHandler(context)
         var data=db.readData()
 
-
         Log.d("onCreate: ","onCreate")
 
         player1Name = data.get(p1Pos).playerName
         player2Name = data.get(p2Pos).playerName
         playerStart = player1Name
+        name = player1Name
 
+        startHandView()
 
         player1id = data.get(p1Pos).id
         player2id = data.get(p2Pos).id
@@ -120,7 +121,6 @@ class SchwimmenActivity : AppCompatActivity() {
         db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink)
         db.updateData(player2id, player2Name, player2age, player2size, player2weight, player2gender, player2drink)
 
-        startHandView()
     }
 
     fun calculatePermille(){
@@ -257,16 +257,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         Log.d("onResume: ","onResume")
-
-        val p1Id = intent.getIntExtra("idP1", -1)
-        val p2Id = intent.getIntExtra("idP2", -1)
-
-        //Log.d("Spieler onResume:", p1Id.toString()+" "+p2Id.toString())
-
-        val p1Pos =intent.getIntExtra("idPos1",-1)
-        val p2Pos =intent.getIntExtra("idPos2",-1)
 
         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
         val dragView2: ImageView = findViewById(R.id.player_card_02)!!
@@ -275,17 +266,6 @@ class SchwimmenActivity : AppCompatActivity() {
         val dragView01: ImageView = findViewById(R.id.table_card_01)!!
         val dragView02: ImageView = findViewById(R.id.table_card_02)!!
         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
-
-        val context=this
-        var db =DBHandler(context)
-        var data=db.readData()
-
-        //var text3 = textView3.getText().toString()
-        // Log.d("View: ",text3)
-
-        player1Name = data.get(p1Pos).playerName
-        player2Name = data.get(p2Pos).playerName
-        playerStart = player1Name
 
 
         /*table_left.setOnDragListener(dragListener)
@@ -296,12 +276,6 @@ class SchwimmenActivity : AppCompatActivity() {
         player_left.setOnDragListener(dragListener)
         player_middle.setOnDragListener(dragListener)
         player_right.setOnDragListener(dragListener)*/
-
-
-
-        //val toast = Toast.makeText(applicationContext, "HandKarte: ${p1hand.getCard(0)} Tischkarte: ${table.getCard(0)}", Toast.LENGTH_LONG).show()
-        //val toast2 = Toast.makeText(applicationContext, "HandKarte: ${p2hand.toString()}", Toast.LENGTH_LONG).show()
-        //toast2.show()
 
         // first drag and drop card
         dragView1.setOnLongClickListener {
@@ -413,20 +387,20 @@ class SchwimmenActivity : AppCompatActivity() {
         }
     }
 
-     // This method is called when the second activity finishes
+     // This method is called when PopUpKartenauswahlActivity finishes
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
          super.onActivityResult(requestCode, resultCode, data)
 
-         val dragView1: ImageView = findViewById(R.id.player_card_01)!!
-         val dragView2: ImageView = findViewById(R.id.player_card_02)!!
-         val dragView3: ImageView = findViewById(R.id.player_card_03)!!
-
-         val dragView01: ImageView = findViewById(R.id.table_card_01)!!
-         val dragView02: ImageView = findViewById(R.id.table_card_02)!!
-         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
-
          // Check that it is the SecondActivity with an OK result
          if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+             val dragView1: ImageView = findViewById(R.id.player_card_01)!!
+             val dragView2: ImageView = findViewById(R.id.player_card_02)!!
+             val dragView3: ImageView = findViewById(R.id.player_card_03)!!
+
+             val dragView01: ImageView = findViewById(R.id.table_card_01)!!
+             val dragView02: ImageView = findViewById(R.id.table_card_02)!!
+             val dragView03: ImageView = findViewById(R.id.table_card_03)!!
+
              if (resultCode == RESULT_CANCELED) {
                  p1hand.add(startHand1.getCard(0))
                  p1hand.add(startHand1.getCard(1))
@@ -444,8 +418,11 @@ class SchwimmenActivity : AppCompatActivity() {
                  table.add(startHand1.getCard(1))
                  table.add(startHand1.getCard(2))
              }
+             if(playerStart == player1Name){
+                hand = p1hand
+             }else {
+                hand = p2hand
          }
-         hand = p1hand
 
          dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
          dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
@@ -454,6 +431,14 @@ class SchwimmenActivity : AppCompatActivity() {
          dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
          dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
          dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+         }
+
+
+         if (requestCode == THIRD_ACTIVITY_REQUEST_CODE) {
+             if (resultCode == RESULT_OK){
+                 startHandView()
+             }
+         }
     }
 
 
@@ -483,13 +468,17 @@ class SchwimmenActivity : AppCompatActivity() {
         val toast = Toast.makeText(applicationContext, " ${startHand1.toString()}", Toast.LENGTH_LONG)
         toast.show()
 
+        if (playerStart == player1Name){
+            name = player1Name
+        }else {
+            name = player2Name
+        }
+
         val intent = Intent(this, PopUpKartenauswahlActivity::class.java)
         intent.putExtra("p1hand", card1)
         intent.putExtra("p1hand2", card2)
         intent.putExtra("p1hand3", card3)
         intent.putExtra("name", name)
-        intent.putExtra("player1name", player1Name)
-        intent.putExtra("player2name", player2Name)
         intent.putExtra("idPos1",p1Pos)
         intent.putExtra("idPos2",p2Pos)
         startActivityForResult(intent,SECOND_ACTIVITY_REQUEST_CODE)
@@ -543,7 +532,7 @@ class SchwimmenActivity : AppCompatActivity() {
             intent.putExtra("player1name", player1Name)
             intent.putExtra("player2name", player2Name)
             intent.putExtra("playerStart", playerStart)
-            startActivity(intent)
+            startActivityForResult(intent,THIRD_ACTIVITY_REQUEST_CODE)
 
             //game.close(p1hand,p2hand,deck,table,dump,hand,playerStart,player1Name)
             Handler().postDelayed({
@@ -558,20 +547,17 @@ class SchwimmenActivity : AppCompatActivity() {
                     p1hand = HandClass(deck, "Schwimmen")
                     hand = p2hand
                     playerStart = player2Name
-                    val toast =
-                        Toast.makeText(applicationContext, "Player1Starter", Toast.LENGTH_LONG)
+                    val toast = Toast.makeText(applicationContext, "Player1Starter", Toast.LENGTH_LONG)
                     //toast.show()
                 } else if (playerStart == player2Name) {
                     game.startHand(p1hand, table, deck)
                     p2hand = HandClass(deck, "Schwimmen")
                     hand = p1hand
                     playerStart = player1Name
-                    val toast =
-                        Toast.makeText(applicationContext, "Player2Starter", Toast.LENGTH_LONG)
+                    val toast = Toast.makeText(applicationContext, "Player2Starter", Toast.LENGTH_LONG)
                     //toast.show()
                 } else {
-                    val toast =
-                        Toast.makeText(applicationContext, "hand nicht def", Toast.LENGTH_LONG)
+                    val toast = Toast.makeText(applicationContext, "hand nicht def", Toast.LENGTH_LONG)
                     //toast.show()
                 }
 
@@ -592,12 +578,10 @@ class SchwimmenActivity : AppCompatActivity() {
                 thirtyOne = false
 
             }, 1000)
-            Handler().postDelayed({
-                startHandView()
-            }, 3000)
+
+
         }else if(player1Hearts < 0 || player2Hearts < 0){
-            val intent = Intent(this, PopUpSpielendeActivity::class.java)
-            startActivity(intent)
+            spielEnde(view)
         }
 
 

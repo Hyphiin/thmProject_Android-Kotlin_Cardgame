@@ -36,17 +36,11 @@ class PopUpKartenauswahlActivity : Activity() {
         val p1hand3 = intent.getIntExtra("p1hand3", -1)
 
         var name = intent.getStringExtra("name")
-        val player1Name = intent.getStringExtra("player1name")
-        val player2Name = intent.getStringExtra("player2name")
 
         p1Pos = intent.getIntExtra("idPos1", -1)
         p2Pos= intent.getIntExtra("idPos1", -1)
 
-        if(name == player1Name){
-            textView.setText(player2Name)
-        }else {
-            textView.setText(player1Name)
-        }
+        textView.setText(name)
 
         card1.setImageDrawable(getDrawable(p1hand))
         card2.setImageDrawable(getDrawable(p1hand2))
