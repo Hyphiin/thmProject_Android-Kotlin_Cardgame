@@ -312,6 +312,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun nextPlayerMenu(view: View) {
             //val toast = Toast.makeText(applicationContext, name, Toast.LENGTH_LONG)
             //toast.show()
@@ -348,6 +349,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }, 1000)
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun rundenEnde(view: View) {
         //val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
         //toast.show()

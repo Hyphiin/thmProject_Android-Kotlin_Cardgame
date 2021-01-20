@@ -279,6 +279,8 @@ class BettlerActivity : AppCompatActivity() {
             playerSign.setText("Schieben an Player 2")
         }
         setOpposition()
+        val intent = Intent(this, PopUpSpielerwechselBettlerActivity::class.java)
+        startActivity(intent)
     }
 
     fun setStartingPlayer(p1hand:HandClass) {
