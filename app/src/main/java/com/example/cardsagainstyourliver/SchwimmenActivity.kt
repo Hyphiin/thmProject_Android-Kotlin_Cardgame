@@ -37,6 +37,12 @@ class SchwimmenActivity : AppCompatActivity() {
     var player1Name = "Jürgen"
     var player2Name = "Klaus"
 
+    var player1id = 0
+    var player2id = 0
+    var player1age = 0
+    var player2age = 0
+    var player1size = 0
+    var player2size = 0
     var player1drink = 0
     var player2drink = 0
     var player1weight = 0
@@ -87,6 +93,12 @@ class SchwimmenActivity : AppCompatActivity() {
         playerStart = player1Name
 
 
+        player1id = data.get(p1Pos).id
+        player2id = data.get(p2Pos).id
+        player1age = data.get(p1Pos).age
+        player2age = data.get(p2Pos).age
+        player1size = data.get(p1Pos).size
+        player2size = data.get(p2Pos).size
         player1drink = data.get(p1Pos).drink
         player2drink = data.get(p2Pos).drink
         player1weight = data.get(p1Pos).weight
@@ -97,6 +109,10 @@ class SchwimmenActivity : AppCompatActivity() {
         player2permille = data.get(p2Pos).alcoholLevel
 
         calculatePermille()
+
+        db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink)
+        db.updateData(player2id, player2Name, player2age, player2size, player2weight, player2gender, player2drink)
+
         startHandView()
     }
 
