@@ -22,6 +22,7 @@ class PopUpPromillerechnerActivity : Activity() {
 
 
 
+
         window.setLayout(
             (width * 0.8).toInt(),
             (height * 0.6).toInt()

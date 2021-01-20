@@ -2,7 +2,7 @@ package com.example.cardsagainstyourliver
 
 class PerMilleCalculator {
 
-    fun permille(mPerson: Double, gender: String, percentage: Double, ml: Double, Dauer: Int): Double{
+    public fun permille(mPerson: Int, gender: Int, percentage: Double, ml: Double, Dauer: Int): Double{
 
         var r: Double
         var BAK: Double = 0.0
@@ -13,10 +13,10 @@ class PerMilleCalculator {
 
 
         when(gender){
-            "m" ->{
+            0 ->{
                 r = 0.7
                 BAK = konsuming / mPerson*r}
-            "w" ->{
+            1 ->{
                 r = 0.6
                 BAK = konsuming / mPerson*r
             }

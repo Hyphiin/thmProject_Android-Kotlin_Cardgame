@@ -37,6 +37,16 @@ class SchwimmenActivity : AppCompatActivity() {
     var player1Name = "Jürgen"
     var player2Name = "Klaus"
 
+    var player1drink = 0
+    var player2drink = 0
+    var player1weight = 0
+    var player2weight = 0
+    var player1gender = 0
+    var player2gender = 0
+    var player1permille = 0.0
+    var player2permille = 0.0
+
+
     var player1Hearts = 3
     var player2Hearts = 3
 
@@ -69,13 +79,41 @@ class SchwimmenActivity : AppCompatActivity() {
         var db =DBHandler(context)
         var data=db.readData()
 
-
+        var PRechner = PerMilleCalculator()
+        var percentage = 0.0
+        var ml = 0.0
 
         Log.d("onCreate: ","onCreate")
 
         player1Name = data.get(p1Pos).playerName
         player2Name = data.get(p2Pos).playerName
         playerStart = player1Name
+
+
+        player1drink = data.get(p1Pos).drink
+        player2drink = data.get(p2Pos).drink
+        player1weight = data.get(p1Pos).weight
+        player2weight = data.get(p2Pos).weight
+        player1gender = data.get(p1Pos).gender
+        player2gender = data.get(p2Pos).gender
+        player1permille = data.get(p1Pos).alcoholLevel
+        player2permille = data.get(p2Pos).alcoholLevel
+
+        when(player1drink){
+            0 -> {
+                percentage = 5.0
+                ml = 100.0
+                player1permille = PRechner.permille(player1weight, player1gender, percentage, ml, 2)
+            }
+        }
+        when(player2drink){
+            0 -> {
+                percentage = 5.0
+                ml = 100.0
+                PRechner.permille(player2weight, player2gender, percentage, ml, 2)
+            }
+        }
+
 
         startHandView()
     }
