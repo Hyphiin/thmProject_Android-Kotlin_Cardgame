@@ -80,7 +80,8 @@ class ProfileSettingsActivity : AppCompatActivity() {
                         edit_size.getText().toString().toInt(),
                         edit_weight.getText().toString().toInt(),
                         idGender,
-                        idDrink
+                        idDrink,
+                        0
                     )
                     onClickSubmitButton()
                 }

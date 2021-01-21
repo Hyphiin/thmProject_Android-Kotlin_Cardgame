@@ -118,8 +118,8 @@ class SchwimmenActivity : AppCompatActivity() {
 
         calculatePermille()
 
-        db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink)
-        db.updateData(player2id, player2Name, player2age, player2size, player2weight, player2gender, player2drink)
+        db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink,player1permille)
+        db.updateData(player2id, player2Name, player2age, player2size, player2weight, player2gender, player2drink,player2permille)
 
     }
 
