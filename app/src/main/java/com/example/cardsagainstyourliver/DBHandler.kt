@@ -88,7 +88,7 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         return list
     }
 
-    fun updateData(id:Int, name:String, age:Int, size:Int, weight:Int, gender:Int, drink:Int ){
+    fun updateData(id:Int, name:String, age:Int, size:Int, weight:Int, gender:Int, drink:Int, alcohollevel:Int ){
         val db= this.writableDatabase
         val query= "Select * from " + TABLE_NAME + " where id="+id
         val result = db.rawQuery(query, null)
@@ -101,6 +101,7 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
                 cv.put(COL_WEIGHT,weight)
                 cv.put(COL_GENDER,gender)
                 cv.put(COl_DRINK,drink)
+                cv.put(COL_ALCOHOLLEVEL,alcohollevel)
 
                 db.update(TABLE_NAME, cv, COL_ID+ "=? AND "+COL_NAME+ "=?",
                     arrayOf(result.getString(result.getColumnIndex(COL_ID)),
