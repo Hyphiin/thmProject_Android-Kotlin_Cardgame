@@ -23,6 +23,8 @@ class SchwimmenActivity : AppCompatActivity() {
     private val SECOND_ACTIVITY_REQUEST_CODE = 0
     private val THIRD_ACTIVITY_REQUEST_CODE = 1
 
+    var db = DBHandler(this)
+
     var game = SchwimmenClass()
     var deck = DeckClass(2)
     var p1hand = HandClass(deck, "Null")
@@ -58,6 +60,8 @@ class SchwimmenActivity : AppCompatActivity() {
     var player2gender = 0
     var player1permille = 0
     var player2permille = 0
+    var player1ml = 0.0
+    var player2ml = 0.0
 
     var player1Hearts = 3
     var player2Hearts = 3
@@ -88,7 +92,7 @@ class SchwimmenActivity : AppCompatActivity() {
         val p2Pos = intent.getIntExtra("idPos2", -1)
 
         val context = this
-        var db = DBHandler(context)
+        db = DBHandler(context)
         var data = db.readData()
 
         Log.d("onCreate: ", "onCreate")
@@ -115,10 +119,6 @@ class SchwimmenActivity : AppCompatActivity() {
         player1permille = data.get(p1Pos).alcoholLevel
         player2permille = data.get(p2Pos).alcoholLevel
 
-        calculatePermille()
-
-        db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink,player1permille)
-        db.updateData(player2id, player2Name, player2age, player2size, player2weight, player2gender, player2drink,player2permille)
 
     }
 
@@ -131,7 +131,7 @@ class SchwimmenActivity : AppCompatActivity() {
         when (player1drink) {
             0 -> {
                 percentage = 5.0
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -142,7 +142,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             1 -> {
                 percentage = 12.0
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -153,7 +153,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             2 -> {
                 percentage = 10.0
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -164,7 +164,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             3 -> {
                 percentage = 65.0
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -175,7 +175,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             4 -> {
                 percentage = 37.5
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -186,7 +186,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             5 -> {
                 percentage = 40.0
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -197,7 +197,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             6 -> {
                 percentage = 38.0
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -208,7 +208,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             7 -> {
                 percentage = 37.5
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -219,7 +219,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             8 -> {
                 percentage = 12.8
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -230,7 +230,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             9 -> {
                 percentage = 4.0
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -241,7 +241,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             10 -> {
                 percentage = 5.5
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -252,7 +252,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             11 -> {
                 percentage = 6.9
-                ml = 100.0
+                ml = player1ml
                 player1permille = (PRechner.permille(
                     player1weight,
                     player1gender,
@@ -265,7 +265,7 @@ class SchwimmenActivity : AppCompatActivity() {
         when (player2drink) {
             0 -> {
                 percentage = 5.0
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -276,7 +276,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             1 -> {
                 percentage = 12.0
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -287,7 +287,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             2 -> {
                 percentage = 10.0
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -298,7 +298,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             3 -> {
                 percentage = 65.0
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -309,7 +309,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             4 -> {
                 percentage = 37.5
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -320,7 +320,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             5 -> {
                 percentage = 40.0
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -331,7 +331,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             6 -> {
                 percentage = 38.0
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -342,7 +342,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             7 -> {
                 percentage = 37.5
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -353,7 +353,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             8 -> {
                 percentage = 12.8
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -364,7 +364,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             9 -> {
                 percentage = 4.0
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -375,7 +375,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             10 -> {
                 percentage = 5.5
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -386,7 +386,7 @@ class SchwimmenActivity : AppCompatActivity() {
             }
             11 -> {
                 percentage = 6.9
-                ml = 100.0
+                ml = player2ml
                 player2permille = (PRechner.permille(
                     player2weight,
                     player2gender,
@@ -767,9 +767,15 @@ fun spielEnde(view: View) {
     }else{
         winner = " $player1Name"
     }
+    calculatePermille()
+
+    db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink, player1permille)
+    db.updateData(player2id, player2Name, player2age, player2size, player2weight, player2gender, player2drink, player2permille)
 
     val intent = Intent(this, PopUpSpielendeActivity::class.java)
     intent.putExtra("WinnerWinner", winner)
+    intent.putExtra("p1Pos", p1Pos)
+    intent.putExtra("p2Pos", p2Pos)
     intent.putExtra("player1Name", player1Name)
     intent.putExtra("player2Name", player2Name)
     startActivity(intent)
@@ -857,9 +863,11 @@ fun onClickChangeCards(view: View) {
             if (winner === 1) {
                 textGewinner = player1Name
                 player2Hearts--
+                player2ml += 100.0
             } else if (winner === 2) {
                 textGewinner = player2Name
                 player1Hearts--
+                player1ml += 100.0
             } else {
                 textGewinner = "Yippieh, Unentschieden!"
             }
@@ -926,9 +934,11 @@ fun onClickSwapCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
+            player2ml += 100.0
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
+            player1ml += 100.0
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }
@@ -952,21 +962,25 @@ fun thirtyOne(view: View) {
     if (winner === 331) {
         textGewinner = player1Name
         player2Hearts--
+        player2ml += 100.0
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 332) {
         textGewinner = player2Name
         player1Hearts--
+        player1ml += 100.0
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 311) {
         textGewinner = player1Name
         player2Hearts--
+        player2ml += 100.0
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 312) {
         textGewinner = player2Name
         player1Hearts--
+        player1ml += 100.0
         thirtyOne = true
         rundenEnde(view)
     } else {
@@ -1006,9 +1020,11 @@ fun onClickKnockCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
+            player2ml += 100.0
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
+            player1ml += 100.0
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }
@@ -1131,9 +1147,11 @@ fun onClickShoveCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
+            player2ml += 100.0
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
+            player1ml += 100.0
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }

@@ -12,6 +12,8 @@ class PopUpSpielendeActivity : Activity() {
 
     var player1Name = "Jürgen"
     var player2Name = "Dieter"
+    var p1Pos = 0
+    var p2Pos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +27,10 @@ class PopUpSpielendeActivity : Activity() {
         val height = dm.heightPixels
 
         var winner = intent.getStringExtra("WinnerWinner")
-        player1Name = intent.getStringExtra("player1Name")
-        player2Name = intent.getStringExtra("player2Name")
+        player1Name = intent.getStringExtra("player1Name")!!
+        player2Name = intent.getStringExtra("player2Name")!!
+        p1Pos =  intent.getIntExtra("p1Pos", -1)
+        p2Pos =  intent.getIntExtra("p2Pos", -1)
 
         val textView: TextView = findViewById(R.id.player_name)!!
 
@@ -42,12 +46,15 @@ class PopUpSpielendeActivity : Activity() {
 
     fun promilleAnzeige(view: View) {
         val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
-        toast.show()
+        //toast.show()
 
-        val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
+        val intent = Intent(this, PopUpPromillerechnerActivity::class.java)
         intent.putExtra("player1Name",player1Name)
         intent.putExtra("player2Name",player2Name)
-        startActivity(PromillePopUpEvent)
+        intent.putExtra("p1Pos",p1Pos)
+        intent.putExtra("p2Pos",p2Pos)
+
+        startActivity(intent)
     }
 
     fun onClickPauseMenuButton(view: View) {
