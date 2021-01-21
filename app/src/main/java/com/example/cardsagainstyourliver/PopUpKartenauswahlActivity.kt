@@ -1,6 +1,7 @@
 package com.example.cardsagainstyourliver
 
 import android.app.Activity
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -35,17 +36,11 @@ class PopUpKartenauswahlActivity : Activity() {
         val p1hand3 = intent.getIntExtra("p1hand3", -1)
 
         var name = intent.getStringExtra("name")
-        val player1Name = intent.getStringExtra("player1name")
-        val player2Name = intent.getStringExtra("player2name")
 
         p1Pos = intent.getIntExtra("idPos1", -1)
         p2Pos= intent.getIntExtra("idPos1", -1)
 
-        if(name == player1Name){
-            textView.setText(player2Name)
-        }else {
-            textView.setText(player1Name)
-        }
+        textView.setText(name)
 
         card1.setImageDrawable(getDrawable(p1hand))
         card2.setImageDrawable(getDrawable(p1hand2))
@@ -60,16 +55,16 @@ class PopUpKartenauswahlActivity : Activity() {
 
     }
 
+
+
     fun newCards(view: View) {
         val toast = Toast.makeText(applicationContext, "neue Karten nehmen", Toast.LENGTH_LONG)
         toast.show()
-        val a = false
-        val intent = Intent(this, SchwimmenActivity::class.java)
-        intent.putExtra("a", a)
+
+        val intent = Intent()
         intent.putExtra("idPos1", p1Pos)
         intent.putExtra("idPos2", p2Pos)
-        intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-        startActivityIfNeeded(intent, 0)
+        setResult(RESULT_OK, intent)
         finish()
 
     }
@@ -77,13 +72,11 @@ class PopUpKartenauswahlActivity : Activity() {
     fun thisCards(view: View) {
         val toast = Toast.makeText(applicationContext, "Diese Karten behalten", Toast.LENGTH_LONG)
         toast.show()
-        val a = true
-        val intent = Intent(this, SchwimmenActivity::class.java)
-        intent.putExtra("a", a)
+
+        val intent = Intent()
         intent.putExtra("idPos1", p1Pos)
         intent.putExtra("idPos2", p2Pos)
-        intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-        startActivityIfNeeded(intent, 0)
+        setResult(RESULT_CANCELED, intent)
         finish()
 
     }
