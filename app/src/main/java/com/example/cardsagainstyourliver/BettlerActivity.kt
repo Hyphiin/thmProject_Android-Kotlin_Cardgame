@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.DragEvent
 import android.view.View
@@ -24,7 +25,17 @@ class BettlerActivity : AppCompatActivity() {
         var firstmove=true
         var nuOfCardsPlayed=0
         var nuOfCardsLying=0
+        var p1Name=""
+        var p2Name=""
+        var currentPlayerName=""
         var deck = DeckClass(2)
+        var p1hand:HandClass=HandClass(deck, "null")
+        var p2hand:HandClass=HandClass(deck, "null")
+        var table = HandClass(deck, "Null")
+        var temp = HandClass(deck,"Null")
+        var cardViews:MutableList<ImageView> = mutableListOf()
+
+        private val SECOND_ACTIVITY_REQUEST_CODE = 0
     }
 
 
@@ -41,6 +52,8 @@ class BettlerActivity : AppCompatActivity() {
         val context=this
         var db =DBHandler(context)
         var data=db.readData()
+        p1Name=data.get(p1Pos).playerName
+        p2Name=data.get(p2Pos).playerName
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString()+" name1: "+data.get(p1Pos).playerName+" name2: "+data.get(p2Pos).playerName)
 
@@ -48,8 +61,8 @@ class BettlerActivity : AppCompatActivity() {
         game.startGame(game) //was passiert hier?
 
         deck.shuffle()
-        var p1hand = HandClass(deck, "Bettler")
-        var p2hand = HandClass(deck, "Bettler")
+        p1hand = HandClass(deck, "Bettler")
+        p2hand = HandClass(deck, "Bettler")
 
 
         for (i in 0..p1hand.getSize() - 1) {
@@ -59,8 +72,8 @@ class BettlerActivity : AppCompatActivity() {
         for (i in 0..p2hand.getSize() - 1) {
             Log.d("hand2:", p2hand.getCard(i).toString())
         }
-        var table = HandClass(deck, "Null")
-        var temp = HandClass(deck,"Null")
+        table = HandClass(deck, "Null")
+        temp = HandClass(deck,"Null")
 
         val dragView1: ImageView = findViewById(R.id.card1)!!
         val dragView2: ImageView = findViewById(R.id.card2)!!
@@ -84,12 +97,12 @@ class BettlerActivity : AppCompatActivity() {
 
 
         setOpposition()
-        playerSign.setText("Schiebe an "+opposition.toString())
+        playerSign.setText("")
         nuOfCards.setText(nuOfCardsPlayed.toString())
         
 
 
-        var cardViews:MutableList<ImageView> = mutableListOf(dragView1, dragView2, dragView3, dragView4, dragView5, dragView6, dragView7, dragView8,dragView9,dragView10,dragView11,dragView12,dragView13,dragView14,dragView15,dragView16 )
+        cardViews = mutableListOf(dragView1, dragView2, dragView3, dragView4, dragView5, dragView6, dragView7, dragView8,dragView9,dragView10,dragView11,dragView12,dragView13,dragView14,dragView15,dragView16 )
         
         setStartingPlayer(p1hand)// bestimmt wer beginnt
         fillView(cardViews,p1hand,p2hand)//erste bestückung der Views
@@ -131,16 +144,17 @@ class BettlerActivity : AppCompatActivity() {
 
         playerSign.setOnClickListener{
             if(playerSign.getText().toString().equals(winner.toString()+" ist könig! Drücken für neue Runde")){
-                deck = DeckClass(2)
+               /* deck = DeckClass(2)
                 deck.shuffle()
                 p1hand = HandClass(deck, "Bettler")
                 p2hand = HandClass(deck, "Bettler")
                 table = HandClass(deck, "Null")
+                playerSign.setVisibility(View.VISIBLE)
                 playerSign.setText("König gebe eine Karte ab!")
                 kartenWahl=true
                 temp.clear()
                 nuOfCardsPlayed=0
-                fillView(cardViews,p1hand,p2hand)
+                fillView(cardViews,p1hand,p2hand)*/
 
             }
             else {
@@ -148,10 +162,12 @@ class BettlerActivity : AppCompatActivity() {
                 changePlayer(playerSign)
                 temp.clear()
                 table.clear()
-                fillView(cardViews, p1hand, p2hand)
+                Handler().postDelayed({
+                fillView(cardViews, p1hand, p2hand)},1000)
             }
             table_card.setImageDrawable(null)//Todo: Durch platzhalter ersetzen
         }
+
 
         for(i in 0..15){
             cardViews[i].setOnClickListener{//logik für einen Spielzug
@@ -176,8 +192,9 @@ class BettlerActivity : AppCompatActivity() {
                         p2hand.delete(p2hand.getCard(i))
                     }
                     changePlayer(playerSign)
+                    Handler().postDelayed({
                     fillView(cardViews,p1hand,p2hand)
-                    playerSign.setText("Arschloch: "+currentPlayer+" beginnt")
+                    playerSign.setText("Arschloch: "+currentPlayerName+" beginnt")},1000)
                     kartenWahl=false
                 }
                 else if(temp.getSize()<1){
@@ -198,6 +215,26 @@ class BettlerActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d("result","ist da")
+        deck = DeckClass(2)
+        deck.shuffle()
+        p1hand = HandClass(deck, "Bettler")
+        p2hand = HandClass(deck, "Bettler")
+        table = HandClass(deck, "Null")
+        playerSign.setVisibility(View.VISIBLE)
+        val intent = Intent(this, PopUpSpielerwechselBettlerActivity::class.java)
+        intent.putExtra("playerName", currentPlayerName)
+        intent.putExtra("ende", true)
+        startActivity(intent)
+        kartenWahl=true
+        temp.clear()
+        nuOfCardsPlayed=0
+        Handler().postDelayed({
+        fillView(cardViews,p1hand,p2hand)},1000)
     }
 
     fun selectCard(cardViews: MutableList<ImageView>,currentHand: HandClass,i: Int,temp:HandClass){
@@ -238,7 +275,8 @@ class BettlerActivity : AppCompatActivity() {
         }
         else {
             changePlayer(playerSign)
-            fillView(cardViews, p1hand, p2hand)
+            Handler().postDelayed({
+            fillView(cardViews, p1hand, p2hand)},1000)
             nuOfCards.setText(nuOfCardsPlayed.toString())
         }
     }
@@ -251,15 +289,25 @@ class BettlerActivity : AppCompatActivity() {
 
     fun endGame(lastCard:Null, playerSign:TextView){
         Log.d("in Endgame","in Endgame")
-
+        var winnerName=""
         if(lastCard.getValueNumberBettler()==14){
             winner= opposition
         }
         else{
             winner=currentPlayer
         }
-        playerSign.setText(winner.toString()+" ist könig! Drücken für neue Runde")
-
+        if(winner==1){
+            winnerName= p1Name
+        }
+        else{
+            winnerName= p2Name
+        }
+        val intent = Intent(this, PopUpEndGameBettlerActicity::class.java)
+        intent.putExtra("playerName", winnerName)
+        startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE)
+        Handler().postDelayed({
+        playerSign.setText(winnerName +" ist könig! Drücken für neue Runde")},1000)//Das hier musss ausgelagert werden, bzw code oben
+        playerSign.setVisibility(View.INVISIBLE)
     }
 
     fun setOpposition(){
@@ -270,26 +318,39 @@ class BettlerActivity : AppCompatActivity() {
     }
 
     fun changePlayer(playerSign: TextView){
+        var opName=""
         if(currentPlayer==1){
             currentPlayer=2
-            playerSign.setText("Schieben an Player 1")
+            currentPlayerName=p2Name
+            opName= p1Name
         }
         else{
             currentPlayer=1
-            playerSign.setText("Schieben an Player 2")
+            currentPlayerName=p1Name
+            opName=p2Name
         }
         setOpposition()
+        Handler().postDelayed({
+        playerSign.setText("Schieben an "+ opName)},1000)
+        val intent = Intent(this, PopUpSpielerwechselBettlerActivity::class.java)
+            intent.putExtra("playerName", currentPlayerName)
+            startActivity(intent)
     }
 
     fun setStartingPlayer(p1hand:HandClass) {
         currentPlayer=2
+        currentPlayerName=p2Name
         for (i in 0..p1hand.getSize() - 1) {
             if (p1hand.getCard(i).toString() == "Karte: KARO SIEBEN") {
                 Log.d("beginn:", "p1")
                 currentPlayer = 1
+                currentPlayerName=p1Name
             }
         }
-        playerSign.setText("Player "+currentPlayer+" beginnt!")
+        val intent = Intent(this, PopUpSpielerwechselBettlerActivity::class.java)
+        intent.putExtra("playerName", currentPlayerName)
+        intent.putExtra("beginn", true)
+        startActivity(intent)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -300,12 +361,22 @@ class BettlerActivity : AppCompatActivity() {
         }
         Log.d("gerade:", currentHand.getSize().toString())
             for (i in 0..currentHand.getSize()-1) {
-                cardViews[i].setImageDrawable(getDrawable(currentHand.getPic(currentHand.getCard(i))))
-                cardViews[i].setVisibility(View.VISIBLE)
-                cardViews[i].setBackgroundColor(Color.WHITE)
+
+                    cardViews[i].setImageDrawable(
+                        getDrawable(
+                            currentHand.getPic(
+                                currentHand.getCard(
+                                    i
+                                )
+                            )
+                        )
+                    )
+                    cardViews[i].setVisibility(View.VISIBLE)
+                    cardViews[i].setBackgroundColor(Color.WHITE)
+
             }
             for (i in currentHand.getSize()..15){
-                cardViews[i].setVisibility(View.INVISIBLE)
+                    cardViews[i].setVisibility(View.INVISIBLE)
             }
         nuOfCards.setText(nuOfCardsPlayed.toString())
         }

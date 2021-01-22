@@ -1,14 +1,17 @@
 package com.example.cardsagainstyourliver
 
 import android.app.Activity
-import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import kotlinx.android.synthetic.main.player_change.*
 
 class PopUpSpielerwechselActivity : Activity() {
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
