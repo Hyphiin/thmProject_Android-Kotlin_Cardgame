@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -43,16 +44,20 @@ class PopUpSpielendeActivity : Activity() {
         val textView: TextView = findViewById(R.id.player_name)!!
         val promille_btn: Button = findViewById(R.id.promille_btn)
         val next_round_btn: Button = findViewById(R.id.next_round_btn)
-
+        val test1: ImageView = findViewById(R.id.test1)
 
         val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
         val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
         val isNightModeOn: Boolean = appSettingPrefs.getBoolean("NightMode", false)
 
         if (isNightModeOn) {
+            test1.setImageResource(R.drawable.pause2)
             promille_btn.setVisibility(View.VISIBLE)
+
         } else {
+            test1.setImageResource(R.drawable.pause)
             promille_btn.setVisibility(View.INVISIBLE)
+
         }
         next_round_btn.setOnClickListener {
             onClickGameStartButton(p1ID, p2ID, p1Pos, p2Pos, "Schwimmen")

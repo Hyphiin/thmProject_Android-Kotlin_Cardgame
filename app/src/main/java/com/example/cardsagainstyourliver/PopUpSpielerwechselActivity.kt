@@ -1,12 +1,12 @@
 package com.example.cardsagainstyourliver
 
 import android.app.Activity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import kotlinx.android.synthetic.main.player_change.*
 
 class PopUpSpielerwechselActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class PopUpSpielerwechselActivity : Activity() {
         val player1Name = intent.getStringExtra("player1name")
         val player2Name = intent.getStringExtra("player2name")
         val knock = intent.getBooleanExtra("knock", false)
-        val shove =  intent.getBooleanExtra("shove", false)
+        val shove = intent.getBooleanExtra("shove", false)
 
         val heart1: ImageView = findViewById(R.id.heart1)!!
         val heart2: ImageView = findViewById(R.id.heart2)!!
@@ -34,12 +34,24 @@ class PopUpSpielerwechselActivity : Activity() {
         val textView: TextView = findViewById(R.id.player_name1)!!
         val textView3: TextView = findViewById(R.id.coole_View)!!
 
-        if(name == player1Name){
+        val test1: ImageView = findViewById(R.id.test1)
+
+        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
+        val isNightModeOn: Boolean = appSettingPrefs.getBoolean("NightMode", false)
+
+        if (isNightModeOn) {
+            test1.setImageResource(R.drawable.pause2)
+        } else {
+            test1.setImageResource(R.drawable.pause)
+        }
+
+        if (name == player1Name) {
             textView.setText(player2Name)
-            if(knock){
+            if (knock) {
                 textView3.setText("$player1Name hat beendet!")
             }
-            if(shove){
+            if (shove) {
                 textView3.setText("$player1Name hat geschoben!")
             }
             if (player2heart == 2) {
