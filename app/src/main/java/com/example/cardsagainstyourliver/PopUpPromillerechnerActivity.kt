@@ -32,8 +32,11 @@ class PopUpPromillerechnerActivity : Activity() {
         var p1Pos = intent.getIntExtra("p1Pos", -1)
         var p2Pos = intent.getIntExtra("p2Pos", -1)
 
-        val p1permille = data.get(p1Pos).alcoholLevel
-        val p2permille = data.get(p2Pos).alcoholLevel
+        var p1permille = intent.getIntExtra("player1permille", -2)
+        var p2permille = intent.getIntExtra("player2permille", -2)
+
+        //val p1permille = data.get(p1Pos).alcoholLevel
+        //val p2permille = data.get(p2Pos).alcoholLevel
 
         val permille1zwischen = (p1permille.toDouble())
         val permille2zwischen = (p2permille.toDouble())
@@ -52,7 +55,7 @@ class PopUpPromillerechnerActivity : Activity() {
 
 
         val toast = Toast.makeText(applicationContext, "$p1name,$p2name,$permille1,$permille2", Toast.LENGTH_LONG)
-        toast.show()
+        //toast.show()
 
 
         player1Name.setText(p1name)

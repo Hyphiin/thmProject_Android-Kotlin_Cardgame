@@ -62,6 +62,7 @@
             android:background="@drawable/text_background_round"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
+            android:onClick="onClickBackToGameListButton"
             android:text=" neues Spiel"
             android:textSize="30sp" />
 

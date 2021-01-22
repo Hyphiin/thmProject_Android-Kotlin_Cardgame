@@ -687,13 +687,12 @@ fun nextPlayerMenu(view: View) {
         hand1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
         hand2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
         hand3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
-    }, 1000)
+    }, 500)
 }
 
 fun rundenEnde(view: View) {
     val toast = Toast.makeText(applicationContext, "$player1Hearts, $player2Hearts", Toast.LENGTH_LONG)
     toast.show()
-
 
     if (player1Hearts >= 0 && player2Hearts >= 0) {
         val intent = Intent(this, PopUpRundenendeActivity::class.java)
@@ -746,7 +745,7 @@ fun rundenEnde(view: View) {
 
             thirtyOne = false
 
-        }, 1000)
+        }, 500)
 
 
     } else {
@@ -778,6 +777,10 @@ fun spielEnde(view: View) {
     intent.putExtra("p2Pos", p2Pos)
     intent.putExtra("player1Name", player1Name)
     intent.putExtra("player2Name", player2Name)
+    intent.putExtra("p1ID", player1id)
+    intent.putExtra("p2ID", player2id)
+    intent.putExtra("player1permille",player1permille)
+    intent.putExtra("player2permille",player2permille)
     startActivity(intent)
 }
 

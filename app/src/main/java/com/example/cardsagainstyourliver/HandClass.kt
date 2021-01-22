@@ -117,16 +117,6 @@ class HandClass(val deck:DeckClass, val name:String) {
             twoSign = true
         }else{oneSign = true}
 
-        //abfrage wie viele Nums übereinstimmen
-        if (hand.legalCombiNum(hand.getCard(0), hand.getCard(1)) === true && hand.legalCombiNum(hand.getCard(1), hand.getCard(2)) === true && hand.legalCombiNum(hand.getCard(0), hand.getCard(2)) === true){
-            threeNum = true
-            if (hand.getValue(hand.getCard(0)) == 11) {
-                valueHand = 33
-            }else{
-                valueHand = 31
-            }
-        }else{oneNum = true}
-
         //zusammenrechnung der Übereinstimmenden Karten
         if (threeSign === true){
             for (i in 0..hand.getSize()-1){
@@ -148,6 +138,16 @@ class HandClass(val deck:DeckClass, val name:String) {
         }else if (oneNum === true){
             valueHand = hand.getMaxValue(hand)
         }
+
+        //abfrage wie viele Nums übereinstimmen
+        if (hand.legalCombiNum(hand.getCard(0), hand.getCard(1)) === true && hand.legalCombiNum(hand.getCard(1), hand.getCard(2)) === true && hand.legalCombiNum(hand.getCard(0), hand.getCard(2)) === true){
+            threeNum = true
+            if (hand.getValue(hand.getCard(0)) == 11) {
+                valueHand = 33
+            }else{
+                valueHand = 31
+            }
+        }else{oneNum = true}
 
         return valueHand
     }
