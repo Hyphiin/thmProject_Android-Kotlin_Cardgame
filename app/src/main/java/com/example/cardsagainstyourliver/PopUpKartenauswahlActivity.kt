@@ -9,8 +9,9 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
-class PopUpKartenauswahlActivity : Activity() {
+class PopUpKartenauswahlActivity : AppCompatActivity() {
 
     var p1Pos = 0
     var p2Pos = 0

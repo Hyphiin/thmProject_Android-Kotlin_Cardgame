@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:text="hat die Runde gewonnen!"
+            android:text="hat gewonnen!"
             android:textSize="30sp" />
 
         <TextView

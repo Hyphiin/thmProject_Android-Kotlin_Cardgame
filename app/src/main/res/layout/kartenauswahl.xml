@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E4E9ED"
@@ -9,25 +10,38 @@
 
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="126dp"
+        android:layout_height="wrap_content"
         android:layout_weight="0"
         android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="51dp" />
 
         <TextView
             android:id="@+id/player_nameWahl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="73dp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="bottom|center"
             android:text="SpielerName"
             android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:gravity="center"
+            android:text="wähle deine Karten!"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <Space
         android:layout_width="12dp"
-        android:layout_height="150dp"
-        android:layout_weight="0" />
+        android:layout_height="70dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -49,10 +63,10 @@
 
                 <ImageView
                     android:id="@+id/table_card_01"
-                    style="@style/AppTheme.Card1"
                     android:layout_width="90dp"
                     android:layout_height="120dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/card_heart_08" />
             </LinearLayout>
 
             <LinearLayout
@@ -66,7 +80,8 @@
                     style="@style/AppTheme.Card2"
                     android:layout_width="90dp"
                     android:layout_height="120dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/card_heart_09" />
             </LinearLayout>
 
             <LinearLayout
@@ -80,7 +95,8 @@
                     style="@style/AppTheme.Card3"
                     android:layout_width="90dp"
                     android:layout_height="120dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/card_heart_10" />
             </LinearLayout>
 
         </LinearLayout>
