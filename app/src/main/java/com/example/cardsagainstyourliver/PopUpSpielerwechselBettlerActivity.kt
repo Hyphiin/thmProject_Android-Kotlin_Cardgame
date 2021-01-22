@@ -10,10 +10,15 @@ class PopUpSpielerwechselBettlerActivity: Activity() {
         super.onCreate(savedInstanceState)
         val player = intent.getStringExtra("playerName")
         val beginn = intent.getBooleanExtra("beginn", false)
+        val ende = intent.getBooleanExtra("ende", false)
 
         setContentView(R.layout.player_change)
         if(beginn){
             textView4.setText("beginnt!")
+            test.setText("Ok")
+        }
+        if(ende){
+            textView4.setText(" gebe eine Karte deiner Wahl ab.")
             test.setText("Ok")
         }
         player_name1.setText(player)

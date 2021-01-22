@@ -1,6 +1,7 @@
 package com.example.cardsagainstyourliver
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import kotlinx.android.synthetic.main.spielende.*
 
@@ -14,6 +15,8 @@ class PopUpEndGameBettlerActicity: Activity() {
         result_text.setText("ist König!")
 
         next_round_btn.setOnClickListener {
+            val intent = Intent()
+            setResult(RESULT_OK, intent)
             finish()
         }
 
