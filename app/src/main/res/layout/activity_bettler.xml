@@ -228,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/text_background_round"
+                android:fontFamily="@font/roboto_slab_bold"
                 android:gravity="center"
                 android:text="4"
                 android:textColor="@color/textColor2"
@@ -426,32 +427,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/menuBarColor"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/menuBarColor"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/text_background_round"
+                android:foreground="@drawable/schieben_button" />
+
+            <Space
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/playerSign"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/buttonText"
+                android:textSize="36sp" />
+
+        </LinearLayout>
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="45dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/text_background_round"
-            android:foreground="@drawable/schieben_button" />
-
-        <TextView
-            android:id="@+id/playerSign"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto_slab_bold"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="@color/buttonText"
-            android:textSize="36sp" />
+            android:layout_height="5dp" />
 
     </LinearLayout>
 
