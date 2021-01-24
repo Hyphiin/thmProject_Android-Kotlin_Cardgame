@@ -44,16 +44,16 @@
     <string name="rules_Bettler">The rules vary widely. Therefore, it is important to determine these before starting the game. Up to seven players play with a standard 32 card game. For longer fun it is also possible to play with a rummy sheet or two standard card games.  At the beginning all cards are dealt equally face down to the players. Whoever holds the previously determined starting card (usually the seven of diamonds) is the first to play.  A single card or multiple cards can be played. Cards of the same value are called multiple cards.  For example  It is the turn of the other players to turn. You can pass or take the trick with a higher card. In multiples, the trick can only be taken with the same number of cards of a higher rank. This means that if there is a multiple of three nines on the table, the trick can only be taken with three tens, jacks, queens, kings or aces. The jokers can be an exception here. The use and rank of jokers must also be discussed beforehand.  It may be that it makes strategic sense to pass when you could take the trick. So there is no stitch duty. The player who took the trick comes out next.  The game round is over when the penultimate player runs out of cards. The last player with cards in hand is the asshole. If you are the first to have no more cards in hand, you become king of the round.  In many variants, the seating arrangement now changes according to the level of the offices won. The asshole is now the dealer because the loser begins the new round.  In this round cards are “pressed”. This means that players with low office must give their highest cards to players with higher office. The king gets the highest cards from the asshole in exchange for his lowest. The same is done with the other offices. Vice-asshole trades with vice-king and so on. This should definitely be discussed beforehand. Most of the variants stipulate that the asshole doesn\'t have to give up any aces.  If a card that has already been played is picked up again or if the set rules are violated in any other way, this player automatically becomes an asshole. The last player with cards in hand is just a runner-up asshole. If the last card is an ace, that player is automatically the asshole too. It is therefore important to pay attention to strategy in this fun game too.</string>
 
 
-    <string name="invest_profile_text">Profil anlegen</string>
-    <string name="continue_text">weiter</string>
-    <string name="switch_text">wechsel</string>
-    <string name="life_text">Leben :</string>
-    <string name="your_turn_text">du bist dran!</string>
+    <string name="invest_profile_text">create Profile</string>
+    <string name="switch_text">change</string>
+    <string name="life_text">Life :</string>
+    <string name="your_turn_text">your turn!</string>
     <string name="now_player_text">ist jetzt am Zug!</string>
     <string name="player_win_text">hat gewonnen!</string>
-    <string name="choice_cards_text">wähle deine Karten!</string>
+    <string name="choice_cards_text">choose your Cards!</string>
     <string name="games_comming_soon">weitere Spiele folgen...</string>
     <string name="resume_text">Resume</string>
     <string name="name_text2">name</string>
+    <string name="continue_text">continue</string>
 
 </resources>

@@ -14,8 +14,8 @@
     <string name="choice_cards_text">wähle deine Karten!</string>
     <string name="manual_text">Anleitung</string>
     <string name="play_text">Spiele</string>
-    <string name="bettler_text">Bettler</string>
-    <string name="schwimmen_text">Schwimmen</string>
+    <string name="bettler_text" translatable="false">Bettler</string>
+    <string name="schwimmen_text" translatable="false">Schwimmen</string>
     <string name="more_games_text">. . .</string>
     <string name="games_comming_soon">weitere Spiele folgen...</string>
     <string name="specialMode_text">Spezialmodus</string>
@@ -40,24 +40,24 @@
     <string name="drink_text">Getränk</string>
 
     <string name="age_hint">Jahre</string>
-    <string name="size_hint">cm</string>
-    <string name="bodyweight_hint">kg</string>
+    <string name="size_hint" translatable="false">cm</string>
+    <string name="bodyweight_hint" translatable="false">kg</string>
 
     <string name="male_text">Weiblich</string>
     <string name="female_text">Männlich</string>
 
     <string name="drink_01">Bier</string>
     <string name="drink_02">Wein</string>
-    <string name="drink_03">Coktail</string>
-    <string name="drink_04">Whiskey</string>
-    <string name="drink_05">Vodka</string>
-    <string name="drink_06">Gin</string>
-    <string name="drink_07">Tequila</string>
-    <string name="drink_08">Rum</string>
+    <string name="drink_03" translatable="false">Cocktail</string>
+    <string name="drink_04" translatable="false">Whiskey</string>
+    <string name="drink_05" translatable="false">Vodka</string>
+    <string name="drink_06" translatable="false">Gin</string>
+    <string name="drink_07" translatable="false">Tequila</string>
+    <string name="drink_08" translatable="false">Rum</string>
     <string name="drink_09">Sekt</string>
-    <string name="drink_10">Cidre</string>
+    <string name="drink_10" translatable="false">Cidre</string>
     <string name="drink_11">Hefeweizen</string>
-    <string name="drink_12">Hugo</string>
+    <string name="drink_12" translatable="false">Hugo</string>
 
 
     <string name="sound_off_text">Ton aus</string>
@@ -69,9 +69,9 @@
     <string name="profileName_01_text">Profil_a</string>
 
 
-    <string name="newProfil_text">Test</string>
-    <string name="name_text">Test</string>
-    <string name="name_hint">Test</string>
+    <string name="newProfil_text" translatable="false">Test</string>
+    <string name="name_text" translatable="false">Test</string>
+    <string name="name_hint" translatable="false">Test</string>
     <string name="gameRules_text_Schwimmen">Regelwerk: Schwimmen</string>
     <string name="rules_Schwimmen">Das Spiel „Schwimmen“ wird mit einem einzigen Paket doppeldeutscher oder französischer Karten mit 32 Blatt, einem so genannten Skatblatt, gespielt. Die Reihenfolge ist im Uhrzeigersinn festgelegt. Wenn ein Spieler an der Reihe ist, versucht er, durch den Tausch von Spielkarten eine bestimmte Kombination auf seiner eigenen Hand zu etablieren. Das Ziel im Spiel ist, am Ende nicht jene Kombination zu haben, die den geringsten Punktewert hat.  Spielziel und Wertung Es gibt aber viele verschiedene Möglichkeiten, eine so genannte Kombination zu bilden. So sammelt man beispielsweise entweder Karten der gleichen Farbe und addiert ihre Punktewerte – so ähnlich wie beim Kartenspiel Einundvierzig – wobei hier gilt:  Das Ass gibt elf Punkte Bube, Dame und König zählen jeweils zehn Punkte Die Zahlenkarten Sieben, Acht, Neun und Zehn zählen so viel wie ihre Augen (also 7, 8,9 und 10 Punkte) Die maximal mögliche Punktzahl ist in diesem Fall die 31, was dann der Fall ist, wenn eine Hand aus einem Ass sowie zwei Bildkarten oder einem Ass und einem Bild sowie einer Zehn in derselben Farbe besteht.  Es bietet sich jedoch auch an, Karten desselben Ranges zu kombinieren. Das bedeutet, dass eine Kombination beispielsweise durch 3 Siebener, drei Damen oder drei Buben vorhanden ist – wobei diese natürlich verschiedene Farben haben. Eine Kombination dieser Art zählt immer 30 und einen halben Punkt.  Einzelne Beispiele für die Punktewertung: Im Folgenden sind einige Beispiele aufgezählt, die die Punktewertung verdeutlichen sollen. So ist es einfacher, sich in das Regelwerk einzuarbeiten – insbesondere wenn man noch nie ein ähnliches Spiel gespielt hat. Hier die Beispiele:  Herz Dame, Herz Zehn, Karo Bube: Wenn ein Spieler diese Karten auf seiner Hand hat, so zählt die entsprechende Kombination 20 Punkte. Die Punktzahl setzt sich aus 2 × 10 Punkten zusammen, da hierbei die Kombination derselben Farbe zählt, und das ist nur bei der Herz Dame und der Herz Zehn der Fall. Kreuz König, Kreuz Neun, Kreuz Ass: Bei dieser Kombination handelt es sich um drei Karten gleicher Farbe. Das Ass zählt 11, der König 10 und die Neun zählt 9 Punkte. Insgesamt ergeben sich für diese Kombination damit 30 Punkte. Herz Sieben, Pik Sieben, Karo Sieben: Diese Kombination beinhaltet drei Karten gleichen Ranges. Deshalb zählt sie 30 ein halb Karten. Wenn mehrere Spieler diese Kombination vorweisen können, also ein so genannter Gleichstand auftritt, zählt das Blatt des Spielers mit dem höchsten Rang. Entsprechend würde eine Folge aus drei Neunern der Folge aus drei Siebenern vorgehen. Karo König, Karo Ass, Karo Zehn: Dies ist eine Kombination, welche 31 Punkte zählt: Das Ass gibt 11 Punkte, der Karo König gibt 10 Punkte, ebenso wie die Karo Zehn.</string>
     <string name="gameManual_text_Schwimmen">Anleitung: Schwimmen</string>

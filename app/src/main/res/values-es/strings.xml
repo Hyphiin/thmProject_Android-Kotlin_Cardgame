@@ -44,14 +44,14 @@
     <string name="rules_Bettler">Las reglas varían mucho. Por tanto, es importante determinarlos antes de iniciar el juego. Hasta siete jugadores juegan con un juego estándar de 32 cartas. Para una diversión más prolongada, también es posible jugar con una hoja de rummy o dos juegos de cartas estándar.  Al principio, todas las cartas se reparten igualmente boca abajo para los jugadores. Quien tenga la carta inicial previamente determinada (generalmente el siete de diamantes) es el primero en jugar.  Se puede jugar una sola carta o varias cartas. Las cartas del mismo valor se denominan cartas múltiples.  Por ejemplo  Es el turno de los otros jugadores. Puede pasar o tomar el truco con una carta más alta. En múltiplos, el truco solo se puede realizar con la misma cantidad de cartas de un rango superior. Esto significa que si hay un múltiplo de tres nueves en la mesa, el truco solo se puede tomar con tres diez, jotas, reinas, reyes o ases. Los bromistas pueden ser una excepción aquí. El uso y rango de los comodines también debe discutirse de antemano.  Puede ser que tenga sentido estratégico pasar cuando podría hacer el truco. Entonces no hay ningún deber de costura. El jugador que hizo el truco es el siguiente.  La ronda de juego termina cuando el penúltimo jugador se queda sin cartas. El último jugador con cartas en la mano es el idiota. Si eres el primero en no tener más cartas en la mano, te conviertes en el rey de la ronda.  En muchas variantes, la disposición de los asientos cambia según el nivel de las oficinas ganadas. El idiota ahora es el repartidor porque el perdedor comienza la nueva ronda.  En esta ronda se “presionan” las cartas. Esto significa que los jugadores con un cargo bajo deben dar sus cartas más altas a los jugadores con un cargo más alto. El rey recibe las cartas más altas del idiota a cambio de las más bajas. Lo mismo se hace con el resto de oficinas. Vice idiota intercambia con vice rey y así sucesivamente. Esto definitivamente debería discutirse de antemano. La mayoría de las variantes estipulan que el imbécil no tiene que ceder ningún ases.  Si se vuelve a recoger una carta que ya se ha jugado o si se infringen las reglas establecidas de cualquier otra forma, este jugador se convierte automáticamente en un idiota. El último jugador con cartas en la mano es solo un vicioso. Si la última carta es un as, ese jugador también es automáticamente el idiota. Por tanto, también es importante prestar atención a la estrategia en este divertido juego.</string>
 
 
-    <string name="invest_profile_text">Profil anlegen</string>
-    <string name="continue_text">weiter</string>
-    <string name="switch_text">wechsel</string>
-    <string name="life_text">Leben :</string>
-    <string name="your_turn_text">du bist dran!</string>
-    <string name="now_player_text">ist jetzt am Zug!</string>
+    <string name="invest_profile_text">Crear perfil</string>
+    <string name="continue_text">seguir</string>
+    <string name="switch_text">cambio</string>
+    <string name="life_text">Vida :</string>
+    <string name="your_turn_text">es tu turno!</string>
+    <string name="now_player_text">Ahora es tu turno!</string>
     <string name="player_win_text">hat gewonnen!</string>
-    <string name="choice_cards_text">wähle deine Karten!</string>
+    <string name="choice_cards_text">elige tus cartas!</string>
     <string name="games_comming_soon">weitere Spiele folgen...</string>
     <string name="resume_text">Resume</string>
     <string name="name_text2">name</string>
