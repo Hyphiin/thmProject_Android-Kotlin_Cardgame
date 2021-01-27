@@ -17,6 +17,31 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_bettler.*
 
 class BettlerActivity : AppCompatActivity() {
+
+
+    var p1Pos = 0
+    var p2Pos = 0
+    var player1id = 0
+    var player2id = 0
+    var player1age = 0
+    var player2age = 0
+    var player1size = 0
+    var player2size = 0
+    var player1drink = 0
+    var player2drink = 0
+    var player1weight = 0
+    var player2weight = 0
+    var player1gender = 0
+    var player2gender = 0
+    var player1permille = 0
+    var player2permille = 0
+    var player1ml = 0.0
+    var player2ml = 0.0
+    var timerStart = System.currentTimeMillis()
+    var timerEnd= System.currentTimeMillis()
+
+    var db = DBHandler(this)
+
     companion object {
         var currentPlayer:Int=0
         var winner:Int=0
@@ -46,14 +71,34 @@ class BettlerActivity : AppCompatActivity() {
 
         val p1Id = intent.getIntExtra("idP1", -1)
         val p2Id = intent.getIntExtra("idP2", -1)
-        val p1Pos =intent.getIntExtra("idPos1",-1)
-        val p2Pos =intent.getIntExtra("idPos2",-1)
+        p1Pos =intent.getIntExtra("idPos1",-1)
+        p2Pos =intent.getIntExtra("idPos2",-1)
 
         val context=this
-        var db =DBHandler(context)
+        db =DBHandler(context)
         var data=db.readData()
         p1Name=data.get(p1Pos).playerName
         p2Name=data.get(p2Pos).playerName
+
+
+
+        player1id = data.get(p1Pos).id
+        player2id = data.get(p2Pos).id
+        player1age = data.get(p1Pos).age
+        player2age = data.get(p2Pos).age
+        player1size = data.get(p1Pos).size
+        player2size = data.get(p2Pos).size
+        player1drink = data.get(p1Pos).drink
+        player2drink = data.get(p2Pos).drink
+        player1weight = data.get(p1Pos).weight
+        player2weight = data.get(p2Pos).weight
+        player1gender = data.get(p1Pos).gender
+        player2gender = data.get(p2Pos).gender
+        player1permille = data.get(p1Pos).alcoholLevel
+        player2permille = data.get(p2Pos).alcoholLevel
+
+
+        timerStart = System.currentTimeMillis()
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString()+" name1: "+data.get(p1Pos).playerName+" name2: "+data.get(p2Pos).playerName)
 
@@ -217,6 +262,368 @@ class BettlerActivity : AppCompatActivity() {
         }
     }
 
+    fun calculatePermille() {
+
+        var PRechner = PerMilleCalculator()
+        var percentage = 0.0
+        var ml = 0.0
+        val deltaHours = (timerEnd/(60 * 60 * 1000 ) - timerStart/(60 * 60 * 1000 )).toInt()
+
+        when (player1drink) {
+            0 -> {
+                percentage = 5.0
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            1 -> {
+                percentage = 12.0
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            2 -> {
+                percentage = 10.0
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            3 -> {
+                percentage = 65.0
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            4 -> {
+                percentage = 37.5
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            5 -> {
+                percentage = 40.0
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            6 -> {
+                percentage = 38.0
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            7 -> {
+                percentage = 37.5
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            8 -> {
+                percentage = 12.8
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            9 -> {
+                percentage = 4.0
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            10 -> {
+                percentage = 5.5
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            11 -> {
+                percentage = 6.9
+                ml = player1ml
+                player1permille = (PRechner.permille(
+                    player1weight,
+                    player1gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+        }
+        when (player2drink) {
+            0 -> {
+                percentage = 5.0
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            1 -> {
+                percentage = 12.0
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            2 -> {
+                percentage = 10.0
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            3 -> {
+                percentage = 65.0
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            4 -> {
+                percentage = 37.5
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            5 -> {
+                percentage = 40.0
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            6 -> {
+                percentage = 38.0
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            7 -> {
+                percentage = 37.5
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            8 -> {
+                percentage = 12.8
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            9 -> {
+                percentage = 4.0
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            10 -> {
+                percentage = 5.5
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+            11 -> {
+                percentage = 6.9
+                ml = player2ml
+                player2permille = (PRechner.permille(
+                    player2weight,
+                    player2gender,
+                    percentage,
+                    ml,
+                    deltaHours
+                ) * 100).toInt()
+            }
+        }
+    }
+
+    fun checkDrink(v : Int): Double {
+        var ml = 0.0
+
+        if(v == 1){
+            when (player1drink) {
+                0 -> {
+                    ml = 500.0
+                }
+                1 -> {
+                    ml = 300.0
+                }
+                2 -> {
+                    ml = 500.0
+                }
+                3 -> {
+                    ml = 200.0
+                }
+                4 -> {
+                    ml = 100.0
+                }
+                5 -> {
+                    ml = 100.0
+                }
+                6 -> {
+                    ml = 100.0
+                }
+                7 -> {
+                    ml = 100.0
+                }
+                8 -> {
+                    ml = 500.0
+                }
+                9 -> {
+                    ml = 500.0
+                }
+                10 -> {
+                    ml = 500.0
+                }
+                11 -> {
+                    ml = 500.0
+                }
+            }}
+        else{
+            when (player2drink) {
+                0 -> {
+                    ml = 500.0
+                }
+                1 -> {
+                    ml = 300.0
+                }
+                2 -> {
+                    ml = 500.0
+                }
+                3 -> {
+                    ml = 200.0
+                }
+                4 -> {
+                    ml = 100.0
+                }
+                5 -> {
+                    ml = 100.0
+                }
+                6 -> {
+                    ml = 100.0
+                }
+                7 -> {
+                    ml = 100.0
+                }
+                8 -> {
+                    ml = 500.0
+                }
+                9 -> {
+                    ml = 500.0
+                }
+                10 -> {
+                    ml = 500.0
+                }
+                11 -> {
+                    ml = 500.0
+                }
+            }}
+        return ml
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("result","ist da")
@@ -298,12 +705,31 @@ class BettlerActivity : AppCompatActivity() {
         }
         if(winner==1){
             winnerName= p1Name
+            player2ml += checkDrink(2)
         }
         else{
             winnerName= p2Name
+            player1ml += checkDrink(1)
         }
+
+
+        calculatePermille()
+
+        db.updateData(player1id, p1Name, player1age, player1size, player1weight, player1gender, player1drink, player1permille)
+        db.updateData(player2id, p2Name, player2age, player2size, player2weight, player2gender, player2drink, player2permille)
+
+
         val intent = Intent(this, PopUpEndGameBettlerActicity::class.java)
         intent.putExtra("playerName", winnerName)
+        intent.putExtra("p1Pos", p1Pos)
+        intent.putExtra("p2Pos", p2Pos)
+        intent.putExtra("player1Name", p1Name)
+        intent.putExtra("player2Name", p2Name)
+        intent.putExtra("p1ID", player1id)
+        intent.putExtra("p2ID", player2id)
+        intent.putExtra("player1permille",player1permille)
+        intent.putExtra("player2permille",player2permille)
+
         startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE)
         Handler().postDelayed({
         playerSign.setText(winnerName +" ist könig! Drücken für neue Runde")},1000)//Das hier musss ausgelagert werden, bzw code oben
