@@ -89,7 +89,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
         val context = this
         db = DBHandler(context)
-        var data = db.readData()
+        val data = db.readData()
 
         Log.d("onCreate: ", "onCreate")
 
@@ -114,7 +114,6 @@ class SchwimmenActivity : AppCompatActivity() {
         player2gender = data.get(p2Pos).gender
         player1permille = data.get(p1Pos).alcoholLevel
         player2permille = data.get(p2Pos).alcoholLevel
-
 
     }
 
@@ -417,7 +416,7 @@ class SchwimmenActivity : AppCompatActivity() {
         player_right.setOnDragListener(dragListener)*/
 
         // first drag and drop card
-        dragView1.setOnLongClickListener {
+        dragView1.setOnClickListener {
             val clipText = "Player Card Left"
             val item = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -436,7 +435,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }
 
         //new drag and drop card
-        dragView2.setOnLongClickListener {
+        dragView2.setOnClickListener {
             val clipText = "Player Card Middle"
             val item2 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -454,7 +453,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }
 
         //new drag and drop card
-        dragView3.setOnLongClickListener {
+        dragView3.setOnClickListener {
             val clipText = "Player Card Right"
             val item3 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -473,7 +472,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }
 
 
-        dragView01.setOnLongClickListener {
+        dragView01.setOnClickListener {
             val clipText = "Table Card Left"
             val item01 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -491,7 +490,7 @@ class SchwimmenActivity : AppCompatActivity() {
             true
 
         }
-        dragView02.setOnLongClickListener {
+        dragView02.setOnClickListener {
             val clipText = "Table Card Middle"
             val item02 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -508,7 +507,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
         }
 
-        dragView03.setOnLongClickListener {
+        dragView03.setOnClickListener {
             val clipText = "Table Card Right"
             val item03 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -534,8 +533,8 @@ class SchwimmenActivity : AppCompatActivity() {
 
         // Check that it is the SecondActivity with an OK result
         if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
-            val toast = Toast.makeText(applicationContext, " $playerStart", Toast.LENGTH_LONG)
-            toast.show()
+            //val toast = Toast.makeText(applicationContext, " $playerStart", Toast.LENGTH_LONG)
+            //toast.show()
             val dragView1: ImageView = findViewById(R.id.player_card_01)!!
             val dragView2: ImageView = findViewById(R.id.player_card_02)!!
             val dragView3: ImageView = findViewById(R.id.player_card_03)!!
@@ -586,6 +585,8 @@ class SchwimmenActivity : AppCompatActivity() {
                 hand = p2hand
             }
 
+            nextPlayerMenu()
+
         dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
         dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
         dragView3.setImageDrawable(getDrawable(hand.getPic(hand.getCard(2))))
@@ -593,6 +594,7 @@ class SchwimmenActivity : AppCompatActivity() {
         dragView01.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))
         dragView02.setImageDrawable(getDrawable(table.getPic(table.getCard(1))))
         dragView03.setImageDrawable(getDrawable(table.getPic(table.getCard(2))))
+
 }
 
 
@@ -650,7 +652,7 @@ fun startHandView() {
 }
 
 
-fun nextPlayerMenu(view: View) {
+fun nextPlayerMenu() {
     //val toast = Toast.makeText(applicationContext, name, Toast.LENGTH_LONG)
     //toast.show()
     if (hand == p2hand) {
@@ -688,7 +690,7 @@ fun nextPlayerMenu(view: View) {
 
 fun rundenEnde(view: View) {
     val toast = Toast.makeText(applicationContext, "$player1Hearts, $player2Hearts", Toast.LENGTH_LONG)
-    toast.show()
+    //toast.show()
 
     if (player1Hearts >= 0 && player2Hearts >= 0) {
         val intent = Intent(this, PopUpRundenendeActivity::class.java)
@@ -783,7 +785,7 @@ fun spielEnde(view: View) {
 
 fun nextRoundMenu(view: View) {
     val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
-    toast.show()
+    //toast.show()
 
     val NextRoundMenuPopUpEvent = Intent(this, PopUpRundenendeActivity::class.java)
     startActivity(NextRoundMenuPopUpEvent)
@@ -791,6 +793,9 @@ fun nextRoundMenu(view: View) {
 
 
 fun onClickChangeCards(view: View) {
+    val Button: Button = findViewById(R.id.single_change_button)!!
+    Button.isClickable = false
+
     val hand1: ImageView = findViewById(R.id.player_card_01)!!
     val table1: ImageView = findViewById(R.id.table_card_01)!!
     val hand2: ImageView = findViewById(R.id.player_card_02)!!
@@ -877,15 +882,21 @@ fun onClickChangeCards(view: View) {
 
         } else {
             Handler().postDelayed({
-                nextPlayerMenu(view)
+                nextPlayerMenu()
             }, 1500)
         }
     }
+
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
 
 }
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun onClickSwapCards(view: View) {
+    val Button: Button = findViewById(R.id.tauschen_button)!!
+    Button.isClickable = false
     val toast = Toast.makeText(applicationContext, "Tauschen", Toast.LENGTH_LONG)
     //toast.show()
     val zwischen1 = table.getIndex(table.getCard(0))
@@ -920,37 +931,45 @@ fun onClickSwapCards(view: View) {
     table2.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
     table3.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
 
-    if (shove) {
-        shove = false
-        shoveStarterHand = HandClass(deck, "Null")
-    }
+    thirtyOne(view)
 
-    if (knock) {
-        knock = false
-        knockStarterHand = HandClass(deck, "Null")
-
-        val winner: Int = game.endGame(p1hand, p2hand)
-        if (winner === 1) {
-            textGewinner = player1Name
-            player2Hearts--
-            player2ml += 100.0
-        } else if (winner === 2) {
-            textGewinner = player2Name
-            player1Hearts--
-            player1ml += 100.0
-        } else {
-            textGewinner = "Yippieh, Unentschieden!"
+    if (thirtyOne === false) {
+        if (shove) {
+            shove = false
+            shoveStarterHand = HandClass(deck, "Null")
         }
-        //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
-        //toast2.show()
 
-        rundenEnde(view)
+        if (knock) {
+            knock = false
+            knockStarterHand = HandClass(deck, "Null")
 
-    } else {
-        Handler().postDelayed({
-            nextPlayerMenu(view)
-        }, 1500)
+            val winner: Int = game.endGame(p1hand, p2hand)
+            if (winner === 1) {
+                textGewinner = player1Name
+                player2Hearts--
+                player2ml += 100.0
+            } else if (winner === 2) {
+                textGewinner = player2Name
+                player1Hearts--
+                player1ml += 100.0
+            } else {
+                textGewinner = "Yippieh, Unentschieden!"
+            }
+            //val toast2 = Toast.makeText(applicationContext, textGewinner, Toast.LENGTH_LONG)
+            //toast2.show()
+
+            rundenEnde(view)
+
+        } else {
+            Handler().postDelayed({
+                nextPlayerMenu()
+            }, 1500)
+        }
     }
+
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
 
 }
 
@@ -989,6 +1008,9 @@ fun thirtyOne(view: View) {
 }
 
 fun onClickKnockCards(view: View) {
+    val Button: Button = findViewById(R.id.klopfen_button)!!
+    Button.isClickable = false
+
     val toast = Toast.makeText(applicationContext, "Klopfen", Toast.LENGTH_LONG)
     //toast.show()
     val hand1: ImageView = findViewById(R.id.player_card_01)!!
@@ -1003,13 +1025,13 @@ fun onClickKnockCards(view: View) {
             knockStarterHand = p1hand
             knock = true
             Handler().postDelayed({
-                nextPlayerMenu(view)
+                nextPlayerMenu()
             }, 1500)
         } else if (hand === p2hand) {
             knockStarterHand = p2hand
             knock = true
             Handler().postDelayed({
-                nextPlayerMenu(view)
+                nextPlayerMenu()
             }, 1500)
         }
     } else if (knock) {
@@ -1033,7 +1055,7 @@ fun onClickKnockCards(view: View) {
 
     } else {
         Handler().postDelayed({
-            nextPlayerMenu(view)
+            nextPlayerMenu()
         }, 1500)
     }
 
@@ -1050,13 +1072,18 @@ fun onClickKnockCards(view: View) {
         shoveStarterHand = HandClass(deck, "Null")
     }
 
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
 
 }
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun onClickShoveCards(view: View) {
+    val Button: Button = findViewById(R.id.schieben_button)!!
+    Button.isClickable = false
     val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
-    toast.show()
+    //toast.show()
     val hand1: ImageView = findViewById(R.id.player_card_01)!!
     val table1: ImageView = findViewById(R.id.table_card_01)!!
     val hand2: ImageView = findViewById(R.id.player_card_02)!!
@@ -1069,13 +1096,13 @@ fun onClickShoveCards(view: View) {
             shoveStarterHand = p1hand
             shove = true
             Handler().postDelayed({
-                nextPlayerMenu(view)
+                nextPlayerMenu()
             }, 1500)
         } else if (hand === p2hand) {
             shoveStarterHand = p2hand
             shove = true
             Handler().postDelayed({
-                nextPlayerMenu(view)
+                nextPlayerMenu()
             }, 1500)
         } else {
             val toast2 =
@@ -1102,7 +1129,7 @@ fun onClickShoveCards(view: View) {
             shoveStarterHand = HandClass(deck, "Null")
 
             Handler().postDelayed({
-                nextPlayerMenu(view)
+                nextPlayerMenu()
             }, 1500)
         } else if (hand === p1hand && shoveStarterHand == p2hand) {
             game.push(table, dump, deck, true)
@@ -1123,7 +1150,7 @@ fun onClickShoveCards(view: View) {
             shoveStarterHand = HandClass(deck, "Null")
 
             Handler().postDelayed({
-                nextPlayerMenu(view)
+                nextPlayerMenu()
             }, 1500)
         }
     } else {
@@ -1159,12 +1186,17 @@ fun onClickShoveCards(view: View) {
 
         rundenEnde(view)
     }
+
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
+
 }
 
 
 fun promilleAnzeige(view: View) {
     val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
-    toast.show()
+    //toast.show()
 
     val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
     startActivity(PromillePopUpEvent)
