@@ -1,6 +1,5 @@
 package com.example.cardsagainstyourliver
 
-import android.app.Activity.RESULT_OK
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
@@ -9,13 +8,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
 
 
 class SchwimmenActivity : AppCompatActivity() {
@@ -1258,6 +1254,7 @@ fun onClickBackToMenuButton(view: View) {
              table1.setImageDrawable(getDrawable(table.getPic(table.getCard(0))))*/
 
              target.invalidate()
+
 
              ///val v = event.localState as View
 
