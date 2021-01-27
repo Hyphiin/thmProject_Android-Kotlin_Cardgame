@@ -93,7 +93,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
         val context = this
         db = DBHandler(context)
-        var data = db.readData()
+        val data = db.readData()
 
         Log.d("onCreate: ", "onCreate")
 
@@ -118,7 +118,6 @@ class SchwimmenActivity : AppCompatActivity() {
         player2gender = data.get(p2Pos).gender
         player1permille = data.get(p1Pos).alcoholLevel
         player2permille = data.get(p2Pos).alcoholLevel
-
 
     }
 
@@ -798,6 +797,9 @@ fun nextRoundMenu(view: View) {
 
 
 fun onClickChangeCards(view: View) {
+    val Button: Button = findViewById(R.id.single_change_button)!!
+    Button.isClickable = false
+
     val hand1: ImageView = findViewById(R.id.player_card_01)!!
     val table1: ImageView = findViewById(R.id.table_card_01)!!
     val hand2: ImageView = findViewById(R.id.player_card_02)!!
@@ -889,10 +891,16 @@ fun onClickChangeCards(view: View) {
         }
     }
 
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
+
 }
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun onClickSwapCards(view: View) {
+    val Button: Button = findViewById(R.id.tauschen_button)!!
+    Button.isClickable = false
     val toast = Toast.makeText(applicationContext, "Tauschen", Toast.LENGTH_LONG)
     //toast.show()
     val zwischen1 = table.getIndex(table.getCard(0))
@@ -963,6 +971,10 @@ fun onClickSwapCards(view: View) {
         }
     }
 
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
+
 }
 
 fun thirtyOne(view: View) {
@@ -1000,6 +1012,9 @@ fun thirtyOne(view: View) {
 }
 
 fun onClickKnockCards(view: View) {
+    val Button: Button = findViewById(R.id.klopfen_button)!!
+    Button.isClickable = false
+
     val toast = Toast.makeText(applicationContext, "Klopfen", Toast.LENGTH_LONG)
     //toast.show()
     val hand1: ImageView = findViewById(R.id.player_card_01)!!
@@ -1061,11 +1076,16 @@ fun onClickKnockCards(view: View) {
         shoveStarterHand = HandClass(deck, "Null")
     }
 
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
 
 }
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 fun onClickShoveCards(view: View) {
+    val Button: Button = findViewById(R.id.schieben_button)!!
+    Button.isClickable = false
     val toast = Toast.makeText(applicationContext, "Schieben", Toast.LENGTH_LONG)
     //toast.show()
     val hand1: ImageView = findViewById(R.id.player_card_01)!!
@@ -1170,6 +1190,11 @@ fun onClickShoveCards(view: View) {
 
         rundenEnde(view)
     }
+
+    Handler().postDelayed({
+        Button.isClickable = true
+    }, 2000)
+
 }
 
 
