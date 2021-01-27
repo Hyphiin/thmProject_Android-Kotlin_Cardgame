@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:text="hat gewonnen!"
+            android:text="@string/player_win_text"
             android:textSize="36sp" />
 
         <Space

@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto_slab_bold"
             android:text="Spieler 1 hat:"
             android:textSize="36sp" />
 
@@ -66,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/roboto_slab_bold"
             android:text="Spieler 2 hat:"
             android:textSize="36sp" />
 

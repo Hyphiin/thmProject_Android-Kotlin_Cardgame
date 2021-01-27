@@ -12,6 +12,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
+import java.sql.Time
+import java.sql.Timestamp
+import kotlin.time.hours
 
 
 class SchwimmenActivity : AppCompatActivity() {
@@ -74,6 +78,9 @@ class SchwimmenActivity : AppCompatActivity() {
     var p1Pos = 0
     var p2Pos = 0
 
+    var timerStart = System.currentTimeMillis()
+    var timerEnd= System.currentTimeMillis()
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,6 +122,9 @@ class SchwimmenActivity : AppCompatActivity() {
         player1permille = data.get(p1Pos).alcoholLevel
         player2permille = data.get(p2Pos).alcoholLevel
 
+
+        timerStart = System.currentTimeMillis()
+
     }
 
     fun calculatePermille() {
@@ -122,6 +132,7 @@ class SchwimmenActivity : AppCompatActivity() {
         var PRechner = PerMilleCalculator()
         var percentage = 0.0
         var ml = 0.0
+        val deltaHours = (timerEnd/(60 * 60 * 1000 ) - timerStart/(60 * 60 * 1000 )).toInt()
 
         when (player1drink) {
             0 -> {
@@ -132,7 +143,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             1 -> {
@@ -143,7 +154,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             2 -> {
@@ -154,7 +165,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             3 -> {
@@ -165,7 +176,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             4 -> {
@@ -176,7 +187,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             5 -> {
@@ -187,7 +198,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             6 -> {
@@ -198,7 +209,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             7 -> {
@@ -209,7 +220,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             8 -> {
@@ -220,7 +231,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             9 -> {
@@ -231,7 +242,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             10 -> {
@@ -242,7 +253,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             11 -> {
@@ -253,7 +264,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player1gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
         }
@@ -266,7 +277,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             1 -> {
@@ -277,7 +288,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             2 -> {
@@ -288,7 +299,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             3 -> {
@@ -299,7 +310,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             4 -> {
@@ -310,7 +321,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             5 -> {
@@ -321,7 +332,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             6 -> {
@@ -332,7 +343,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             7 -> {
@@ -343,7 +354,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             8 -> {
@@ -354,7 +365,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             9 -> {
@@ -365,7 +376,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             10 -> {
@@ -376,7 +387,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
             11 -> {
@@ -387,10 +398,94 @@ class SchwimmenActivity : AppCompatActivity() {
                     player2gender,
                     percentage,
                     ml,
-                    2
+                    deltaHours
                 ) * 100).toInt()
             }
         }
+    }
+
+    fun checkDrink(v : Int): Double {
+        var ml = 0.0
+
+        if(v == 1){
+            when (player1drink) {
+                0 -> {
+                    ml = 50.0
+                }
+                1 -> {
+                    ml = 50.0
+                }
+                2 -> {
+                    ml = 50.0
+                }
+                3 -> {
+                    ml = 10.0
+                }
+                4 -> {
+                    ml = 10.0
+                }
+                5 -> {
+                    ml = 10.0
+                }
+                6 -> {
+                    ml = 10.0
+                }
+                7 -> {
+                    ml = 10.0
+                }
+                8 -> {
+                    ml = 50.0
+                }
+                9 -> {
+                    ml = 50.0
+                }
+                10 -> {
+                    ml = 50.0
+                }
+                11 -> {
+                    ml = 50.0
+                }
+            }}
+        else{
+            when (player2drink) {
+                0 -> {
+                    ml = 50.0
+                }
+                1 -> {
+                    ml = 50.0
+                }
+                2 -> {
+                    ml = 50.0
+                }
+                3 -> {
+                    ml = 10.0
+                }
+                4 -> {
+                    ml = 10.0
+                }
+                5 -> {
+                    ml = 10.0
+                }
+                6 -> {
+                    ml = 10.0
+                }
+                7 -> {
+                    ml = 10.0
+                }
+                8 -> {
+                    ml = 50.0
+                }
+                9 -> {
+                    ml = 50.0
+                }
+                10 -> {
+                    ml = 50.0
+                }
+                11 -> {
+                    ml = 50.0
+                }
+            }}
+        return ml
     }
 
     override fun onResume() {
@@ -764,6 +859,9 @@ fun spielEnde(view: View) {
     }else{
         winner = " $player1Name"
     }
+
+    timerEnd = System.currentTimeMillis()
+
     calculatePermille()
 
     db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink, player1permille)
@@ -867,11 +965,11 @@ fun onClickChangeCards(view: View) {
             if (winner === 1) {
                 textGewinner = player1Name
                 player2Hearts--
-                player2ml += 100.0
+                player2ml += checkDrink(2)
             } else if (winner === 2) {
                 textGewinner = player2Name
                 player1Hearts--
-                player1ml += 100.0
+                player1ml += checkDrink(1)
             } else {
                 textGewinner = "Yippieh, Unentschieden!"
             }
@@ -980,25 +1078,25 @@ fun thirtyOne(view: View) {
     if (winner === 331) {
         textGewinner = player1Name
         player2Hearts--
-        player2ml += 100.0
+        player2ml += checkDrink(2)
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 332) {
         textGewinner = player2Name
         player1Hearts--
-        player1ml += 100.0
+        player1ml += checkDrink(1)
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 311) {
         textGewinner = player1Name
         player2Hearts--
-        player2ml += 100.0
+        player2ml += checkDrink(2)
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 312) {
         textGewinner = player2Name
         player1Hearts--
-        player1ml += 100.0
+        player1ml += checkDrink(1)
         thirtyOne = true
         rundenEnde(view)
     } else {
@@ -1041,11 +1139,11 @@ fun onClickKnockCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
-            player2ml += 100.0
+            player2ml += checkDrink(2)
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
-            player1ml += 100.0
+            player1ml += checkDrink(1)
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }
@@ -1107,7 +1205,7 @@ fun onClickShoveCards(view: View) {
         } else {
             val toast2 =
                 Toast.makeText(applicationContext, "Hand nicht definiert", Toast.LENGTH_LONG)
-            toast2.show()
+            //toast2.show()
         }
     } else if (shove) {
         if (hand === p2hand && shoveStarterHand == p1hand) {
@@ -1123,7 +1221,7 @@ fun onClickShoveCards(view: View) {
 
             val toast2 =
                 Toast.makeText(applicationContext, "${table.toString()} ", Toast.LENGTH_LONG)
-            toast2.show()
+            //toast2.show()
 
             shove = false
             shoveStarterHand = HandClass(deck, "Null")
@@ -1144,7 +1242,7 @@ fun onClickShoveCards(view: View) {
 
             val toast2 =
                 Toast.makeText(applicationContext, "${table.toString()} ", Toast.LENGTH_LONG)
-            toast2.show()
+            //toast2.show()
 
             shove = false
             shoveStarterHand = HandClass(deck, "Null")
@@ -1155,7 +1253,7 @@ fun onClickShoveCards(view: View) {
         }
     } else {
         val toast2 = Toast.makeText(applicationContext, "Keine ShoveStarterHand", Toast.LENGTH_LONG)
-        toast2.show()
+        //toast2.show()
     }
 
     hand1.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
@@ -1173,11 +1271,11 @@ fun onClickShoveCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
-            player2ml += 100.0
+            player2ml += checkDrink(2)
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
-            player1ml += 100.0
+            player1ml += checkDrink(1)
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }
