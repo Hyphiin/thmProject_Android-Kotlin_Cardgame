@@ -407,6 +407,90 @@ class SchwimmenActivity : AppCompatActivity() {
         }
     }
 
+    fun checkDrink(v : Int): Double {
+        var ml = 0.0
+
+        if(v == 1){
+            when (player1drink) {
+                0 -> {
+                    ml = 50.0
+                }
+                1 -> {
+                    ml = 50.0
+                }
+                2 -> {
+                    ml = 50.0
+                }
+                3 -> {
+                    ml = 10.0
+                }
+                4 -> {
+                    ml = 10.0
+                }
+                5 -> {
+                    ml = 10.0
+                }
+                6 -> {
+                    ml = 10.0
+                }
+                7 -> {
+                    ml = 10.0
+                }
+                8 -> {
+                    ml = 50.0
+                }
+                9 -> {
+                    ml = 50.0
+                }
+                10 -> {
+                    ml = 50.0
+                }
+                11 -> {
+                    ml = 50.0
+                }
+            }}
+        else{
+            when (player2drink) {
+                0 -> {
+                    ml = 50.0
+                }
+                1 -> {
+                    ml = 50.0
+                }
+                2 -> {
+                    ml = 50.0
+                }
+                3 -> {
+                    ml = 10.0
+                }
+                4 -> {
+                    ml = 10.0
+                }
+                5 -> {
+                    ml = 10.0
+                }
+                6 -> {
+                    ml = 10.0
+                }
+                7 -> {
+                    ml = 10.0
+                }
+                8 -> {
+                    ml = 50.0
+                }
+                9 -> {
+                    ml = 50.0
+                }
+                10 -> {
+                    ml = 50.0
+                }
+                11 -> {
+                    ml = 50.0
+                }
+            }}
+        return ml
+    }
+
     override fun onResume() {
         super.onResume()
         Log.d("onResume: ", "onResume")
@@ -878,11 +962,11 @@ fun onClickChangeCards(view: View) {
             if (winner === 1) {
                 textGewinner = player1Name
                 player2Hearts--
-                player2ml += 100.0
+                player2ml += checkDrink(2)
             } else if (winner === 2) {
                 textGewinner = player2Name
                 player1Hearts--
-                player1ml += 100.0
+                player1ml += checkDrink(1)
             } else {
                 textGewinner = "Yippieh, Unentschieden!"
             }
@@ -949,11 +1033,11 @@ fun onClickSwapCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
-            player2ml += 100.0
+            player2ml += checkDrink(2)
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
-            player1ml += 100.0
+            player1ml += checkDrink(1)
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }
@@ -977,25 +1061,25 @@ fun thirtyOne(view: View) {
     if (winner === 331) {
         textGewinner = player1Name
         player2Hearts--
-        player2ml += 100.0
+        player2ml += checkDrink(2)
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 332) {
         textGewinner = player2Name
         player1Hearts--
-        player1ml += 100.0
+        player1ml += checkDrink(1)
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 311) {
         textGewinner = player1Name
         player2Hearts--
-        player2ml += 100.0
+        player2ml += checkDrink(2)
         thirtyOne = true
         rundenEnde(view)
     } else if (winner === 312) {
         textGewinner = player2Name
         player1Hearts--
-        player1ml += 100.0
+        player1ml += checkDrink(1)
         thirtyOne = true
         rundenEnde(view)
     } else {
@@ -1035,11 +1119,11 @@ fun onClickKnockCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
-            player2ml += 100.0
+            player2ml += checkDrink(2)
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
-            player1ml += 100.0
+            player1ml += checkDrink(1)
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }
@@ -1162,11 +1246,11 @@ fun onClickShoveCards(view: View) {
         if (winner === 1) {
             textGewinner = player1Name
             player2Hearts--
-            player2ml += 100.0
+            player2ml += checkDrink(2)
         } else if (winner === 2) {
             textGewinner = player2Name
             player1Hearts--
-            player1ml += 100.0
+            player1ml += checkDrink(1)
         } else {
             textGewinner = "Yippieh, Unentschieden!"
         }
