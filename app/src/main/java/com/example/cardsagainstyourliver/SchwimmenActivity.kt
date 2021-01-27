@@ -8,7 +8,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.DragEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -410,17 +412,17 @@ class SchwimmenActivity : AppCompatActivity() {
         val dragView03: ImageView = findViewById(R.id.table_card_03)!!
 
 
-        /*table_left.setOnDragListener(dragListener)
-        table_middle.setOnDragListener(dragListener)
-        table_right.setOnDragListener(dragListener)
+        dragView1.setOnDragListener(dragListener)
+        dragView2.setOnDragListener(dragListener)
+        dragView3.setOnDragListener(dragListener)
         //tableCard3.setOnDragListener(dragListener)
 
-        player_left.setOnDragListener(dragListener)
-        player_middle.setOnDragListener(dragListener)
-        player_right.setOnDragListener(dragListener)*/
+        dragView01.setOnDragListener(dragListener)
+        dragView02.setOnDragListener(dragListener)
+        dragView03.setOnDragListener(dragListener)
 
         // first drag and drop card
-        dragView1.setOnClickListener {
+        dragView1.setOnLongClickListener {
             val clipText = "Player Card Left"
             val item = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -430,7 +432,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
             dragView1.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
-            /*val dragShadowBuilder = View.DragShadowBuilder(it)
+            val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
             it.visibility = View.INVISIBLE // damit die karte während dem drag unsichtbar wird*/
@@ -439,7 +441,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }
 
         //new drag and drop card
-        dragView2.setOnClickListener {
+        dragView2.setOnLongClickListener {
             val clipText = "Player Card Middle"
             val item2 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -449,15 +451,15 @@ class SchwimmenActivity : AppCompatActivity() {
 
             dragView2.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
-            /*val dragShadowBuilder = View.DragShadowBuilder(it)
+            val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE*/
+            it.visibility = View.INVISIBLE
             true
         }
 
         //new drag and drop card
-        dragView3.setOnClickListener {
+        dragView3.setOnLongClickListener {
             val clipText = "Player Card Right"
             val item3 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -467,16 +469,16 @@ class SchwimmenActivity : AppCompatActivity() {
 
             dragView3.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
-            /*val dragShadowBuilder = View.DragShadowBuilder(it)
+            val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE*/
+            it.visibility = View.INVISIBLE
             true
 
         }
 
 
-        dragView01.setOnClickListener {
+        dragView01.setOnLongClickListener {
             val clipText = "Table Card Left"
             val item01 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -485,16 +487,14 @@ class SchwimmenActivity : AppCompatActivity() {
             object2 = table.getIndex(table.getCard(0))
             dragView01.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
-            /*val dragShadowBuilder = View.DragShadowBuilder(it)
+            val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-
-
-            it.visibility = View.INVISIBLE*/
+            it.visibility = View.INVISIBLE
             true
 
         }
-        dragView02.setOnClickListener {
+        dragView02.setOnLongClickListener {
             val clipText = "Table Card Middle"
             val item02 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -503,15 +503,15 @@ class SchwimmenActivity : AppCompatActivity() {
             object2 = table.getIndex(table.getCard(1))
             dragView02.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
-            /*val dragShadowBuilder = View.DragShadowBuilder(it)
+            val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE*/
+            it.visibility = View.INVISIBLE
             true
 
         }
 
-        dragView03.setOnClickListener {
+        dragView03.setOnLongClickListener {
             val clipText = "Table Card Right"
             val item03 = ClipData.Item(clipText)
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
@@ -520,10 +520,10 @@ class SchwimmenActivity : AppCompatActivity() {
             object2 = table.getIndex(table.getCard(2))
             dragView03.setBackgroundColor(getResources().getColor(R.color.colorAccent))
 
-            /*val dragShadowBuilder = View.DragShadowBuilder(it)
+            val dragShadowBuilder = View.DragShadowBuilder(it)
             it.startDragAndDrop(data, dragShadowBuilder, it, 0)
 
-            it.visibility = View.INVISIBLE*/
+            it.visibility = View.INVISIBLE
             true
 
         }
@@ -1218,7 +1218,7 @@ fun onClickBackToMenuButton(view: View) {
 }
 
 
-/*@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
  val dragListener = View.OnDragListener { target, event ->
      when (event.action) {
          DragEvent.ACTION_DRAG_STARTED -> {
@@ -1252,13 +1252,7 @@ fun onClickBackToMenuButton(view: View) {
              var xPos: Float = event.getX();
              var xPos2: String? = event.getX().toString();
 
-             if (xPos > 180){
-                 object2 = table.getIndex(table.getCard(2))
-             }else if (xPos > 140){
-                 object2 = table.getIndex(table.getCard(1))
-             }else {
-                 object2 = table.getIndex(table.getCard(0))
-             }
+             
 
              game.changeCard(object1,object2,p1hand,table)
 
@@ -1325,7 +1319,7 @@ fun onClickBackToMenuButton(view: View) {
          }
          else -> true
      }
- }*/
+ }
 }
 
 
