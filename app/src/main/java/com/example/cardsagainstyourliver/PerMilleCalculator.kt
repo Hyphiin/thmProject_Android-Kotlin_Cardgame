@@ -2,15 +2,15 @@ package com.example.cardsagainstyourliver
 
 class PerMilleCalculator {
 
-    public fun permille(mPerson: Int, gender: Int, percentage: Double, ml: Double, Dauer: Int): Double{
+    fun permille(mPerson: Int, gender: Int, percentage: Double, ml: Double, endurance: Int): Double{
 
         var r: Double
         var BAK: Double = 0.0
+        var hours: Int
 
         var konsuming: Double
 
         konsuming = (ml*percentage)/(100.0*0.8)
-
 
         when(gender){
             0 ->{
@@ -22,8 +22,9 @@ class PerMilleCalculator {
             }
         }
 
-        for (i in 0 until Dauer) {
-            BAK = BAK * 0.85
+
+        for (i in 0 until endurance) {
+            BAK *= 0.85
         }
 
         BAK = Math.round(BAK * 100.0) / 100.0

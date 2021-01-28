@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import java.sql.Timestamp
 
 class PopUpPromillerechnerActivity : Activity() {
     @SuppressLint("Range")
@@ -35,14 +36,11 @@ class PopUpPromillerechnerActivity : Activity() {
         var p1permille = intent.getIntExtra("player1permille", -2)
         var p2permille = intent.getIntExtra("player2permille", -2)
 
-        //val p1permille = data.get(p1Pos).alcoholLevel
-        //val p2permille = data.get(p2Pos).alcoholLevel
+        val permille1dummy = (p1permille.toDouble())
+        val permille2dummy = (p2permille.toDouble())
 
-        val permille1zwischen = (p1permille.toDouble())
-        val permille2zwischen = (p2permille.toDouble())
-
-        val permille1 = permille1zwischen/100.0
-        val permille2 = permille2zwischen/100.0
+        val permille1 = permille1dummy/100.0
+        val permille2 = permille2dummy/100.0
 
         val permille1String = permille1.toString()
         val permille2String = permille2.toString()
@@ -52,10 +50,6 @@ class PopUpPromillerechnerActivity : Activity() {
 
         val player1permille: TextView = findViewById(R.id.p1permille)!!
         val player2permille: TextView = findViewById(R.id.p2permille)!!
-
-
-        val toast = Toast.makeText(applicationContext, "$p1name,$p2name,$permille1,$permille2", Toast.LENGTH_LONG)
-        //toast.show()
 
 
         player1Name.setText(p1name)

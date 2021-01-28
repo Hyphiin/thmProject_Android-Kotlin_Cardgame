@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:text="hat gewonnen!"
+            android:text="@string/player_win_text"
             android:textSize="30sp" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:text="du bist dran!"
+            android:text="@string/your_turn_text"
             android:textSize="24sp" />
 
         <Space
@@ -83,7 +83,7 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:onClick="nextRound"
-            android:text="Weiter"
+            android:text="@string/continue_text"
             android:textSize="36sp" />
 
         <Space

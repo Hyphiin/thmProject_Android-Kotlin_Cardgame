@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
     fun onClickPlayButton(view: View) {
         val GamelistButton = Intent(this, GamelistActivity::class.java)
         startActivity(GamelistButton)
@@ -51,9 +50,6 @@ class MainActivity : AppCompatActivity() {
         val ProfileButton = Intent(this, ProfileActivity::class.java)
         startActivity(ProfileButton)
     }
-
-
-
 
     fun onClickManualButton(view: View) {
         val ManualButton = Intent(this, ManualActivity::class.java)

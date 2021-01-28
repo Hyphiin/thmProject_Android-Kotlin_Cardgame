@@ -35,12 +35,17 @@
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
     <TextView
         android:id="@+id/newGame_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_slab_bold"
         android:gravity="center"
-        android:text="new game comming soon..."
+        android:text="@string/games_comming_soon"
         android:textColor="@color/buttonText"
         android:textSize="36sp" />
 </LinearLayout>
