@@ -23,7 +23,6 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ProfileSettingsActivity" />
         <activity android:name=".SchwimmenActivity" />
-        <activity android:name=".SettingsActivity" />
         <activity android:name=".NewGameActivity" />
         <activity android:name=".SpielerauswahlActivity" />
         <activity

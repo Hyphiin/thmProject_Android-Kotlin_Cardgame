@@ -23,7 +23,7 @@
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:background="#00FFFFFF"
-            android:onClick="onClickBackToMenuButton"
+            android:onClick="onClickPauseMenuButton"
             android:src="@drawable/menu" />
 
 

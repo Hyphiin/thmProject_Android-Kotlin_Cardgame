@@ -38,9 +38,5 @@ class PauseMenuActivity : AppCompatActivity() {
         startActivity(ManualButton)
     }
 
-    fun onClickSettingsButton(view: View) {
-        val SettingsButton = Intent(this, SettingsActivity::class.java)
-        startActivity(SettingsButton)
-    }
 
 }
