@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
-            android:text="Spieler 1 hat:"
+            android:text="Spieler 1"
             android:textSize="36sp" />
 
         <TextView
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_slab_bold"
-            android:text="Spieler 2 hat:"
+            android:text="Spieler 2 "
             android:textSize="36sp" />
 
         <TextView

@@ -844,11 +844,11 @@ class SchwimmenActivity : AppCompatActivity() {
                 if (winner === 1) {
                     textWinner = player1Name
                     player2Hearts--
-                    player2ml += 100.0
+                    player2ml += checkDrink(2)
                 } else if (winner === 2) {
                     textWinner = player2Name
                     player1Hearts--
-                    player1ml += 100.0
+                    player1ml += checkDrink(1)
                 } else {
                     textWinner = "Yippieh, Unentschieden!"
                 }
@@ -918,11 +918,11 @@ class SchwimmenActivity : AppCompatActivity() {
                 if (winner === 1) {
                     textWinner = player1Name
                     player2Hearts--
-                    player2ml += 100.0
+                    player2ml += checkDrink(2)
                 } else if (winner === 2) {
                     textWinner = player2Name
                     player1Hearts--
-                    player1ml += 100.0
+                    player1ml += checkDrink(1)
                 } else {
                     textWinner = "Yippieh, Unentschieden!"
                 }
@@ -947,25 +947,25 @@ class SchwimmenActivity : AppCompatActivity() {
         if (winner === 331) {
             textWinner = player1Name
             player2Hearts--
-            player2ml += 100.0
+            player2ml += checkDrink(2)
             thirtyOne = true
             roundEnd()
         } else if (winner === 332) {
             textWinner = player2Name
             player1Hearts--
-            player1ml += 100.0
+            player1ml += checkDrink(1)
             thirtyOne = true
             roundEnd()
         } else if (winner === 311) {
             textWinner = player1Name
             player2Hearts--
-            player2ml += 100.0
+            player2ml += checkDrink(2)
             thirtyOne = true
             roundEnd()
         } else if (winner === 312) {
             textWinner = player2Name
             player1Hearts--
-            player1ml += 100.0
+            player1ml += checkDrink(1)
             thirtyOne = true
             roundEnd()
         }
@@ -1116,11 +1116,11 @@ class SchwimmenActivity : AppCompatActivity() {
             if (winner === 1) {
                 textWinner = player1Name
                 player2Hearts--
-                player2ml += 100.0
+                player2ml += checkDrink(2)
             } else if (winner === 2) {
                 textWinner = player2Name
                 player1Hearts--
-                player1ml += 100.0
+                player1ml += checkDrink(1)
             } else {
                 textWinner = "Yippieh, Unentschieden!"
             }

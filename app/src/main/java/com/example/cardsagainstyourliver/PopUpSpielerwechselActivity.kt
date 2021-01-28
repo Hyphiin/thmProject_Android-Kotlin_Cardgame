@@ -53,10 +53,12 @@ class PopUpSpielerwechselActivity : Activity() {
         if (name == player1Name) {
             textView.setText(player2Name)
             if (knock) {
-                textView3.setText("$player1Name hat beendet!")
+                val schwimmeHasEnded = getString(R.string.schwimmen_has_ended)
+                textView3.setText("$player1Name $schwimmeHasEnded")
             }
             if (shove) {
-                textView3.setText("$player1Name hat geschoben!")
+                val schwimmenHasClosed = getString(R.string.schwimmen_has_closed)
+                textView3.setText("$player1Name $schwimmenHasClosed")
             }
             if (player2heart == 2) {
                 heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
@@ -71,10 +73,12 @@ class PopUpSpielerwechselActivity : Activity() {
         }else {
             textView.setText(player1Name)
             if(knock){
-                textView3.setText("$player2Name hat beendet!")
+                val schwimmeHasEnded = getString(R.string.schwimmen_has_ended)
+                textView3.setText("$player2Name $schwimmeHasEnded")
             }
             if(shove){
-                textView3.setText("$player2Name hat geschoben!")
+                val schwimmenHasClosed = getString(R.string.schwimmen_has_closed)
+                textView3.setText("$player2Name $schwimmenHasClosed")
             }
             if (player1heart == 2) {
                 heart3.setImageDrawable(getDrawable(R.drawable.heart_empty))
@@ -87,8 +91,6 @@ class PopUpSpielerwechselActivity : Activity() {
                 heart1.setImageDrawable(getDrawable(R.drawable.heart_empty))
             }
         }
-
-
 
         window.setLayout(
             (width * 0.805).toInt(),

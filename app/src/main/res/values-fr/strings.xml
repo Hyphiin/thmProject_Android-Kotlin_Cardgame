@@ -50,10 +50,12 @@
     <string name="life_text">Vie :</string>
     <string name="your_turn_text">c\'est ton tour!</string>
     <string name="now_player_text">c\'est maintenant ton tour!</string>
-    <string name="player_win_text">hat gewonnen!</string>
+    <string name="player_win_text">a gagné!</string>
     <string name="choice_cards_text">choisissez vos cartes!</string>
     <string name="games_comming_soon">weitere Spiele folgen...</string>
     <string name="resume_text">Resume</string>
     <string name="name_text2">name</string>
+    <string name="schwimmen_has_closed">a poussé!</string>
+    <string name="schwimmen_has_ended">avoir fini!</string>
 
 </resources>

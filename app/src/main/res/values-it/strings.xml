@@ -50,11 +50,13 @@
     <string name="life_text">Vita :</string>
     <string name="your_turn_text">è il tuo turno!</string>
     <string name="now_player_text">ora è il tuo turno!</string>
-    <string name="player_win_text">hat gewonnen!</string>
+    <string name="player_win_text">ha vinto!</string>
     <string name="choice_cards_text">scegli le tue carte!</string>
     <string name="games_comming_soon">weitere Spiele folgen...</string>
     <string name="resume_text">Resume</string>
     <string name="name_text2">name</string>
+    <string name="schwimmen_has_closed">ha spinto!</string>
+    <string name="schwimmen_has_ended">ha finito!</string>
 
 
 </resources>

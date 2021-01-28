@@ -36,7 +36,8 @@ class SpielerauswahlActivity : AppCompatActivity() {
             )
         }
 
-        profil_text2.setText("Spielerauswahl")
+        val playerChoiceText = getString(R.string.player_choice_text)
+        profil_text2.setText("$playerChoiceText")
         btn_start.setVisibility(View.VISIBLE)
         btn_add.setVisibility(View.INVISIBLE)
 

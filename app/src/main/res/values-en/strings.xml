@@ -48,12 +48,14 @@
     <string name="switch_text">change</string>
     <string name="life_text">Life :</string>
     <string name="your_turn_text">your turn!</string>
-    <string name="now_player_text">ist jetzt am Zug!</string>
-    <string name="player_win_text">hat gewonnen!</string>
+    <string name="now_player_text">your turn!</string>
+    <string name="player_win_text">has won!</string>
     <string name="choice_cards_text">choose your Cards!</string>
     <string name="games_comming_soon">weitere Spiele folgen...</string>
     <string name="resume_text">Resume</string>
     <string name="name_text2">name</string>
     <string name="continue_text">continue</string>
+    <string name="schwimmen_has_ended">has finished!</string>
+    <string name="schwimmen_has_closed">has pushed!</string>
 
 </resources>
