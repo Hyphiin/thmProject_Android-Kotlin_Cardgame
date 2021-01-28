@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.profile_acivity_new.*
 
 
-class SpielerauswahlActivity : AppCompatActivity() {
+class PlayerSelectionActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class SpielerauswahlActivity : AppCompatActivity() {
         val modus = intent.getStringExtra("Gamemode")
 
 
-        val context=this
+        val context = this
         var db =DBHandler(context)
         var names: MutableList<String> = ArrayList()
         var ids: MutableList<Int> = ArrayList()

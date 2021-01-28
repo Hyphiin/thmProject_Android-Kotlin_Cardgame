@@ -58,4 +58,8 @@
     <string name="schwimmen_has_ended">has finished!</string>
     <string name="schwimmen_has_closed">has pushed!</string>
 
+
+    <string name="newGame_text">Neues Spiel</string>
+    <string name="promille_text">Promille</string>
+
 </resources>

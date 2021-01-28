@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
-import java.sql.Timestamp
 
-class PopUpPromillerechnerActivity : Activity() {
+class PopUpPermilleCalcActivity : Activity() {
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -63,7 +63,7 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:onClick="onClickBackToGameListButton"
-            android:text=" neues Spiel"
+            android:text="@string/newGame_text"
             android:textSize="30sp" />
 
         <Space
@@ -95,7 +95,7 @@
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
             android:onClick="promilleAnzeige"
-            android:text="Promille"
+            android:text="@string/promille_text"
             android:textSize="30sp" />
 
         <Space

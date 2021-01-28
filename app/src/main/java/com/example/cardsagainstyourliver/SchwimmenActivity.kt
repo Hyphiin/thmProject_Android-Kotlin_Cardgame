@@ -13,10 +13,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
-import java.sql.Time
-import java.sql.Timestamp
-import kotlin.time.hours
 
 
 class SchwimmenActivity : AppCompatActivity() {
