@@ -17,7 +17,7 @@ class PopUpKartenauswahlActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.cardChoice_PopUp)
+        setContentView(R.layout.card_choice)
 
         val dm: DisplayMetrics = DisplayMetrics()
         this.windowManager.defaultDisplay.getMetrics(dm)

@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
-import kotlinx.android.synthetic.main.spielende.*
+import kotlinx.android.synthetic.main.end_game.*
 
 class PopUpEndGameBettlerActicity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
