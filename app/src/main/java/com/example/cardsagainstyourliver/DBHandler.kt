@@ -57,7 +57,6 @@ class DBHandler(var context:Context): SQLiteOpenHelper(context, DATABASE_NAME, n
         var result = db.insert(TABLE_NAME,null,cv)
         if(result== -1.toLong())
             Log.d("failes","failed")
-        //Toast.makeText(context,"Failed",Toast.LENGTH_SHORT).show()
         else
             Log.d("success","success")
         Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show()

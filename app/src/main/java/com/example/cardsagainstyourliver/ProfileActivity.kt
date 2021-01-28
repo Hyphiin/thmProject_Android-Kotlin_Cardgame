@@ -70,8 +70,4 @@ class ProfileActivity : AppCompatActivity() {
         startActivity(ResumeButton)
     }
 
-    fun onClickProfileEditButton(view: View) {
-        val ProfileEditButton = Intent(this, ProfileSettingsActivity::class.java)
-        startActivity(ProfileEditButton)
-    }
 }
