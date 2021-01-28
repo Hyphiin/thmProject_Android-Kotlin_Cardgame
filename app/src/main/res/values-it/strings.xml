@@ -52,15 +52,17 @@
     <string name="now_player_text">ora è il tuo turno!</string>
     <string name="player_win_text">ha vinto!</string>
     <string name="choice_cards_text">scegli le tue carte!</string>
-    <string name="games_comming_soon">weitere Spiele folgen...</string>
+    <string name="games_comming_soon">seguiranno altri giochi...</string>
     <string name="resume_text">Resume</string>
     <string name="name_text2">name</string>
     <string name="schwimmen_has_closed">ha spinto!</string>
     <string name="schwimmen_has_ended">ha finito!</string>
 
 
-    <string name="newGame_text">Neues Spiel</string>
-    <string name="promille_text">Promille</string>
+    <string name="newGame_text">nuovo gioco</string>
+    <string name="promille_text">per mille</string>
+    <string name="you_have_to_drink">bevi un sorso</string>
+    <string name="nobody">Nessuna</string>
 
 
 </resources>

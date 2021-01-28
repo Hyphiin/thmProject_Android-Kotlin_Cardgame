@@ -35,7 +35,7 @@
             android:name=".PopUpPlayerChangeBettlerActivity"
             android:theme="@style/AppTheme.PopUpSpielerwechsel" /> 
         <activity
-            android:name=".PopUpKartenauswahlActivity"
+            android:name=".PopUpCardChooseActivity"
             android:theme="@style/AppTheme.PopUpKartenauswahl" />
         <activity
             android:name=".PopUpEndGameBettlerActicity"

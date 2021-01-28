@@ -62,7 +62,7 @@ class PlayerSelectionActivity : AppCompatActivity() {
                 if(selected.contains(id)){
                     selected.remove(id)
                     selectedpos.remove(position)
-                    parent.getChildAt(position).setBackgroundColor(Color.CYAN)//Wie kriege ich hier Backgroundcolor2?
+                    parent.getChildAt(position).setBackgroundColor(getResources().getColor(R.color.backgroundColor2))
                 }
                 else{
                     selected.add(id)

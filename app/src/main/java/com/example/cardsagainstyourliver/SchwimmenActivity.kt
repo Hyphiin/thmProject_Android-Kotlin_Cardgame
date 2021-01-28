@@ -1,7 +1,5 @@
 package com.example.cardsagainstyourliver
 
-import android.content.ClipData
-import android.content.ClipDescription
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -10,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
@@ -635,7 +632,7 @@ class SchwimmenActivity : AppCompatActivity() {
             name = player2Name
         }
 
-        val intent = Intent(this, PopUpKartenauswahlActivity::class.java)
+        val intent = Intent(this, PopUpCardChooseActivity::class.java)
         intent.putExtra("p1hand", card1)
         intent.putExtra("p1hand2", card2)
         intent.putExtra("p1hand3", card3)
@@ -652,7 +649,7 @@ class SchwimmenActivity : AppCompatActivity() {
             name = player1Name
         }
 
-        val intent = Intent(this, PopUpSpielerwechselActivity::class.java)
+        val intent = Intent(this, PopUpPlayerChangeActivity::class.java)
         intent.putExtra("heart1", player1Hearts)
         intent.putExtra("heart2", player2Hearts)
         intent.putExtra("name", name)
@@ -682,7 +679,7 @@ class SchwimmenActivity : AppCompatActivity() {
     fun roundEnd() {
 
         if (player1Hearts >= 0 && player2Hearts >= 0) {
-            val intent = Intent(this, PopUpRundenendeActivity::class.java)
+            val intent = Intent(this, PopUpEndRoundActivity::class.java)
             intent.putExtra("textWinner", textWinner)
             intent.putExtra("player1name", player1Name)
             intent.putExtra("player2name", player2Name)
@@ -763,7 +760,7 @@ class SchwimmenActivity : AppCompatActivity() {
             player2permille
         )
 
-        val intent = Intent(this, PopUpSpielendeActivity::class.java)
+        val intent = Intent(this, PopUpEndGameActivity::class.java)
         intent.putExtra("WinnerWinner", winner)
         intent.putExtra("p1Pos", p1Pos)
         intent.putExtra("p2Pos", p2Pos)
@@ -1130,7 +1127,7 @@ class SchwimmenActivity : AppCompatActivity() {
     }
 
     fun promilleAnzeige(view: View) {
-        val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
+        val PromillePopUpEvent = Intent(this, PopUpPermilleCalcActivity::class.java)
         startActivity(PromillePopUpEvent)
     }
 

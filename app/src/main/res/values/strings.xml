@@ -85,4 +85,7 @@
 
     <string name="schwimmen_has_ended">hat beendet!</string>
     <string name="schwimmen_has_closed">hat geschoben!</string>
+    <string name="you_have_to_drink">du musst einen Schluck trinken</string>
+    <string name="nobody">Keiner</string>
+
 </resources>

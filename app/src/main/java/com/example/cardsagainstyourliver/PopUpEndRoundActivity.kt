@@ -41,24 +41,26 @@ class PopUpEndRoundActivity : Activity() {
             test1.setImageResource(R.drawable.pause)
         }
 
+        var youHaveToDrink = getString(R.string.you_have_to_drink)
+        var nobody = getString(R.string.nobody)
         if (isNightModeOn === false) {
             if (textGewinner == player1Name) {
                 textView.setText(player1Name)
             } else if (textGewinner == player2Name) {
                 textView.setText(player2Name)
             } else {
-                textView.setText("Keiner")
+                textView.setText("$nobody")
             }
         } else if (isNightModeOn === true) {
             if (textGewinner == player1Name) {
                 textView.setText(player2Name)
-                textViewText.setText("du musst einen Schluck trinken!")
+                textViewText.setText("$youHaveToDrink")
             } else if (textGewinner == player2Name) {
                 textView.setText(player1Name)
-                textViewText.setText("du musst einen Schluck trinken!")
+                textViewText.setText("$youHaveToDrink")
             } else {
-                textView.setText("Keiner")
-                textViewText.setText(" muss einen Schluck trinken!")
+                textView.setText("$nobody")
+                textViewText.setText("$youHaveToDrink")
             }
         }
 

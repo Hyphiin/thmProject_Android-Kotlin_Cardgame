@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class PopUpKartenauswahlActivity : AppCompatActivity() {
+class PopUpCardChooseActivity : AppCompatActivity() {
 
     var p1Pos = 0
     var p2Pos = 0
@@ -57,9 +57,6 @@ class PopUpKartenauswahlActivity : AppCompatActivity() {
 
 
     fun newCards(view: View) {
-        val toast = Toast.makeText(applicationContext, "neue Karten nehmen", Toast.LENGTH_LONG)
-        toast.show()
-
         val intent = Intent()
         intent.putExtra("idPos1", p1Pos)
         intent.putExtra("idPos2", p2Pos)
@@ -69,9 +66,6 @@ class PopUpKartenauswahlActivity : AppCompatActivity() {
     }
 
     fun thisCards(view: View) {
-        val toast = Toast.makeText(applicationContext, "Diese Karten behalten", Toast.LENGTH_LONG)
-        toast.show()
-
         val intent = Intent()
         intent.putExtra("idPos1", p1Pos)
         intent.putExtra("idPos2", p2Pos)
