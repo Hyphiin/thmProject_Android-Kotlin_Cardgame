@@ -8,13 +8,12 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import org.w3c.dom.Text
 
-class PopUpRundenendeActivity : Activity() {
+class PopUpEndRoundActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.rundenende)
+        setContentView(R.layout.end_round)
 
         val dm: DisplayMetrics = DisplayMetrics()
         this.windowManager.defaultDisplay.getMetrics(dm)

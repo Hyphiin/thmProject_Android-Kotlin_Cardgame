@@ -27,7 +27,7 @@ class GamelistActivity : AppCompatActivity() {
 
     fun onClickSchwimmenButton(v: View) {
 
-        val SchwimmenButton = Intent(this, SpielerauswahlActivity::class.java).apply {
+        val SchwimmenButton = Intent(this, PlayerSelectionActivity::class.java).apply {
             putExtra("Gamemode", EXTRA_MESSAGE_S)
         }
         startActivity(SchwimmenButton)
@@ -37,7 +37,12 @@ class GamelistActivity : AppCompatActivity() {
 
 
         val BettlerButton =
-            Intent(this, SpielerauswahlActivity::class.java).apply { putExtra("Gamemode", EXTRA_MESSAGE_B) }
+            Intent(this, PlayerSelectionActivity::class.java).apply {
+                putExtra(
+                    "Gamemode",
+                    EXTRA_MESSAGE_B
+                )
+            }
         startActivity(BettlerButton)
     }
 

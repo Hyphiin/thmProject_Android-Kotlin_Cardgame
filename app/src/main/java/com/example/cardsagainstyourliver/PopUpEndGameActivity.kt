@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
-class PopUpSpielendeActivity : Activity() {
+class PopUpEndGameActivity : Activity() {
 
     var player1Name = "Jürgen"
     var player2Name = "Dieter"
@@ -23,7 +23,7 @@ class PopUpSpielendeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.spielende)
+        setContentView(R.layout.end_game)
 
         val dm: DisplayMetrics = DisplayMetrics()
         this.windowManager.defaultDisplay.getMetrics(dm)
@@ -75,7 +75,7 @@ class PopUpSpielendeActivity : Activity() {
         val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
         //toast.show()
 
-        val intent = Intent(this, PopUpPromillerechnerActivity::class.java)
+        val intent = Intent(this, PopUpPermilleCalcActivity::class.java)
         intent.putExtra("player1Name",player1Name)
         intent.putExtra("player2Name",player2Name)
         intent.putExtra("p1Pos",p1Pos)

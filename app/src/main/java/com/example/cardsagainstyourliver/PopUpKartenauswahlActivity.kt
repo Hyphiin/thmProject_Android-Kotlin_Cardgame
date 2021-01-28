@@ -1,7 +1,5 @@
 package com.example.cardsagainstyourliver
 
-import android.app.Activity
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -19,7 +17,7 @@ class PopUpKartenauswahlActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.kartenauswahl)
+        setContentView(R.layout.cardChoice_PopUp)
 
         val dm: DisplayMetrics = DisplayMetrics()
         this.windowManager.defaultDisplay.getMetrics(dm)

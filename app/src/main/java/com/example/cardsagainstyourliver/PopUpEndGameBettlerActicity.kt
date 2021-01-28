@@ -16,7 +16,7 @@ class PopUpEndGameBettlerActicity: Activity() {
         val width = dm.widthPixels
         val height = dm.heightPixels
 
-        setContentView(R.layout.spielende)
+        setContentView(R.layout.end_game)
         player_name.setText(player)
         result_text.setText("ist König!")
 

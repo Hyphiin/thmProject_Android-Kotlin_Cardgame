@@ -13,10 +13,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
-import java.sql.Time
-import java.sql.Timestamp
-import kotlin.time.hours
 
 
 class SchwimmenActivity : AppCompatActivity() {
@@ -757,7 +753,7 @@ fun nextPlayerMenu() {
         name = player1Name
     }
 
-    val intent = Intent(this, PopUpSpielerwechselActivity::class.java)
+    val intent = Intent(this, PopUpPlayerChangeActivity::class.java)
     intent.putExtra("heart1", player1Hearts)
     intent.putExtra("heart2", player2Hearts)
     intent.putExtra("name", name)
@@ -789,7 +785,7 @@ fun rundenEnde(view: View) {
     //toast.show()
 
     if (player1Hearts >= 0 && player2Hearts >= 0) {
-        val intent = Intent(this, PopUpRundenendeActivity::class.java)
+        val intent = Intent(this, PopUpEndRoundActivity::class.java)
         intent.putExtra("textGewinner", textGewinner)
         intent.putExtra("player1name", player1Name)
         intent.putExtra("player2name", player2Name)
@@ -868,7 +864,7 @@ fun spielEnde(view: View) {
     db.updateData(player1id, player1Name, player1age, player1size, player1weight, player1gender, player1drink, player1permille)
     db.updateData(player2id, player2Name, player2age, player2size, player2weight, player2gender, player2drink, player2permille)
 
-    val intent = Intent(this, PopUpSpielendeActivity::class.java)
+    val intent = Intent(this, PopUpEndGameActivity::class.java)
     intent.putExtra("WinnerWinner", winner)
     intent.putExtra("p1Pos", p1Pos)
     intent.putExtra("p2Pos", p2Pos)
@@ -886,7 +882,7 @@ fun nextRoundMenu(view: View) {
     val toast = Toast.makeText(applicationContext, "nächste Runde", Toast.LENGTH_LONG)
     //toast.show()
 
-    val NextRoundMenuPopUpEvent = Intent(this, PopUpRundenendeActivity::class.java)
+    val NextRoundMenuPopUpEvent = Intent(this, PopUpEndRoundActivity::class.java)
     startActivity(NextRoundMenuPopUpEvent)
 }
 
@@ -1297,7 +1293,7 @@ fun promilleAnzeige(view: View) {
     val toast = Toast.makeText(applicationContext, "Promilleanzeige", Toast.LENGTH_LONG)
     //toast.show()
 
-    val PromillePopUpEvent = Intent(this, PopUpPromillerechnerActivity::class.java)
+    val PromillePopUpEvent = Intent(this, PopUpPermilleCalcActivity::class.java)
     startActivity(PromillePopUpEvent)
 
 }

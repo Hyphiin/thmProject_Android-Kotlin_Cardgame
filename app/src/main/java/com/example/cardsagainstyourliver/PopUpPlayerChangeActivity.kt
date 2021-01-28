@@ -9,9 +9,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import kotlinx.android.synthetic.main.player_change.*
 
-class PopUpSpielerwechselActivity : Activity() {
+class PopUpPlayerChangeActivity : Activity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -24,15 +24,15 @@
         <activity android:name=".ProfileSettingsActivity" />
         <activity android:name=".SchwimmenActivity" />
         <activity android:name=".NewGameActivity" />
-        <activity android:name=".SpielerauswahlActivity" />
+        <activity android:name=".PlayerSelectionActivity" />
         <activity
-            android:name=".PopUpPromillerechnerActivity"
+            android:name=".PopUpPermilleCalcActivity"
             android:theme="@style/AppTheme.PopUpPromille" />
         <activity
-            android:name=".PopUpSpielerwechselActivity"
+            android:name=".PopUpPlayerChangeActivity"
             android:theme="@style/AppTheme.PopUpSpielerwechsel" />
         <activity
-            android:name=".PopUpSpielerwechselBettlerActivity"
+            android:name=".PopUpPlayerChangeBettlerActivity"
             android:theme="@style/AppTheme.PopUpSpielerwechsel" /> 
         <activity
             android:name=".PopUpKartenauswahlActivity"
@@ -41,10 +41,10 @@
             android:name=".PopUpEndGameBettlerActicity"
             android:theme="@style/AppTheme.PopUpSpielende" />
         <activity
-            android:name=".PopUpSpielendeActivity"
+            android:name=".PopUpEndGameActivity"
             android:theme="@style/AppTheme.PopUpSpielende" />
         <activity
-            android:name=".PopUpRundenendeActivity"
+            android:name=".PopUpEndRoundActivity"
             android:theme="@style/AppTheme.PopUpSpielende" />
 
 

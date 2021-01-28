@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_bettler.*
@@ -196,7 +198,7 @@ class BettlerActivity : AppCompatActivity() {
         p2hand = HandClass(deck, "Bettler")
         table = HandClass(deck, "Null")
         playerSign.setVisibility(View.VISIBLE)
-        val intent = Intent(this, PopUpSpielerwechselBettlerActivity::class.java)
+        val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
         intent.putExtra("playerName", currentPlayerName)
         intent.putExtra("ende", true)
         startActivity(intent)
@@ -302,7 +304,7 @@ class BettlerActivity : AppCompatActivity() {
         setOpposition()
         Handler().postDelayed({
         playerSign.setText("Schieben an "+ opName)},1000)
-        val intent = Intent(this, PopUpSpielerwechselBettlerActivity::class.java)
+        val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
             intent.putExtra("playerName", currentPlayerName)
             startActivity(intent)
     }
@@ -317,7 +319,7 @@ class BettlerActivity : AppCompatActivity() {
                 currentPlayerName=p1Name
             }
         }
-        val intent = Intent(this, PopUpSpielerwechselBettlerActivity::class.java)
+        val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
         intent.putExtra("playerName", currentPlayerName)
         intent.putExtra("beginn", true)
         startActivity(intent)
