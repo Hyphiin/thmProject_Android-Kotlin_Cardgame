@@ -56,4 +56,8 @@
     <string name="resume_text">Resume</string>
     <string name="name_text2">name</string>
 
+
+    <string name="newGame_text">Neues Spiel</string>
+    <string name="promille_text">Promille</string>
+
 </resources>
