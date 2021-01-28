@@ -115,6 +115,7 @@ class SchwimmenActivity : AppCompatActivity() {
 
     }
 
+
     fun calculatePermille() {
 
         var PRechner = PerMilleCalculator()
@@ -421,7 +422,6 @@ class SchwimmenActivity : AppCompatActivity() {
             true
         }
 
-
         dragView01.setOnClickListener {
             object2 = table.getIndex(table.getCard(0))
             dragView01.setBackgroundColor(getResources().getColor(R.color.backgroundColor2))
@@ -499,7 +499,11 @@ class SchwimmenActivity : AppCompatActivity() {
                 hand = p2hand
             }
 
-            nextPlayerMenu()
+            thirtyOne()
+            if(thirtyOne === false){
+                nextPlayerMenu()
+            }
+
 
             dragView1.setImageDrawable(getDrawable(hand.getPic(hand.getCard(0))))
             dragView2.setImageDrawable(getDrawable(hand.getPic(hand.getCard(1))))
@@ -547,7 +551,6 @@ class SchwimmenActivity : AppCompatActivity() {
         startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE)
     }
 
-
     fun nextPlayerMenu() {
         if (hand == p2hand) {
             name = player2Name
@@ -582,7 +585,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }, 500)
     }
 
-    fun roundEnd(view: View) {
+    fun roundEnd() {
 
         if (player1Hearts >= 0 && player2Hearts >= 0) {
             val intent = Intent(this, PopUpRundenendeActivity::class.java)
@@ -631,11 +634,11 @@ class SchwimmenActivity : AppCompatActivity() {
             }, 500)
 
         } else {
-            gameEnd(view)
+            gameEnd()
         }
     }
 
-    fun gameEnd(view: View) {
+    fun gameEnd() {
         var winner = ""
 
         if (player1Hearts < 0) {
@@ -728,7 +731,7 @@ class SchwimmenActivity : AppCompatActivity() {
         table2.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
         table3.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
 
-        thirtyOne(view)
+        thirtyOne()
 
         if (thirtyOne === false) {
             if (shove) {
@@ -752,7 +755,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     textWinner = "Yippieh, Unentschieden!"
                 }
 
-                roundEnd(view)
+                roundEnd()
 
             } else {
                 Handler().postDelayed({
@@ -800,7 +803,7 @@ class SchwimmenActivity : AppCompatActivity() {
         table2.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
         table3.setBackgroundColor(getResources().getColor(R.color.mainBackgroundColor))
 
-        thirtyOne(view)
+        thirtyOne()
 
         if (thirtyOne === false) {
             if (shove) {
@@ -825,7 +828,7 @@ class SchwimmenActivity : AppCompatActivity() {
                     textWinner = "Yippieh, Unentschieden!"
                 }
 
-                roundEnd(view)
+                roundEnd()
 
             } else {
                 Handler().postDelayed({
@@ -839,7 +842,7 @@ class SchwimmenActivity : AppCompatActivity() {
         }, 2000)
     }
 
-    fun thirtyOne(view: View) {
+    fun thirtyOne() {
         var winner: Int = game.endGame(p1hand, p2hand)
 
         if (winner === 331) {
@@ -847,25 +850,25 @@ class SchwimmenActivity : AppCompatActivity() {
             player2Hearts--
             player2ml += 100.0
             thirtyOne = true
-            roundEnd(view)
+            roundEnd()
         } else if (winner === 332) {
             textWinner = player2Name
             player1Hearts--
             player1ml += 100.0
             thirtyOne = true
-            roundEnd(view)
+            roundEnd()
         } else if (winner === 311) {
             textWinner = player1Name
             player2Hearts--
             player2ml += 100.0
             thirtyOne = true
-            roundEnd(view)
+            roundEnd()
         } else if (winner === 312) {
             textWinner = player2Name
             player1Hearts--
             player1ml += 100.0
             thirtyOne = true
-            roundEnd(view)
+            roundEnd()
         }
     }
 
@@ -910,7 +913,7 @@ class SchwimmenActivity : AppCompatActivity() {
                 textWinner = "Yippieh, Unentschieden!"
             }
 
-            roundEnd(view)
+            roundEnd()
 
         } else {
             Handler().postDelayed({
@@ -1023,7 +1026,7 @@ class SchwimmenActivity : AppCompatActivity() {
                 textWinner = "Yippieh, Unentschieden!"
             }
 
-            roundEnd(view)
+            roundEnd()
         }
 
         Handler().postDelayed({

@@ -13,17 +13,6 @@ fun main(){
 
 class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false) {
 
-    init{
-       /*val deck = DeckClass(2)
-        deck.shuffle()
-        val hand1 = HandClass(deck, "Schwimmen")
-        val hand2= HandClass(deck, "Null")
-        val table= HandClass(deck, "Null")
-        startHand(hand2,table, deck)
-        val dump = HandClass(deck, "Null")*/
-
-    }
-
     //die für Schwimmen spezifische Starthandabfrage --- noch nicht im Einsatz
     fun startHand(p1hand: HandClass, table:HandClass, deck:DeckClass){
         val hand2a = HandClass(deck, "Schwimmen")
@@ -46,7 +35,6 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
             table.add(hand2a.getCard(1))
             table.add(hand2a.getCard(2))
         }
-
     }
 
     //Eine Handkarte mit einer auf dem Tisch tauschen
@@ -57,22 +45,6 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
         hand.addAt(indexHand, zwischenTable)
         table.deleteAt(indexTable)
         table.addAt(indexTable, zwischenHand)
-    }
-
-    //Spiel beenden --- noch nicht im Einsatz
-    fun close(p1hand:HandClass, p2hand:HandClass, deck: DeckClass, table: HandClass, dump: HandClass, hand:HandClass, startPlayer:String, p1name:String) {  //Zug von Spieler wird beendet
-
-        val deck = DeckClass(2)
-        deck.shuffle()
-        val p1hand = HandClass(deck, "Schwimmen")
-        val p2hand = HandClass(deck, "Schwimmen")
-        val table = HandClass(deck, "Null")
-        val dump = HandClass(deck, "Null")
-        if (startPlayer == p1name){
-            var hand = p2hand
-        }else{
-            var hand = p1hand
-        }
     }
 
     //Spielende, kann den Gewinner sagen --- noch nicht vollständig mit Herzangabe im Einsatz
@@ -102,29 +74,8 @@ class SchwimmenClass(): GameClass(1,"Schwimmen",2,9,"Schwimmen Regeln...",false)
             winner = 0
             return winner
         }
-
-        /*if (lostPlayer == player1){
-            if (player1.herzen > 0){
-                	//herz abziehen
-                }else if (player1.herzen = 0){
-                	//schwimmen
-            	}else {
-                 	//spiel Beenden, gewinner ist player2
-            	}
-        }else if (player2.herzen > 0){
-                	//herz abziehen
-                }else if (player2.herzen = 0){
-                	//schwimmen
-            	}else {
-                 	//spiel Beenden, gewinner ist player1
-            	}
-         }*/
-
     }
 
-    fun thirtyOne(hand1: HandClass, hand2: HandClass){
-
-    }
 
     //Anfrage zum Schieben, noch nicht fertig
     fun push(table:HandClass, dump:HandClass, deck:DeckClass, push:Boolean = false){ //Anfrage zum Schieben, noch nicht fertig

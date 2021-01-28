@@ -37,7 +37,7 @@ class PopUpSpielendeActivity : Activity() {
         p1Pos = intent.getIntExtra("p1Pos", -1)
         p2Pos = intent.getIntExtra("p2Pos", -1)
         val p1ID = intent.getIntExtra("p1ID", -1)
-        val p2ID = intent.getIntExtra("p1ID", -1)
+        val p2ID = intent.getIntExtra("p2ID", -1)
         player1permille = intent.getIntExtra("player1permille",-2)
         player2permille = intent.getIntExtra("player2permille",-2)
 
@@ -91,7 +91,6 @@ class PopUpSpielendeActivity : Activity() {
         intent.putExtra("idP2",p2)
         intent.putExtra("idPos1",p1pos)
         intent.putExtra("idPos2",p2pos)
-
         startActivity(intent)
     }
 
