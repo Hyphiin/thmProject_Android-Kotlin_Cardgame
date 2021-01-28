@@ -30,7 +30,7 @@ class BettlerActivity : AppCompatActivity() {
         var table = HandClass(deck, "Null")
         var temp = HandClass(deck,"Null")
         var cardViews:MutableList<ImageView> = mutableListOf()
-
+        var opCardViews:MutableList<ImageView> = mutableListOf()
         private val SECOND_ACTIVITY_REQUEST_CODE = 0
     }
 
@@ -39,7 +39,7 @@ class BettlerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bettler)
-
+        Log.d("debug","in create")
         val p1Id = intent.getIntExtra("idP1", -1)
         val p2Id = intent.getIntExtra("idP2", -1)
         val p1Pos =intent.getIntExtra("idPos1",-1)
@@ -52,10 +52,7 @@ class BettlerActivity : AppCompatActivity() {
         p2Name=data.get(p2Pos).playerName
 
         Log.d("Spieler:", p1Id.toString()+" "+p2Id.toString()+" name1: "+data.get(p1Pos).playerName+" name2: "+data.get(p2Pos).playerName)
-
-        var game = BettlerClass()
-        game.startGame(game)
-
+        deck = DeckClass(2)
         deck.shuffle()
         p1hand = HandClass(deck, "Bettler")
         p2hand = HandClass(deck, "Bettler")
@@ -87,6 +84,23 @@ class BettlerActivity : AppCompatActivity() {
         val dragView14: ImageView = findViewById(R.id.card14)!!
         val dragView15: ImageView = findViewById(R.id.card15)!!
         val dragView16: ImageView = findViewById(R.id.card16)!!
+
+        val gegnerView1: ImageView = findViewById(R.id.card9_ki1)!!
+        val gegnerView2: ImageView = findViewById(R.id.card9_ki2)!!
+        val gegnerView3: ImageView = findViewById(R.id.card9_ki)!!
+        val gegnerView4: ImageView = findViewById(R.id.card9_ki4)!!
+        val gegnerView5: ImageView = findViewById(R.id.card9_ki5)!!
+        val gegnerView6: ImageView = findViewById(R.id.card9_ki6)!!
+        val gegnerView7: ImageView = findViewById(R.id.card9_ki7)!!
+        val gegnerView8: ImageView = findViewById(R.id.card9_ki8)!!
+        val gegnerView9: ImageView = findViewById(R.id.card9_ki9)!!
+        val gegnerView10: ImageView = findViewById(R.id.card9_ki10)!!
+        val gegnerView11: ImageView = findViewById(R.id.card9_ki11)!!
+        val gegnerView12: ImageView = findViewById(R.id.card9_ki12)!!
+        val gegnerView13: ImageView = findViewById(R.id.card9_ki13)!!
+        val gegnerView14: ImageView = findViewById(R.id.card9_ki14)!!
+        val gegnerView15: ImageView = findViewById(R.id.card9_ki15)!!
+        val gegnerView16: ImageView = findViewById(R.id.card9_ki16)!!
         
         val playerSign: TextView =findViewById(R.id.playerSign)!!
         val nuOfCards: TextView= findViewById(R.id.nuOfCards)!!
@@ -99,7 +113,8 @@ class BettlerActivity : AppCompatActivity() {
 
 
         cardViews = mutableListOf(dragView1, dragView2, dragView3, dragView4, dragView5, dragView6, dragView7, dragView8,dragView9,dragView10,dragView11,dragView12,dragView13,dragView14,dragView15,dragView16 )
-        
+        opCardViews= mutableListOf(gegnerView1,gegnerView2,gegnerView3,gegnerView4,gegnerView5,gegnerView6,gegnerView7,gegnerView8,gegnerView9,gegnerView10,gegnerView11,gegnerView12,gegnerView13,gegnerView14,gegnerView15,gegnerView16)
+
         setStartingPlayer(p1hand)// bestimmt wer beginnt
         fillView()//erste bestückung der Views
 
@@ -115,7 +130,7 @@ class BettlerActivity : AppCompatActivity() {
                 playCard(currentHand)
             }
             else if(temp.getSize()== nuOfCardsPlayed){
-                if(temp.getCard(0).getValueNumberBettler()>table.getCard(table.getSize()-1).getValueNumber()){
+                if(temp.getCard(0).getValueNumberBettler()>table.getCard(table.getSize()-1).getValueNumberBettler()){
                     playCard(currentHand)
                 }
                 else{
@@ -139,7 +154,7 @@ class BettlerActivity : AppCompatActivity() {
                 Handler().postDelayed({
                 fillView()},1000)
             }
-            table_card.setImageDrawable(null)//Todo: Durch platzhalter ersetzen
+            table_card.setImageResource(R.drawable.card_platzhalter)
         }
 
 
@@ -150,7 +165,7 @@ class BettlerActivity : AppCompatActivity() {
                 if(currentPlayer == 1) {
                     currentHand = p1hand
                 }
-                if(cardChoice){//Hier wird kartentausch geregelt
+                if(cardChoice){//Hier wird kartentausch
                     if(winner==1){
                         var bestCard=p2hand.getHighestCard(p2hand)
                         p1hand.add(bestCard)
@@ -168,6 +183,7 @@ class BettlerActivity : AppCompatActivity() {
                     changePlayer(playerSign)
                     Handler().postDelayed({
                     fillView()
+                        playerSign.setVisibility(View.VISIBLE)
                     playerSign.setText("Arschloch: "+currentPlayerName+" beginnt")},1000)
                     cardChoice=false
                 }
@@ -197,9 +213,12 @@ class BettlerActivity : AppCompatActivity() {
         p1hand = HandClass(deck, "Bettler")
         p2hand = HandClass(deck, "Bettler")
         table = HandClass(deck, "Null")
-        playerSign.setVisibility(View.VISIBLE)
         val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
-        intent.putExtra("playerName", currentPlayerName)
+        var winnerName= p2Name
+        if(winner==1){
+            winnerName= p1Name
+        }
+        intent.putExtra("playerName", winnerName)
         intent.putExtra("ende", true)
         startActivity(intent)
         cardChoice=true
@@ -264,6 +283,7 @@ class BettlerActivity : AppCompatActivity() {
         var winnerName=""
         if(lastCard.getValueNumberBettler()==14){
             winner= opposition
+            currentPlayer=opposition
         }
         else{
             winner=currentPlayer
@@ -277,9 +297,12 @@ class BettlerActivity : AppCompatActivity() {
         val intent = Intent(this, PopUpEndGameBettlerActicity::class.java)
         intent.putExtra("playerName", winnerName)
         startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE)
-        Handler().postDelayed({
-        playerSign.setText(winnerName +" ist könig! Drücken für neue Runde")},1000)//Das hier musss ausgelagert werden, bzw code oben
+
         playerSign.setVisibility(View.INVISIBLE)
+
+        table_card.setImageResource(R.drawable.card_platzhalter)
+        nuOfCardsPlayed=0
+
     }
 
     fun setOpposition(){
@@ -302,6 +325,7 @@ class BettlerActivity : AppCompatActivity() {
             opName=p2Name
         }
         setOpposition()
+            Log.d("debug",opName)
         Handler().postDelayed({
         playerSign.setText("Schieben an "+ opName)},1000)
         val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
@@ -328,9 +352,12 @@ class BettlerActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun fillView() {
         var currentHand: HandClass = p2hand
+        var opSize= p1hand.getSize()
         if(currentPlayer==1){
             currentHand=p1hand
+            opSize= p2hand.getSize()
         }
+        Log.d("debug",opSize.toString())
         Log.d("gerade:", currentHand.getSize().toString())
             for (i in 0..currentHand.getSize()-1) {
 
@@ -350,12 +377,19 @@ class BettlerActivity : AppCompatActivity() {
             for (i in currentHand.getSize()..15){
                     cardViews[i].setVisibility(View.INVISIBLE)
             }
+            for(i in 0..opSize-1){
+                opCardViews[i].setVisibility(View.VISIBLE)
+            }
+            for(i in (opSize)..15){
+                opCardViews[i].setVisibility(View.INVISIBLE)
+            }
+
         nuOfCards.setText(nuOfCardsPlayed.toString())
         }
 
     fun onClickPauseMenuButton(view: View) {
-        val BackToPauseButton = Intent(this, PauseMenuActivity::class.java)
-        startActivity(BackToPauseButton)
+        val intent = Intent(this, PauseMenuActivity::class.java)
+        startActivity(intent)
     }
 
     fun onClickBackToMenuButton(view: View) {
@@ -364,3 +398,5 @@ class BettlerActivity : AppCompatActivity() {
     }
 
 }
+
+

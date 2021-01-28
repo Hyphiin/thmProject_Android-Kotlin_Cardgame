@@ -6,7 +6,7 @@ import android.util.DisplayMetrics
 import android.view.View
 import kotlinx.android.synthetic.main.player_change.*
 
-class PopUpPlayerChangeBettlerActivity : Activity() {
+class PopUpPlayerChangeBettlerActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val player = intent.getStringExtra("playerName")

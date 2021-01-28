@@ -31,6 +31,10 @@ class PopUpEndGameBettlerActicity: Activity() {
             finish()
         }
 
+        menu_btn2.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

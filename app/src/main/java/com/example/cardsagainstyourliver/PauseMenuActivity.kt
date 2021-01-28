@@ -12,20 +12,12 @@ class PauseMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pausemenu)
 
-
-        //Activitywechsel zu Schwimmen/Bettler Activity via Button
         val buttonResume: Button = findViewById(R.id.resume_button)
         buttonResume.setOnClickListener {
-            val testResume = Intent(this, SchwimmenActivity::class.java)
-            startActivity(testResume)
+                finish()
         }
 
 
-    }
-
-    fun onClickResumeButton(view: View) {
-        val ResumeButton = Intent(this, SchwimmenActivity::class.java)
-        startActivity(ResumeButton)
     }
 
     fun onClickGiveUpButton(view: View) {
