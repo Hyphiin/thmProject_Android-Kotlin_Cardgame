@@ -96,5 +96,7 @@
     <string name="higher_cards">Die gewählten Karten müssen höher sein, siehe Anleitung!</string>
     <string name="same_cards">Du musst genauso viele Karten legen wie dein Gegner!</string>
     <string name="same_cards2">Nur Karten gleicher Wertigkeit können zusammen gelegt werden!</string>
+    <string name="begins">beginnt!</string>
+    <string name="give_card">gebe eine Karte deiner Wahl ab.</string>
 
 </resources>

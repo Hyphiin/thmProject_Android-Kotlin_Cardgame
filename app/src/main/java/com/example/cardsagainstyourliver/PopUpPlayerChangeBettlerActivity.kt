@@ -20,11 +20,13 @@ class PopUpPlayerChangeBettlerActivity: Activity() {
 
         setContentView(R.layout.player_change)
         if(beginn){
-            textView4.setText("beginnt!")
+            var begins = getString(R.string.begins)
+            textView4.setText("$begins")
             test.setText("Ok")
         }
         if(ende){
-            textView4.setText(" gebe eine Karte deiner Wahl ab.")
+            var giveCard = getString(R.string.give_card)
+            textView4.setText("$giveCard")
             test.setText("Ok")
         }
         player_name1.setText(player)

@@ -71,6 +71,8 @@
     <string name="higher_cards">Le carte selezionate devono essere più alte, vedi istruzioni!</string>
     <string name="same_cards">Devi piazzare tante carte quanto il tuo avversario!</string>
     <string name="same_cards2">Si possono mettere insieme solo carte dello stesso valore!</string>
+    <string name="begins">" inizia!"</string>
+    <string name="give_card">" consegna una carta a tua scelta."</string>
 
 
 </resources>

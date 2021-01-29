@@ -111,6 +111,8 @@ class BettlerActivity : AppCompatActivity() {
         table = HandClass(deck, "Null")
         temp = HandClass(deck,"Null")
 
+        nuOfCards.setText("0")
+
         val dragView1: ImageView = findViewById(R.id.card1)!!
         val dragView2: ImageView = findViewById(R.id.card2)!!
         val dragView3: ImageView = findViewById(R.id.card3)!!

@@ -71,5 +71,7 @@
     <string name="higher_cards">" Les cartes sélectionnées doivent être plus hautes, voir les instructions!"</string>
     <string name="same_cards">Vous devez poser autant de cartes que votre adversaire!</string>
     <string name="same_cards2">Seules les cartes du même rang peuvent être assemblées!</string>
+    <string name="begins">" commence!"</string>
+    <string name="give_card">" remettre une carte de votre choix."</string>
 
 </resources>

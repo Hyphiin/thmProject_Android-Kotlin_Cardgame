@@ -63,7 +63,7 @@
     <string name="promille_text">por miles</string>
     <string name="you_have_to_drink">toma un sorbo</string>
     <string name="nobody">Ninguna</string>
-    <string name="push">empuja</string>
+    <string name="push">Entregue una tarjeta de su elección.</string>
     <string name="pushBettler">empuja</string>
     <string name="start">empezar</string>
     <string name="is_king">es rey!</string>
@@ -71,5 +71,7 @@
     <string name="higher_cards">" Las cartas seleccionadas deben ser más altas, ver instrucciones!"</string>
     <string name="same_cards">¡Tienes que colocar tantas cartas como tu oponente!</string>
     <string name="same_cards2">¡Solo se pueden juntar cartas del mismo rango!</string>
+    <string name="begins">" comienza!"</string>
+    <string name="give_card">" entregue una tarjeta de su elección."</string>
 
 </resources>

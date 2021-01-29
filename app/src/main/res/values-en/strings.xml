@@ -71,5 +71,7 @@
     <string name="same_cards">You have to lay as many cards as your opponent!</string>
     <string name="higher_cards">The selected cards must be higher, see instructions!</string>
     <string name="same_cards2">Only cards of the same rank can be put together!</string>
+    <string name="begins">begins!</string>
+    <string name="give_card">hand in a card of your choice.</string>
 
 </resources>

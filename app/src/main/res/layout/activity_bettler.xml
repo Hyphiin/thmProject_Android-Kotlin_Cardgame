@@ -230,7 +230,7 @@
                 android:background="@drawable/text_background_round"
                 android:fontFamily="@font/roboto_slab_bold"
                 android:gravity="center"
-                android:text="4"
+                android:text="0"
                 android:textColor="@color/textColor2"
                 android:textSize="36sp" />
 
