@@ -233,7 +233,7 @@ class BettlerActivity : AppCompatActivity() {
                     fillView()
                         playerSign.setVisibility(View.VISIBLE)
                         var startString = getString(R.string.start)
-                    playerSign.setText("Arschloch: "+currentPlayerName+ startString)},1000)
+                    playerSign.setText("Arschloch: "+currentPlayerName+" "+startString)},1000)
                     cardChoice=false
                 }
                 else if(temp.getSize()<1){
