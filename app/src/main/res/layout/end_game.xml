@@ -94,7 +94,6 @@
             android:background="@drawable/text_background_round"
             android:fontFamily="@font/roboto_slab_bold"
             android:gravity="center"
-            android:onClick="promilleAnzeige"
             android:text="@string/promille_text"
             android:textSize="30sp" />
 
