@@ -64,5 +64,7 @@
     <string name="you_have_to_drink">take a sip!</string>
     <string name="nobody">Nobody</string>
     <string name="push">Push to</string>
+    <string name="pushBettler">Push to</string>
+    <string name="start">starts</string>
 
 </resources>

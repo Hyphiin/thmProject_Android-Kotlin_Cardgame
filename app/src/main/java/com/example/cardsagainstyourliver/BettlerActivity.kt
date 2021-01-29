@@ -227,7 +227,8 @@ class BettlerActivity : AppCompatActivity() {
                     Handler().postDelayed({
                     fillView()
                         playerSign.setVisibility(View.VISIBLE)
-                    playerSign.setText("Arschloch: "+currentPlayerName+" beginnt")},1000)
+                        var startString = getString(R.string.start)
+                    playerSign.setText("Arschloch: "+currentPlayerName+ startString)},1000)
                     cardChoice=false
                 }
                 else if(temp.getSize()<1){
@@ -750,7 +751,7 @@ class BettlerActivity : AppCompatActivity() {
         Handler().postDelayed({
 
         var pushString = getString(R.string.pushBettler)
-        playerSign.setText(pushString + opName)},1000)
+        playerSign.setText(pushString + " " + opName)},1000)
         val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
             intent.putExtra("playerName", currentPlayerName)
             startActivity(intent)

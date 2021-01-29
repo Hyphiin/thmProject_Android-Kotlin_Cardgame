@@ -64,6 +64,8 @@
     <string name="you_have_to_drink">bevi un sorso</string>
     <string name="nobody">Nessuna</string>
     <string name="push">spingere</string>
+    <string name="pushBettler">spingere</string>
+    <string name="start">inizio</string>
 
 
 </resources>
