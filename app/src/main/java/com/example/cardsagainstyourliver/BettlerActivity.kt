@@ -167,7 +167,8 @@ class BettlerActivity : AppCompatActivity() {
                 currentHand = p1hand
             }
             if(temp.getSize()==0){
-                Toast.makeText(this, "Bitte wähle Karten aus", Toast.LENGTH_SHORT).show()
+                var chooseCard = getString(R.string.choose_card)
+                Toast.makeText(this, "$chooseCard", Toast.LENGTH_SHORT).show()
             }
             else if(table.getSize()==0){
                 playCard(currentHand)
@@ -177,11 +178,13 @@ class BettlerActivity : AppCompatActivity() {
                     playCard(currentHand)
                 }
                 else{
-                    Toast.makeText(this, "Die gewählten Karten müssen höher sein, siehe Anleitung", Toast.LENGTH_SHORT).show()
+                    var higherCards = getString(R.string.higher_cards)
+                    Toast.makeText(this, "$higherCards", Toast.LENGTH_SHORT).show()
                 }
             }
             else{
-                Toast.makeText(this, "Du musst genauso viele Karten legen wie dein Gegner", Toast.LENGTH_SHORT).show()
+                var sameCards = getString(R.string.same_cards)
+                Toast.makeText(this, "$sameCards", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -242,7 +245,8 @@ class BettlerActivity : AppCompatActivity() {
                     }
                     else{
                         Log.d("state:","illegaler move")
-                        Toast.makeText(this, "Nur Karten gleicher Wertigkeit können zusammen gelegt werden", Toast.LENGTH_SHORT).show()
+                        var sameCards2 = getString(R.string.same_cards2)
+                        Toast.makeText(this, "$sameCards2", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -751,7 +755,7 @@ class BettlerActivity : AppCompatActivity() {
         Handler().postDelayed({
 
         var pushString = getString(R.string.pushBettler)
-        playerSign.setText(pushString + " " + opName)},1000)
+        playerSign.setText("$pushString $opName")},1000)
         val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
             intent.putExtra("playerName", currentPlayerName)
             startActivity(intent)

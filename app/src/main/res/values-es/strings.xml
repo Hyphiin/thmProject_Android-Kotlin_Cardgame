@@ -66,5 +66,10 @@
     <string name="push">empuja</string>
     <string name="pushBettler">empuja</string>
     <string name="start">empezar</string>
+    <string name="is_king">es rey!</string>
+    <string name="choose_card">" ¡Seleccione tarjetas!"</string>
+    <string name="higher_cards">" Las cartas seleccionadas deben ser más altas, ver instrucciones!"</string>
+    <string name="same_cards">¡Tienes que colocar tantas cartas como tu oponente!</string>
+    <string name="same_cards2">¡Solo se pueden juntar cartas del mismo rango!</string>
 
 </resources>

@@ -91,4 +91,10 @@
     <string name="pushBettler">Schieben an</string>
     <string name="start">beginnt</string>
 
+    <string name="is_king">ist König!</string>
+    <string name="choose_card">Bitte wähle Karten aus!</string>
+    <string name="higher_cards">Die gewählten Karten müssen höher sein, siehe Anleitung!</string>
+    <string name="same_cards">Du musst genauso viele Karten legen wie dein Gegner!</string>
+    <string name="same_cards2">Nur Karten gleicher Wertigkeit können zusammen gelegt werden!</string>
+
 </resources>

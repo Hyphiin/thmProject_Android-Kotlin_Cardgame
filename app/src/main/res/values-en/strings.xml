@@ -66,5 +66,10 @@
     <string name="push">Push to</string>
     <string name="pushBettler">Push to</string>
     <string name="start">starts</string>
+    <string name="is_king">is king!</string>
+    <string name="choose_card">Please choose a card!</string>
+    <string name="same_cards">You have to lay as many cards as your opponent!</string>
+    <string name="higher_cards">The selected cards must be higher, see instructions!</string>
+    <string name="same_cards2">Only cards of the same rank can be put together!</string>
 
 </resources>
