@@ -748,7 +748,9 @@ class BettlerActivity : AppCompatActivity() {
         setOpposition()
             Log.d("debug",opName)
         Handler().postDelayed({
-        playerSign.setText("Schieben an "+ opName)},1000)
+
+        var pushString = getString(R.string.pushBettler)
+        playerSign.setText(pushString + opName)},1000)
         val intent = Intent(this, PopUpPlayerChangeBettlerActivity::class.java)
             intent.putExtra("playerName", currentPlayerName)
             startActivity(intent)
